@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Doctors(props) {
-
+    
     const information = [
         {
             id: 1,
@@ -42,7 +42,6 @@ function Doctors(props) {
                     <p>Duis sagittis rutrum neque, quis tincidunt arcu pretium ac. Suspendisse sem risus, molestie vitae arcu et,
                         tincidunt viverra erat. Quisque in lectus id nulla viverra sodales in a risus. Aliquam ut sem ex. Duis viverra
                         ipsum lacus, ut pharetra arcu sagittis nec. Phasellus a eleifend elit.</p>
-                    <Link to={'/doctor/1'}>Doctor1</Link>
                 </div>
                 <div className="row">
                     {
