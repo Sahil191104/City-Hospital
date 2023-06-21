@@ -53,7 +53,6 @@ function Appointment(props) {
                 </form>
             </div>
         </section>
-
     );
 }
 

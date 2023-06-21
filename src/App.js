@@ -11,11 +11,14 @@ import Doctors from './container/Doctors';
 
 import { Route, Routes } from 'react-router-dom';
 import Doctor from './container/Doctor';
+import VisitingDoctor from './container/VisitingDoctor';
+import Error from './components/Error';
+import Auth from './container/Auth';
 
 function App() {
   return (
     <>
-      <Header/>
+      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
@@ -23,9 +26,18 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/department' element={<Department />} />
         <Route path='/doctors' element={<Doctors />} />
-        <Route path='/doctor/:id' element={<Doctor />} />
+        {/* <Route path='/doctor/:id' element={<Doctor />} />
+        <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} /> */}
+
+        <Route path='/doctor/'>
+          <Route path=':id' element={<Doctor />} />
+          <Route path='visiting_doctor' element={<VisitingDoctor />} />
+        </Route>
+
+        <Route path='*' element={<Error />} />
+        <Route path='/Auth' element={<Auth />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Doctors(props) {
-    
+
     const information = [
         {
             id: 1,
@@ -42,12 +42,13 @@ function Doctors(props) {
                     <p>Duis sagittis rutrum neque, quis tincidunt arcu pretium ac. Suspendisse sem risus, molestie vitae arcu et,
                         tincidunt viverra erat. Quisque in lectus id nulla viverra sodales in a risus. Aliquam ut sem ex. Duis viverra
                         ipsum lacus, ut pharetra arcu sagittis nec. Phasellus a eleifend elit.</p>
+                        <Link className="appointment-btn scrollto mt-4" to={'/doctor/visiting_doctor'}>Visiting Doctor</Link>
                 </div>
                 <div className="row">
                     {
                         information.map((value, i) => {
                             return (
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 mt-4 mt-lg-0">
                                     <Link to={`/doctor/${value.id}`}>
                                         <div className="member d-flex align-items-start">
                                             <div className="pic"><img src={value.url} className="img-doctor" alt /></div>
@@ -55,12 +56,6 @@ function Doctors(props) {
                                                 <h4>{value.name}</h4>
                                                 <span>{value.designation}</span>
                                                 <p>{value.description}</p>
-                                                <div className="social">
-                                                    <a href><i className="ri-twitter-fill" /></a>
-                                                    <a href><i className="ri-facebook-fill" /></a>
-                                                    <a href><i className="ri-instagram-fill" /></a>
-                                                    <a href> <i className="ri-linkedin-box-fill" /> </a>
-                                                </div>
                                             </div>
                                         </div>
                                     </Link>
