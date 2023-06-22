@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-function Auth(props) {
+function Auth2(props) {
 
     const [authType, setAuthType] = useState('login');
+    const [forgotPassword, setForgotPassword] = useState(false);
 
     return (
         <div>
@@ -10,8 +11,10 @@ function Auth(props) {
                 <div className="container">
                     <div className="section-title">
                         {
-                            authType === 'login' ? <h2>Login</h2> :
-                                authType === 'signup' ? <h2>Signup</h2> : <h2>Forgot Password?</h2>
+                            // authType === 'login' ? <h2>Login</h2> :
+                            //     authType === 'signup' ? <h2>Signup</h2> : <h2>Forgot Password?</h2>
+                            forgotPassword ? <h2>Forgot Password?</h2> :
+                                authType === 'login' ? <h2>Login</h2> : <h2>Signup</h2>
                         }
                         <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                             blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
@@ -50,19 +53,19 @@ function Auth(props) {
                         <br />
                         <div className="text-center mb-2">
                             {
-                                authType === 'login' ? <span>You have already account ?<a href="#" onClick={() => setAuthType('signup')}> Sign up</a></span> :
-                                    <span>Create a new account ?<a href="#" onClick={() => setAuthType('login')}> Login</a> </span>
+                                authType === 'login' ? <span>You have already account ?<a href="#" onClick={() => {setAuthType('signup'); setForgotPassword(true)}}> Sign up</a></span> :
+                                    <span>Create a new account ?<a href="#" onClick={() => {setAuthType('login'); setForgotPassword(true)}}> Login</a> </span>
                             }
                         </div>
                         <div className="text-center mb-2">
                             {
-                                authType === 'login' ? <span><a href="#" onClick={() => setAuthType('forgot')}>Forget Password?</a> </span> :
+                                authType === 'login' ? <span><a href="#" onClick={() => {setAuthType('forgot'); setForgotPassword(true)}}>Forget Password?</a> </span> :
                                     null
                             }
                         </div>
                         <div className="text-center">
                             {
-                                authType === 'login' ? <button type="submit">Login</button> : 
+                                authType === 'login' ? <button type="submit">Login</button> :
                                     authType === 'forgot' ? <button type="submit">Conform</button> : <button type="submit">Signup</button>
                             }
                         </div>
@@ -74,4 +77,4 @@ function Auth(props) {
     );
 }
 
-export default Auth;
+export default Auth2;

@@ -14,6 +14,7 @@ import Doctor from './container/Doctor';
 import VisitingDoctor from './container/VisitingDoctor';
 import Error from './components/Error';
 import Auth from './container/Auth';
+import Auth2 from './container/Auth2';
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
         </Route>
 
         <Route path='*' element={<Error />} />
-        <Route path='/Auth' element={<Auth />} />
+        {/* <Route path='/Auth' element={<Auth />} /> */}
+        <Route path='/Auth' element={<Auth2 />} />
       </Routes>
       <Footer />
     </>
