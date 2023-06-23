@@ -1,23 +1,36 @@
-import React from 'react';
 import { useFormik } from 'formik';
-import { signUpSchema } from '../schemas/index';
+import React from 'react';
+import * as Yup from 'yup';
 
-const initialValues = {
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-}
+function Contact1(props) {
 
-const Contact = (props) => {
+    let userSchema = Yup.object({
+        name: Yup.string().required('Please enter your name').min(2).max(15),
+        email: Yup.string().email('Please enter your valid email').required('Please enter your email'),
+        subject: Yup.string().required('Please enter your subject'),
+        message: Yup.string().required('Please enter your message').min(2).test('message','atlist maximum 50 words message', function(value) {
+            let ans = value.split(" ");
 
-    const { values, errors, handleBlur, touched, handleChange, handleSubmit } = useFormik({
-        initialValues: initialValues,
-        validationSchema: signUpSchema,
-        onSubmit: (values) => {
-            console.log(values);
-        }
-    })
+            if (ans.length > 50) { 
+                return false
+            } else {
+                return true
+            }
+        }),
+    });
+
+    const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+        },
+        validationSchema: userSchema,
+        onSubmit: values => {
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
 
     return (
         <section id="contact" className="contact">
@@ -51,38 +64,30 @@ const Contact = (props) => {
                         </div>
                     </div>
                     <div className="col-lg-8 mt-5 mt-lg-0">
-                        <form className="php-email-form" onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="php-email-form">
                             <div className="row">
                                 <div className="col-md-6 form-group">
-                                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" autoComplete='off' value={values.name} onChange={handleChange} onBlur={handleBlur} />
-                                    {
-                                        errors.name && touched.name ? <p className='form-error'>{errors.name}</p> : null
-                                    }
+                                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" value={values.name} onChange={handleChange} onBlur={handleBlur} />
+                                    <p className='form-error'>{errors.name && touched.name ? errors.name : null}</p>
                                 </div>
                                 <div className="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" autoComplete='off' value={values.email} onChange={handleChange} onBlur={handleBlur} />
-                                    {
-                                        errors.email && touched.email ? <p className='form-error'>{errors.email}</p> : null
-                                    }
+                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
+                                    <p className='form-error'>{errors.email && touched.email ? errors.email : null}</p>
                                 </div>
                             </div>
                             <div className="form-group mt-3">
-                                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" autoComplete='off' value={values.subject} onChange={handleChange} onBlur={handleBlur} />
-                                {
-                                    errors.subject && touched.subject ? <p className='form-error'>{errors.subject}</p> : null
-                                }
+                                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" value={values.subject} onChange={handleChange} onBlur={handleBlur} />
+                                <p className='form-error'>{errors.subject && touched.subject ? errors.subject : null}</p>
                             </div>
                             <div className="form-group mt-3">
-                                <textarea className="form-control" name="message" rows={5} placeholder="Message" autoComplete='off' defaultValue={""} value={values.message} onChange={handleChange} onBlur={handleBlur} />
-                                {
-                                    errors.message && touched.message ? <p className='form-error'>{errors.message}</p> : null
-                                }
+                                <textarea className="form-control" name="message" rows={5} placeholder="Message" value={values.message} onChange={handleChange} onBlur={handleBlur} />
+                                <p className='form-error'>{errors.message && touched.message ? errors.message : null}</p>
                             </div>
-                            {/* <div className="my-3">  
+                            <div className="my-3">
                                 <div className="loading">Loading</div>
                                 <div className="error-message" />
                                 <div className="sent-message">Your message has been sent. Thank you!</div>
-                            </div> */}
+                            </div>
                             <div className="text-center"><button type="submit">Send Message</button></div>
                         </form>
                     </div>
@@ -93,4 +98,4 @@ const Contact = (props) => {
     );
 }
 
-export default Contact;
+export default Contact1;

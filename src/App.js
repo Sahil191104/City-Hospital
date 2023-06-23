@@ -6,6 +6,7 @@ import Home from './container/Home';
 import About from './container/About';
 import Appointment from './container/Appointment';
 import Contact from './container/Contact';
+import Contact1 from './container/Contact1';
 import Department from './container/Department';
 import Doctors from './container/Doctors';
 
@@ -24,7 +25,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/appointment' element={<Appointment />} />
-        <Route path='/contact' element={<Contact />} />
+        {/* <Route path='/contact' element={<Contact />} /> */}
+        <Route path='/contact' element={<Contact1 />} />
         <Route path='/department' element={<Department />} />
         <Route path='/doctors' element={<Doctors />} />
         {/* <Route path='/doctor/:id' element={<Doctor />} />
