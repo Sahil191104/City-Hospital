@@ -11,7 +11,7 @@ function Contact1(props) {
         message: Yup.string().required('Please enter your message').min(2).test('message','atlist maximum 50 words message', function(value) {
             let ans = value.split(" ");
 
-            if (ans.length > 50) { 
+            if (ans.length > 50) {
                 return false
             } else {
                 return true
