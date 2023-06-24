@@ -16,6 +16,7 @@ import VisitingDoctor from './container/VisitingDoctor';
 import Error from './components/Error';
 import Auth from './container/Auth';
 import Auth2 from './container/Auth2';
+import FormValidation from './container/FormValidation';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         {/* <Route path='/contact' element={<Contact />} /> */}
         <Route path='/contact' element={<Contact1 />} />
         <Route path='/department' element={<Department />} />
+        <Route path='/form' element={<FormValidation />} />
         <Route path='/doctors' element={<Doctors />} />
         {/* <Route path='/doctor/:id' element={<Doctor />} />
         <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} /> */}
