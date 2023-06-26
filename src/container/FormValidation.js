@@ -32,22 +32,33 @@ function FormValidation(props) {
                 /^(?=.*[!@#\$%\^&\*])/,
                 "  Must Contain  One Special Case Character"
             ),
-        conformpassword: Yup.string().required('Please enter your Password').min(8, "Must Contain 8 Characters").oneOf([Yup.ref("password"), null], "Passwords must match"),
-        mobilenumber: Yup.string().min(10, "Must Contain 10 Characters").required('Please enter your Mobile Number'),
-        age: Yup.string().min(0).max(150).required('Please enter your Age'),
+        conformpassword: Yup.string().required('Please enter your Password')
+            .min(8, "Must Contain 8 Characters").
+            oneOf([Yup.ref("password"), null], "Passwords must match"),
+        mobilenumber: Yup.string().min(10, "Must Contain 10 Characters")
+            .max(10, "Maximum Contain 10 Characters")
+            .required('Please enter your Mobile Number'),
+        age: Yup.string()
+            .min(0)
+            .max(150)
+            .required('Please enter your Age'),
         gender: Yup.string().min(10, "Must Contain 10 Characters").required('Please enter your Gender'),
         country: Yup.string().min(10, "Must Contain 10 Characters").required('Please enter your Country'),
         hobby: Yup.string().min(10, "Must Contain 10 Characters").required('Please enter your Hobby'),
-        address: Yup.string().required('Please enter your message').min(2).test('address', 'atlist maximum 100 words message', function (value) {
-            let ans = value.split(" ");
+        address: Yup.string().required('Please enter your message')
+            .min(2)
+            .test('address', 'atlist maximum 100 words message', function (value) {
+                let ans1 = value.split(" ");
 
-            if (ans.length > 100) {
-                return false
-            } else {
-                return true
-            }
-        }),
-        dob: Yup.string().max(new Date(), "Please Enter in DOB").required(),
+                if (ans1.length > 100) {
+                    return false
+                } else {
+                    return true
+                }
+            }),
+        dob: Yup.string()
+            .max(new Date(), "Please Enter in DOB")
+            .required(),
         check: Yup.string().required('Please enter your Check'),
     });
 
@@ -109,8 +120,8 @@ function FormValidation(props) {
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Gender</label>
                         <div className="form-inline">
-                            <p><input type="radio" name="gender" defaultValue="male" /> Male</p>
-                            <p><input type="radio" name="gender" defaultValue="female" /> Female</p>
+                            <p><input type="radio" name="gender" /> Male</p>
+                            <p><input type="radio" name="gender" /> Female</p>
                         </div>
                         <p className='form-error'>{errors.gender && touched.gender ? errors.gender : null}</p>
                     </div>
