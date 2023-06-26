@@ -7,6 +7,7 @@ import About from './container/About';
 import Appointment from './container/Appointment';
 import Contact from './container/Contact';
 import Contact1 from './container/Contact1';
+import Slidenav from './container/Slidenav';
 import Department from './container/Department';
 import Doctors from './container/Doctors';
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/department' element={<Department />} />
         <Route path='/form' element={<FormValidation />} />
         <Route path='/doctors' element={<Doctors />} />
+        <Route path='/slidenav' element={<Slidenav />} />
         {/* <Route path='/doctor/:id' element={<Doctor />} />
         <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} /> */}
 

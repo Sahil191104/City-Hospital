@@ -10,6 +10,8 @@ function FormValidation(props) {
 
             if (ans.length > 3) {
                 return false
+            } else if (ans.length < 3) {
+                return false
             } else {
                 return true
             }
