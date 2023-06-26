@@ -1,8 +1,53 @@
+import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import * as Yup from 'yup';
 
 function Auth(props) {
 
     const [authType, setAuthType] = useState('login');
+
+    let SchemaObj = {}, intial = {}
+
+    if (authType === 'login') {
+        SchemaObj = {
+            email: Yup.string().email('Please enter your valid email').required('Please enter your email'),
+            password: Yup.string().required('Please enter your Password').min(8, "Must Contain 8 Characters")
+        }
+        intial = {
+            email: '',
+            password: ''
+        }
+    } else if (authType === 'signup') {
+        SchemaObj = {
+            name: Yup.string().required('Please enter your name'),
+            email: Yup.string().email('Please enter your valid email').required('Please enter your email'),
+            password: Yup.string().required('Please enter your Password').min(8, "Must Contain 8 Characters")
+        }
+        intial = {
+            name: '',
+            email: '',
+            password: ''
+        }
+    } else {
+        SchemaObj = {
+            email: Yup.string().email('Please enter your valid email').required('Please enter your email')
+        }
+        intial = {
+            email: '',
+        }
+    }
+
+    let userSchema = Yup.object(SchemaObj)
+
+    const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
+        initialValues: intial,
+        validationSchema: userSchema,
+        enableReinitialize: true,
+        onSubmit: (values, action) => {
+            action.resetForm()
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
 
     return (
         <div>
@@ -17,24 +62,27 @@ function Auth(props) {
                             blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
                             Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
                     </div>
-                    <form action method="post" role="form" className="php-email-form">
+                    <form method="post" role="form" onSubmit={handleSubmit} className="php-email-form">
                         <div className="row justify-content-center">
                             {
                                 authType === 'signup' ?
                                     <div className="col-md-7 form-group">
-                                        <input type="text" name="name" className="form-control" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                        <input type="text" name="name" className="form-control" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.name} onChange={handleChange} onBlur={handleBlur} />
                                         <div className="validate" />
+                                        <p className='form-error'>{errors.name && touched.name ? errors.name : null}</p>
                                     </div> : null
                             }
                             <div className="col-md-7 form-group mt-3 mt-md-0">
-                                <input type="email" className="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid Password" />
+                                <input type="email" className="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid Password" value={values.email} onChange={handleChange} onBlur={handleBlur} />
                                 <div className="validate" />
+                                <p className='form-error'>{errors.email && touched.email ? errors.email : null}</p>
                             </div>
                             {
                                 authType === 'forgot' ? null :
                                     <div className="col-md-7 form-group mt-3 mt-md-0">
-                                        <input type="password" className="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                        <input type="password" className="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.password} onChange={handleChange} onBlur={handleBlur} />
                                         <div className="validate" />
+                                        <p className='form-error'>{errors.password && touched.password ? errors.password : null}</p>
                                     </div>
                             }
 
@@ -62,7 +110,7 @@ function Auth(props) {
                         </div>
                         <div className="text-center">
                             {
-                                authType === 'login' ? <button type="submit">Login</button> : 
+                                authType === 'login' ? <button type="submit">Login</button> :
                                     authType === 'forgot' ? <button type="submit">Conform</button> : <button type="submit">Signup</button>
                             }
                         </div>

@@ -37,7 +37,8 @@ function FormValidation(props) {
         age: Yup.string().min(0).max(150).required('Please enter your Age'),
         gender: Yup.string().required('Please Select your Gender'),
         country: Yup.string().required('Please Select your Country'),
-        hobby: Yup.string().required('Please enter your Hobby'),
+        hobby: Yup.bool()
+            .oneOf([true], 'You need to accept the terms and conditions'),
         address: Yup.string().required('Please enter your message').min(2).test('address', 'atlist maximum 100 words message', function (value) {
             let ans = value.split(" ");
 
@@ -48,7 +49,8 @@ function FormValidation(props) {
             }
         }),
         dob: Yup.string().max(new Date(), "Please Enter in DOB").required(),
-        check: Yup.string().required('Please enter your Check')
+        check: Yup.bool()
+            .oneOf([true], 'You need to accept the terms and conditions')
     });
 
     const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
@@ -109,14 +111,14 @@ function FormValidation(props) {
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Gender</label>
                         <div className="form-inline">
-                            <p><input type="radio" name="gender" defaultValue="male" /> Male</p>
-                            <p><input type="radio" name="gender" defaultValue="female" /> Female</p>
+                            <p><input type="radio" name="gender" value="male" onChange={handleChange} onBlur={handleBlur} /> Male</p>
+                            <p><input type="radio" name="gender" value="female" onChange={handleChange} onBlur={handleBlur} /> Female</p>
                         </div>
                         <p className='form-error'>{errors.gender && touched.gender ? errors.gender : null}</p>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Country</label>
-                        <select name="country">
+                        <select name="country" value={values.country} onChange={handleChange} onBlur={handleBlur}>
                             <option value={0}>Select</option>
                             <option value="au">Australia</option>
                             <option value="in">India</option>
@@ -129,10 +131,9 @@ function FormValidation(props) {
                     <div className="mb-3">
                         <p>Hobby</p>
                         <div>
-                            <label><input type="checkbox" name="hobby" defaultValue="Music" placeholder=" " /> Music</label><br />
-                            <label><input type="checkbox" name="hobby" defaultValue="Criket" placeholder=" " /> Cricket</label><br />
-                            <label><input type="checkbox" name="hobby" defaultValue="Sleeping" placeholder=" " />
-                                Sleeping</label><br />
+                            <label><input type="checkbox" name="hobby" placeholder=" " value={values.hobby} onChange={handleChange} onBlur={handleBlur} /> Music</label><br />
+                            <label><input type="checkbox" name="hobby" placeholder=" " value={values.hobby} onChange={handleChange} onBlur={handleBlur} /> Cricket</label><br />
+                            <label><input type="checkbox" name="hobby" placeholder=" " value={values.hobby} onChange={handleChange} onBlur={handleBlur} /> Sleeping</label><br />
                         </div>
                         <p className='form-error'>{errors.hobby && touched.hobby ? errors.hobby : null}</p>
                     </div>
