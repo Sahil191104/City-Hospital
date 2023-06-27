@@ -34,13 +34,24 @@ function FormValidation(props) {
                 /^(?=.*[!@#\$%\^&\*])/,
                 "  Must Contain  One Special Case Character"
             ),
-        conformpassword: Yup.string().required('Please enter your Password').min(8, "Must Contain 8 Characters").oneOf([Yup.ref("password"), null], "Passwords must match"),
+        conformpassword: Yup.string()
+            .required('Please enter your Password')
+            .min(8, "Must Contain 8 Characters")
+            .test('conformpassword', 'Must be same with Password.', function (value) {
+                if (this.parent.password === value) {
+                    return true
+                } else {
+                    return false
+                }
+            })
+        ,
         mobilenumber: Yup.string().min(10, "Must Contain 10 Characters").required('Please enter your Mobile Number'),
         age: Yup.string().min(0).max(150).required('Please enter your Age'),
         gender: Yup.string().required('Please Select your Gender'),
         country: Yup.string().required('Please Select your Country'),
-        hobby: Yup.bool()
-            .oneOf([true], 'You need to accept the terms and conditions'),
+        hobby: Yup.array()
+            .min(2, 'Must be select any 2 hobby.')
+            .required(),
         address: Yup.string().required('Please enter your message').min(2).test('address', 'atlist maximum 100 words message', function (value) {
             let ans = value.split(" ");
 
@@ -51,8 +62,9 @@ function FormValidation(props) {
             }
         }),
         dob: Yup.string().max(new Date(), "Please Enter in DOB").required(),
-        check: Yup.bool()
+        check: Yup.boolean()
             .oneOf([true], 'You need to accept the terms and conditions')
+            .required()
     });
 
     const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
@@ -65,7 +77,7 @@ function FormValidation(props) {
             age: '',
             gender: '',
             country: '',
-            hobby: '',
+            hobby: false,
             address: '',
             dob: '',
             check: '',
@@ -102,7 +114,7 @@ function FormValidation(props) {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Mobile number</label>
-                        <input type="number" className="form-control" name='mobilenumber' id="exampleInputEmail1" aria-describedby="emailHelp" value={values.mobilenumber} onChange={handleChange} onBlur={handleBlur} />
+                        <input type="text" className="form-control" name='mobilenumber' id="exampleInputEmail1" aria-describedby="emailHelp" value={values.mobilenumber} onChange={handleChange} onBlur={handleBlur} />
                         <p className='form-error'>{errors.mobilenumber && touched.mobilenumber ? errors.mobilenumber : null}</p>
                     </div>
                     <div className="mb-3">
@@ -133,9 +145,9 @@ function FormValidation(props) {
                     <div className="mb-3">
                         <p>Hobby</p>
                         <div>
-                            <label><input type="checkbox" name="hobby" placeholder=" " value={values.hobby} onChange={handleChange} onBlur={handleBlur} /> Music</label><br />
-                            <label><input type="checkbox" name="hobby" placeholder=" " value={values.hobby} onChange={handleChange} onBlur={handleBlur} /> Cricket</label><br />
-                            <label><input type="checkbox" name="hobby" placeholder=" " value={values.hobby} onChange={handleChange} onBlur={handleBlur} /> Sleeping</label><br />
+                            <label><input type="checkbox" name="hobby" value="Music" onChange={handleChange} onBlur={handleBlur} /> Music</label><br />
+                            <label><input type="checkbox" name="hobby" value="Cricket" onChange={handleChange} onBlur={handleBlur} /> Cricket</label><br />
+                            <label><input type="checkbox" name="hobby" value="Sleeping" onChange={handleChange} onBlur={handleBlur} /> Sleeping</label><br />
                         </div>
                         <p className='form-error'>{errors.hobby && touched.hobby ? errors.hobby : null}</p>
                     </div>
