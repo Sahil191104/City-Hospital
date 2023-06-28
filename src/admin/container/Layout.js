@@ -17,16 +17,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { GiDoctorFace } from 'react-icons/gi';
 import { AiFillMedicineBox } from 'react-icons/ai';
 import { AiFillContacts } from 'react-icons/ai';
 
 const Doctordetails = [
-  { Tool: 'Doctor', to: '/Doctor', icon: <GiDoctorFace /> },
-  { Tool: 'Contact', to: '/Contact', icon: <AiFillContacts /> },
-  { Tool: 'Medicine', to: '/Medicine', icon: <AiFillMedicineBox /> },
+  { Tool: 'Doctor', to: '/admin/Doctor', icon: <GiDoctorFace /> },
+  { Tool: 'Contact', to: '/admin/Contact', icon: <AiFillContacts /> },
+  { Tool: 'Medicine', to: '/admin/Medicine', icon: <AiFillMedicineBox /> },
 ]
 
 const drawerWidth = 240;
