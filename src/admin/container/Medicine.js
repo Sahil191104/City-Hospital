@@ -48,10 +48,10 @@ export default function FormDialog() {
     };
 
     useEffect(() => {
-        let localData = JSON.parse(localStorage.getItem("medicines"));
+        let localdata = JSON.parse(localStorage.getItem("medicines"));
 
-        if (localData !== null) {
-            setItems(localData)
+        if (localdata !== null) {
+            setItems(localdata)
         }
 
     }, []);
