@@ -15,6 +15,7 @@ import EditIcon from '@mui/icons-material/Edit';
 export default function FormDialog() {
     const [open, setOpen] = React.useState(false);
     const [items, setItems] = React.useState([]);
+    const [update, setUpadate] = React.useState(null);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -24,7 +25,7 @@ export default function FormDialog() {
         setOpen(false);
     };
 
-    const handleAdd = (data) => {
+    const handleSubmitData = (data) => {
         console.log(data);
 
         let rno = Math.floor(Math.random() * 1000);
@@ -39,12 +40,25 @@ export default function FormDialog() {
             localStorage.setItem("medicines", JSON.stringify([newData]))
             setItems([newData])
         } else {
-            localdata.push(newData)
-            localStorage.setItem("medicines", JSON.stringify(localdata))
-            setItems(localdata)
+            if (update) {
+                let Udata = localdata.map((v) => {
+                    if (v.id === data.id) {
+                        return data;
+                    } else {
+                        return v;
+                    }
+                })
+                localStorage.setItem("medicines", JSON.stringify(Udata))
+                setItems(Udata)
+            } else {
+                localdata.push(newData)
+                localStorage.setItem("medicines", JSON.stringify(localdata))
+                setItems(localdata)
+            }
         }
 
         handleClose();
+        setUpadate(null)
     };
 
     useEffect(() => {
@@ -86,8 +100,8 @@ export default function FormDialog() {
             desc: ''
         },
         onSubmit: (values, action) => {
-            handleAdd(values)
             action.resetForm()
+            handleSubmitData(values)
         },
 
     });
@@ -104,11 +118,10 @@ export default function FormDialog() {
         setItems(fdata)
     }
 
-    const handleEdit = (data) => {
-        setOpen(true);
-
-        formik.setValues(data);
-        console.log(data);
+    const handleUpdate = (va) => {
+        formik.setValues(va);
+        handleClickOpen();
+        setUpadate(va)
     }
 
     const columns = [
@@ -127,7 +140,7 @@ export default function FormDialog() {
                         <DeleteIcon />
                     </IconButton>
 
-                    <IconButton aria-label="edit" onClick={() => handleEdit(params.row)}>
+                    <IconButton aria-label="edit" onClick={() => handleUpdate(params.row)}>
                         <EditIcon />
                     </IconButton>
                 </>

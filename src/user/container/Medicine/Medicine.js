@@ -5,7 +5,7 @@ import { TextField } from '@mui/material';
 function Medicine(props) {
 
     const [items, setItems] = React.useState([]);
-    const [search,setSeacrh]= React.useState([])
+    const [search, setSeacrh] = React.useState([])
 
     useEffect(() => {
         let localData = JSON.parse(localStorage.getItem("medicines"));
@@ -19,16 +19,14 @@ function Medicine(props) {
     const handleSearch = (value) => {
         let localData = JSON.parse(localStorage.getItem("medicines"));
 
-        let fdata = localData.filter((v) => 
+        let fdata = localData.filter((v) =>
             v.name.toLowerCase().includes(value.toLowerCase()) ||
             v.date.toString().includes(value) ||
             v.price.toString().includes(value) ||
             v.name.toLowerCase().includes(value.toLowerCase())
         )
 
-        if (fdata) {
-            setSeacrh(fdata)
-        }
+        setSeacrh(fdata)
     }
 
     return (
