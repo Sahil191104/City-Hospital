@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -45,15 +44,6 @@ export default function FormDialog() {
         setUpadate(null)
     };
 
-    useEffect(() => {
-        let localdata = JSON.parse(localStorage.getItem("medicines"));
-
-        if (localdata !== null) {
-            setItems(localdata)
-        }
-
-    }, []);
-
     const handleDelete = (id) => {
         let localData = JSON.parse(localStorage.getItem("medicines"));
 
@@ -63,6 +53,15 @@ export default function FormDialog() {
 
         setItems(fdata)
     }
+
+    useEffect(() => {
+        let localdata = JSON.parse(localStorage.getItem("medicines"));
+
+        if (localdata !== null) {
+            setItems(localdata)
+        }
+
+    }, []);
 
     // const handleUpdate = (va) => {
     //     formik.setValues(va);
@@ -97,7 +96,7 @@ export default function FormDialog() {
     return (
         <>
             <center>
-                <MedicineForm />
+                <MedicineForm getdata={handleSubmitData} />
 
                 <div style={{ height: 400, width: '60%' }}>
                     <DataGrid

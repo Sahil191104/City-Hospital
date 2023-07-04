@@ -8,9 +8,9 @@ import { Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 
 function MedicineForm(props) {
-    
+
     const [open, setOpen] = React.useState(false);
-    
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -19,22 +19,7 @@ function MedicineForm(props) {
         setOpen(false);
     };
 
-    const formik = useFormik({
-        validationSchema: medicineschema,
 
-        initialValues: {
-            name: '',
-            date: '',
-            price: '',
-            desc: ''
-        },
-        onSubmit: (values, action) => {
-            action.resetForm()
-            handleClose();
-            // handleSubmitData(values)
-        },
-
-    });
 
     let d = new Date();
     let nd = new Date(d.setDate(d.getDate() - 1))
@@ -54,6 +39,23 @@ function MedicineForm(props) {
                         return true
                     }
                 })
+    });
+
+    const formik = useFormik({
+        validationSchema: medicineschema,
+
+        initialValues: {
+            name: '',
+            date: '',
+            price: '',
+            desc: ''
+        },
+        onSubmit: (values, action) => {
+            action.resetForm()
+            props.getdata(values)
+            handleClose();
+            // handleSubmitData(values)
+        },
     });
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = formik;
