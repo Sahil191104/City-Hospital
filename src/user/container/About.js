@@ -7,7 +7,6 @@ function About(props) {
 
                 <div class="row">
 
-
                     <div
                         class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center px-lg-5 abouttop">
                         <h3>Fusce nec risus at enim congue bibendum quis at augue. </h3>
