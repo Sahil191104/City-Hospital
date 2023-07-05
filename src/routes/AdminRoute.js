@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router';
 import Layout from '../admin/container/Layout';
 import Doctor from '../admin/container/Doctor';
 import Contact from '../admin/container/Contact';
-import Medicine from '../admin/container/Medicine/MedicineForm';
+import Medicine from '../admin/container/Medicine';
 
 function AdminRoute(props) {
     return (
