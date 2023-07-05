@@ -40,7 +40,7 @@ function MedicineForm({ onGetdata, onUpdate }) {
                 function (val) {
                     let arr = val.split(" ")
 
-                    if (arr.length > 3) {
+                    if (arr.length > 100) {
                         return false
                     } else {
                         return true

@@ -81,12 +81,12 @@ export default function FormDialog() {
             width: 130,
             renderCell: (params) => (
                 <>
-                    <IconButton aria-label="delete" onClick={() => handleDelete(params.row.id)}>
-                        <DeleteIcon />
-                    </IconButton>
-
                     <IconButton aria-label="edit" onClick={() => handleUpdate(params.row)}>
                         <EditIcon />
+                    </IconButton>
+
+                    <IconButton aria-label="delete" onClick={() => handleDelete(params.row.id)}>
+                        <DeleteIcon />
                     </IconButton>
                 </>
             ),
