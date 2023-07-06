@@ -1,11 +1,22 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { styled } from 'styled-components';
 import * as Yup from 'yup';
 
 function Auth(props) {
 
+    const Button = styled.button`
+        background: #FF6337;
+        border: 0;
+        padding: 10px 35px;
+        color: #fff;
+        transition: 0.4s;
+        border-radius: 50px;
+    `
+
     const [authType, setAuthType] = useState('login');
+    const [data, setData] = useState([])
     const navigate = useNavigate()
 
     let SchemaObj = {}, intial = {}
@@ -41,6 +52,18 @@ function Auth(props) {
 
     let userSchema = Yup.object(SchemaObj)
 
+    const handleLogin = () => {
+        let data = localStorage.setItem("Loginredirecting", "true")
+        navigate("/")
+    }
+
+    const handleRegister = () => {
+
+    }
+    const handleForget = () => {
+
+    }
+
     const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
         initialValues: intial,
         validationSchema: userSchema,
@@ -48,16 +71,17 @@ function Auth(props) {
         onSubmit: (values, action) => {
             if (authType === "login") {
                 handleLogin()
+            } else if (authType === 'signup') {
+                handleRegister()
+            } else if (authType === 'forgot') {
+                handleForget()
             }
             action.resetForm()
             alert(JSON.stringify(values, null, 2));
         },
     });
 
-    const handleLogin = () => {
-        let data = localStorage.setItem("Loginredirecting", "true")
-        navigate("/")
-    }
+
 
     return (
         <div>
@@ -120,8 +144,8 @@ function Auth(props) {
                         </div>
                         <div className="text-center">
                             {
-                                authType === 'login' ? <button type="submit" onClick={handleLogin}>Login</button> :
-                                    authType === 'forgot' ? <button type="submit">Conform</button> : <button type="submit">Signup</button>
+                                authType === 'login' ? <Button type="submit" onClick={handleLogin}>Login</Button> :
+                                    authType === 'forgot' ? <Button type="submit">Conform</Button> : <Button type="submit">Signup</Button>
                             }
                         </div>
                         <br />

@@ -15,7 +15,7 @@ import VisitingDoctor from '../user/container/VisitingDoctor';
 import Auth from '../user/container/Auth';
 import Footer from '../user/components/Footer';
 import Medicine from '../user/container/Medicine/Medicine';
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from '../routes/PrivateRoute';
 function UserRoute(props) {
     return (
         <>
@@ -27,7 +27,7 @@ function UserRoute(props) {
                 <Route path='/contact' element={<Contact />} />
 
                 <Route element={<PrivateRoute />}>
-                    <Route path='medicine' element={<Medicine />} />
+                    <Route exact path='medicine' element={<Medicine />} />
                 </Route>
 
                 {/* <Route path='/contact' element={<Contact1 />} /> */}

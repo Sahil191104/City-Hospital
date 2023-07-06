@@ -1,6 +1,17 @@
 import React from 'react';
+import { styled } from 'styled-components';
 
 function Appointment(props) {
+
+    const Button = styled.button`
+        background: #FF6337;
+        border: 0;
+        padding: 10px 35px;
+        color: #fff;
+        transition: 0.4s;
+        border-radius: 50px;
+    `
+
     return (
         <section id="appointment" className="appointment">
             <div className="container">
@@ -49,7 +60,7 @@ function Appointment(props) {
                         <div className="error-message" />
                         <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
                     </div>
-                    <div className="text-center"><button type="submit">Make an Appointment</button></div>
+                    <div className="text-center"><Button type="submit">Make an Appointment</Button></div>
                 </form>
             </div>
         </section>

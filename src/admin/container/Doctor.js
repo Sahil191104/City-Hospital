@@ -10,6 +10,7 @@ import { Container } from '@mui/system';
 import { FormControl } from '@mui/base';
 import { IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { styled } from 'styled-components';
 
 export default function Doctor() {
     const [open, setOpen] = React.useState(false);
@@ -29,13 +30,32 @@ export default function Doctor() {
         setOpen(false);
     };
 
+    const Btn = styled.button`
+        margin-left: 25px;
+        background: #FF6337;
+        color: #fff;
+        margin: 30px;
+        border-radius: 50px;
+        padding: 8px 25px;
+        white-space: nowrap;
+        transition: 0.3s;
+        font-size: 14px;
+        display: inline-block;
+        border:none;
+      
+        &:hover {
+            background: #166ab5;
+            color: #fff;
+        }
+    `
+
     return (
         <div>
-            <Container>
-                <Button variant="outlined" onClick={handleClickOpen} sx={{ justifyContent: "center" }}>
+            <center>
+                <Btn variant="outlined" onClick={handleClickOpen} sx={{ justifyContent: "center" }}>
                     Email id
-                </Button>
-            </Container>
+                </Btn>
+            </center>
             <Dialog open={open} onClose={handleClickOpen}>
                 <DialogTitle>Doctor Email id</DialogTitle>
                 <DialogContent>

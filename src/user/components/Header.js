@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 function Header(props) {
 
@@ -8,6 +9,24 @@ function Header(props) {
     const handleLogout = () => {
         localStorage.removeItem("Loginredirecting")
     }
+
+    const Button = styled.button`
+        margin-left: 25px;
+        background: #FF6337;
+        color: #fff;
+        border-radius: 50px;
+        padding: 8px 25px;
+        white-space: nowrap;
+        transition: 0.3s;
+        font-size: 14px;
+        display: inline-block;
+        border:none;
+      
+        &:hover {
+            background: #166ab5;
+            color: #fff;
+        }
+    `
 
     return (
         <div className="main-header">
@@ -44,18 +63,17 @@ function Header(props) {
                         </ul>
                         <i className="bi bi-list mobile-nav-toggle" />
                     </nav>
-                    <Link to="/appointment" className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
-                        Appointment</Link>
+                    <Link to="/appointment" className="appointment-btn scrollto"><Button className="d-none d-md-inline">Make an Appointment</Button>
+                    </Link>
                     {/* <Link to="/appointment" className="nav-link scrollto">Appointment</Link> */}
                     {
                         localStatus ?
-                            <Link to="/" className="appointment-btn scrollto" onClick={handleLogout}><span className="d-none d-md-inline">Logout</span></Link>
-                            : <Link to="/Auth" className="appointment-btn scrollto"><span className="d-none d-md-inline">Login</span>/ Signup</Link>
+                            <Link to="/Auth" onClick={handleLogout}><Button>Logout</Button></Link>
+                            : <Link to="/Auth"><Button>Login/ Signup</Button></Link>
                     }
                 </div>
             </header>
         </div>
-
     );
 }
 

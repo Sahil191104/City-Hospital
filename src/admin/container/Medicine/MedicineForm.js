@@ -6,6 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import { Formik, useFormik } from 'formik';
 import * as yup from 'yup';
+import { styled } from 'styled-components';
 
 function MedicineForm({ onGetdata, onUpdate }) {
 
@@ -67,12 +68,30 @@ function MedicineForm({ onGetdata, onUpdate }) {
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = formik;
 
+    const Btn = styled.button`
+        margin-left: 25px;
+        background: #FF6337;
+        color: #fff;
+        margin: 30px;
+        border-radius: 50px;
+        padding: 8px 25px;
+        white-space: nowrap;
+        transition: 0.3s;
+        font-size: 14px;
+        display: inline-block;
+        border:none;
+      
+        &:hover {
+            background: #166ab5;
+            color: #fff;
+        }
+    `
 
     return (
         <>
-            <Button variant="outlined" onClick={handleClickOpen} sx={{ marginBottom: "20px" }}>
+            <Btn variant="outlined" onClick={handleClickOpen} sx={{ marginBottom: "20px" }}>
                 Add Medicine
-            </Button>
+            </Btn>
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
                     <Formik value={values} >

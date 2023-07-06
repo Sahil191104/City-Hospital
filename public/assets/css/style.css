@@ -207,22 +207,6 @@ h6 {
 /**
 * Appointment Button *
 */
-.appointment-btn {
-  margin-left: 25px;
-  background: #FF6337;
-  color: #fff;
-  border-radius: 50px;
-  padding: 8px 25px;
-  white-space: nowrap;
-  transition: 0.3s;
-  font-size: 14px;
-  display: inline-block;
-}
-
-.appointment-btn:hover {
-  background: #166ab5;
-  color: #fff;
-}
 
 @media (max-width: 768px) {
   .appointment-btn {

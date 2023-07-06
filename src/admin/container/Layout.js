@@ -109,7 +109,7 @@ export default function Layout({ children }) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{bgcolor: 'secondary.main'}}>
+      <AppBar position="fixed" open={open} sx={{bgcolor: '#FF6337'}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -124,7 +124,7 @@ export default function Layout({ children }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Doctor details
+            DashBoard
           </Typography>
         </Toolbar>
       </AppBar>

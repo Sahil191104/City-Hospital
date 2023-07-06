@@ -1,15 +1,20 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
+
+
 
 function PrivateRoute(props) {
-    let localSatus = localStorage.getItem("Loginredirecting").
-        return(
-            <>
-                {
-                    localSatus ? <Outlet /> : <Navigate to={"/auth"} replace />
-                }
-            </>
-        )
+    // const navigate=useNavigate()
+    let userLoginData = localStorage.getItem("Loginredirecting")
+
+    return (
+        <>
+            {
+                userLoginData ? <Outlet /> : <Navigate to={'/Auth'} replace />
+            }
+        </>
+    )
 }
+
 
 export default PrivateRoute;
