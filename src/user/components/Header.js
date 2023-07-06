@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Header(props) {
+
+    let localStatus = localStorage.getItem("Loginredirecting")
+
+    const handleLogout = () => {
+        localStorage.removeItem("Loginredirecting")
+    }
+
     return (
         <div className="main-header">
             <div id="topbar" className="d-flex align-items-center fixed-top">
@@ -40,7 +47,11 @@ function Header(props) {
                     <Link to="/appointment" className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
                         Appointment</Link>
                     {/* <Link to="/appointment" className="nav-link scrollto">Appointment</Link> */}
-                    <Link to="/Auth" className="appointment-btn scrollto"><span className="d-none d-md-inline">Login</span>/ Signup</Link>
+                    {
+                        localStatus ?
+                            <Link to="/" className="appointment-btn scrollto" onClick={handleLogout}><span className="d-none d-md-inline">Logout</span></Link>
+                            : <Link to="/Auth" className="appointment-btn scrollto"><span className="d-none d-md-inline">Login</span>/ Signup</Link>
+                    }
                 </div>
             </header>
         </div>

@@ -15,7 +15,7 @@ import VisitingDoctor from '../user/container/VisitingDoctor';
 import Auth from '../user/container/Auth';
 import Footer from '../user/components/Footer';
 import Medicine from '../user/container/Medicine/Medicine';
-
+import PrivateRoute from './PrivateRoute';
 function UserRoute(props) {
     return (
         <>
@@ -25,7 +25,11 @@ function UserRoute(props) {
                 <Route path='/about' element={<About />} />
                 <Route path='/appointment' element={<Appointment />} />
                 <Route path='/contact' element={<Contact />} />
-                <Route path='/medicine' element={<Medicine />} />
+
+                <Route element={<PrivateRoute />}>
+                    <Route path='medicine' element={<Medicine />} />
+                </Route>
+
                 {/* <Route path='/contact' element={<Contact1 />} /> */}
                 <Route path='/department' element={<Department />} />
                 <Route path='/form' element={<FormValidation />} />

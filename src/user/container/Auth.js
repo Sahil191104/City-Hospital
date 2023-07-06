@@ -1,10 +1,12 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 function Auth(props) {
 
     const [authType, setAuthType] = useState('login');
+    const navigate = useNavigate()
 
     let SchemaObj = {}, intial = {}
 
@@ -44,10 +46,18 @@ function Auth(props) {
         validationSchema: userSchema,
         enableReinitialize: true,
         onSubmit: (values, action) => {
+            if (authType === "login") {
+                handleLogin()
+            }
             action.resetForm()
             alert(JSON.stringify(values, null, 2));
         },
     });
+
+    const handleLogin = () => {
+        let data = localStorage.setItem("Loginredirecting", "true")
+        navigate("/")
+    }
 
     return (
         <div>
@@ -110,7 +120,7 @@ function Auth(props) {
                         </div>
                         <div className="text-center">
                             {
-                                authType === 'login' ? <button type="submit">Login</button> :
+                                authType === 'login' ? <button type="submit" onClick={handleLogin}>Login</button> :
                                     authType === 'forgot' ? <button type="submit">Conform</button> : <button type="submit">Signup</button>
                             }
                         </div>
