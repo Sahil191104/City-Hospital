@@ -1,16 +1,8 @@
 import React from 'react';
-import { styled } from 'styled-components';
+import { BaseButton } from './Button/button.style';
+import Button from './Button/Button';
 
 function Appointment(props) {
-
-    const Button = styled.button`
-        background: #FF6337;
-        border: 0;
-        padding: 10px 35px;
-        color: #fff;
-        transition: 0.4s;
-        border-radius: 50px;
-    `
 
     return (
         <section id="appointment" className="appointment">

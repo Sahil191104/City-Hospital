@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { styled } from 'styled-components';
+import Button from '../container/Button/Button';
 
 function Header(props) {
 
@@ -9,24 +9,6 @@ function Header(props) {
     const handleLogout = () => {
         localStorage.removeItem("Loginredirecting")
     }
-
-    const Button = styled.button`
-        margin-left: 25px;
-        background: #FF6337;
-        color: #fff;
-        border-radius: 50px;
-        padding: 8px 25px;
-        white-space: nowrap;
-        transition: 0.3s;
-        font-size: 14px;
-        display: inline-block;
-        border:none;
-      
-        &:hover {
-            background: #166ab5;
-            color: #fff;
-        }
-    `
 
     return (
         <div className="main-header">
@@ -69,7 +51,7 @@ function Header(props) {
                     {
                         localStatus ?
                             <Link to="/Auth" onClick={handleLogout}><Button>Logout</Button></Link>
-                            : <Link to="/Auth"><Button>Login/ Signup</Button></Link>
+                            : <Link to="/Auth"><Button>Login/Signup</Button></Link>
                     }
                 </div>
             </header>

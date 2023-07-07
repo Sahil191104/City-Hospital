@@ -1,20 +1,10 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { styled } from 'styled-components';
 import * as Yup from 'yup';
+import Button from './Button/Button';
 
 function Auth(props) {
-
-    const Button = styled.button`
-        background: #FF6337;
-        border: 0;
-        padding: 10px 35px;
-        color: #fff;
-        transition: 0.4s;
-        border-radius: 50px;
-    `
-
     const [authType, setAuthType] = useState('login');
     const [data, setData] = useState([])
     const navigate = useNavigate()
@@ -144,8 +134,8 @@ function Auth(props) {
                         </div>
                         <div className="text-center">
                             {
-                                authType === 'login' ? <Button type="submit" onClick={handleLogin}>Login</Button> :
-                                    authType === 'forgot' ? <Button type="submit">Conform</Button> : <Button type="submit">Signup</Button>
+                                authType === 'login' ? <Button Btndisalbeld={true} type="primary" onClick={handleLogin}>Login</Button> :
+                                    authType === 'forgot' ? <Button type="secondry">Conform</Button> : <Button type="outlined">Signup</Button>
                             }
                         </div>
                         <br />
