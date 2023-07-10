@@ -548,7 +548,7 @@ section {
   margin-top: 10px;
 }
 
-.section-title h2 {
+/* .section-title h2 {
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -577,7 +577,7 @@ section {
   background: #FF6337;
   bottom: 0;
   left: calc(50% - 20px);
-}
+} */
 
 .section-title p {
   margin-bottom: 0;

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from './Button/Button';
+import Input from './Input/Input';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
@@ -91,22 +92,25 @@ function Auth(props) {
                             {
                                 authType === 'signup' ?
                                     <div className="col-md-7 form-group">
-                                        <input type="text" name="name" className="form-control" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.name} onChange={handleChange} onBlur={handleBlur} />
+                                        <Input type="text" name="name" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.name} onChange={handleChange} onBlur={handleBlur}
+                                            errorText={errors.name && touched.name ? errors.name : null}
+                                        />
                                         <div className="validate" />
-                                        <p className='form-error'>{errors.name && touched.name ? errors.name : null}</p>
                                     </div> : null
                             }
                             <div className="col-md-7 form-group mt-3 mt-md-0">
-                                <input type="email" className="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid Password" value={values.email} onChange={handleChange} onBlur={handleBlur} />
+                                <Input type="email" name="email" id="email" placeholder="Email" value={values.email} onChange={handleChange} onBlur={handleBlur}
+                                    errorText={errors.email && touched.email ? errors.email : null}
+                                />
                                 <div className="validate" />
-                                <p className='form-error'>{errors.email && touched.email ? errors.email : null}</p>
                             </div>
                             {
                                 authType === 'forgot' ? null :
                                     <div className="col-md-7 form-group mt-3 mt-md-0">
-                                        <input type="password" className="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.password} onChange={handleChange} onBlur={handleBlur} />
+                                        <Input type="password" name="password" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.password} onChange={handleChange} onBlur={handleBlur}
+                                            errorText={errors.password && touched.password ? errors.password : null}
+                                        />
                                         <div className="validate" />
-                                        <p className='form-error'>{errors.password && touched.password ? errors.password : null}</p>
                                     </div>
                             }
 

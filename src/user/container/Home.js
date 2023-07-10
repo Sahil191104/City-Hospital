@@ -1,4 +1,5 @@
 import React from 'react';
+import Htag from './H1toH6/Htag';
 
 function Home(props) {
     return (
@@ -49,7 +50,7 @@ function Home(props) {
                 <section id="services" className="services">
                     <div className="container">
                         <div className="section-title">
-                            <h2>Our Facilities</h2>
+                            <Htag></Htag>
                             <p>Nunc aliquam eget nibh eu euismod. Donec dapibus blandit quam volutpat sollicitudin. Fusce tincidunt sit
                                 amet ex in volutpat. Donec lacinia finibus tortor. Curabitur luctus eleifend odio. Phasellus placerat mi et
                                 suscipit pulvinar. Donec quis tristique lectus.</p>
