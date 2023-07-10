@@ -950,11 +950,6 @@ section {
   transform-style: preserve-3d;
 }
 
-.services .icon-box .icon i {
-  color: #fff;
-  font-size: 28px;
-}
-
 .services .icon-box .icon::before {
   position: absolute;
   content: '';
@@ -991,10 +986,6 @@ section {
 
 .services .icon-box:hover .icon {
   background: #fff;
-}
-
-.services .icon-box:hover .icon i {
-  color: #FF6337;
 }
 
 .services .icon-box:hover .icon::before {

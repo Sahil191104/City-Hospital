@@ -18,7 +18,7 @@ export const PrimaryButton = styled(BaseButton)`
     &:hover {
         background: ${props => props.disabled ? 'gray' : "#166ab5"};
         color: #fff;
-    } 
+    }
 `;
 
 export const SecondryButton = styled(BaseButton)`

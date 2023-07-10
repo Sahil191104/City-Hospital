@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from './Button/Button';
 import Input from './Input/Input';
+import Htag from './H1toH6/Htag';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
@@ -73,15 +74,14 @@ function Auth(props) {
     });
 
 
-
     return (
         <div>
             <section id="appointment" className="appointment">
                 <div className="container">
                     <div className="section-title">
                         {
-                            authType === 'login' ? <h2>Login</h2> :
-                                authType === 'signup' ? <h2>Signup</h2> : <h2>Forgot Password?</h2>
+                            authType === 'login' ? <Htag name="h2tag1">Login</Htag> :
+                                authType === 'signup' ? <Htag name="h2tag1">Signup</Htag> : <Htag name="h2tag1">Forgot Password?</Htag>
                         }
                         <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                             blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.

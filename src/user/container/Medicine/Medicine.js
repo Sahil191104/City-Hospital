@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import ListMedicine from './ListMedicine';
 import { TextField } from '@mui/material';
+import Htag from '../H1toH6/Htag';
+import Titel from '../Title/Titel';
 
 function Medicine(props) {
 
@@ -33,10 +35,10 @@ function Medicine(props) {
         <section id="medicine" className="medicine">
             <div className="container">
                 <div className="section-title">
-                    <h2>Medicine</h2>
-                    <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
+                    <Htag name="h2tag1">Medicine</Htag>
+                    <Titel>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                         blandit quam volutpat sollicitudin. Aenean ac turpis ante. Mauris velit sapien, aliquet aliquet rhoncus quis,
-                        luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.</p>
+                        luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.</Titel>
                 </div>
             </div>
             <div className="container">

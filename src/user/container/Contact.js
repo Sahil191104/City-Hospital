@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { signUpSchema } from '../../schemas/index';
+import Htag from './H1toH6/Htag';
+import Titel from './Title/Titel';
 
 const initialValues = {
     name: "",
@@ -23,10 +25,10 @@ const Contact = (props) => {
         <section id="contact" className="contact">
             <div className="container">
                 <div className="section-title">
-                    <h2>Contact</h2>
-                    <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
+                    <Htag name="h2tag1">Contact</Htag>
+                    <Titel>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                         blandit quam volutpat sollicitudin. Aenean ac turpis ante. Mauris velit sapien, aliquet aliquet rhoncus quis,
-                        luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.</p>
+                        luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.</Titel>
                 </div>
             </div>
             <div className="container">

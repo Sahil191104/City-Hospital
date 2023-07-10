@@ -1,5 +1,7 @@
 import React from 'react';
 import Htag from './H1toH6/Htag';
+import Icon from './Icon/Icon';
+import Titel from './Title/Titel';
 
 function Home(props) {
     return (
@@ -50,7 +52,7 @@ function Home(props) {
                 <section id="services" className="services">
                     <div className="container">
                         <div className="section-title">
-                            <Htag></Htag>
+                            <Htag name="h2tag">Our Facilities</Htag>
                             <p>Nunc aliquam eget nibh eu euismod. Donec dapibus blandit quam volutpat sollicitudin. Fusce tincidunt sit
                                 amet ex in volutpat. Donec lacinia finibus tortor. Curabitur luctus eleifend odio. Phasellus placerat mi et
                                 suscipit pulvinar. Donec quis tristique lectus.</p>
@@ -58,42 +60,42 @@ function Home(props) {
                         <div className="row">
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="fas fa-hospital-alt" /></div>
+                                    <div className="icon"><Icon className="fas fa-hospital-alt" /></div>
                                     <h4><a href>24x7 Emergency Available</a></h4>
                                     <p>Nullam accumsan, velit et porta consequat, purus leo congue risus</p>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="fas fa-bed" /></div>
+                                    <div className="icon"><Icon className="fas fa-bed" /></div>
                                     <h4><a href>40+ Bed Facilities</a></h4>
                                     <p>Pellentesque id felis elit. Pellentesque blandit sem a nisi dictum</p>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="fas fa-hospital-user" /></div>
+                                    <div className="icon"><Icon className="fas fa-hospital-user" /></div>
                                     <h4><a href>Cardiogram Machine</a></h4>
                                     <p>Donec lacinia finibus tortor. Curabitur luctus eleifend odio.</p>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="fas fa-dna" /></div>
+                                    <div className="icon"><Icon className="fas fa-dna" /></div>
                                     <h4><a href>X-ray and Sonography</a></h4>
                                     <p>Aliquam auctor felis ut sem elementum, ac rutrum turpis venenatis.</p>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="fas fa-wheelchair" /></div>
+                                    <div className="icon"><Icon className="fas fa-wheelchair" /></div>
                                     <h4><a href>Semi Special, Special and Delux Room Available</a></h4>
                                     <p>Etiam in massa eu neque euismod consectetur.</p>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                                 <div className="icon-box">
-                                    <div className="icon"><i className="fas fa-notes-medical" /></div>
+                                    <div className="icon"><Icon className="fas fa-notes-medical" /></div>
                                     <h4><a href>Medical</a></h4>
                                     <p>Morbi vulputate, tortor nec pellentesque molestie</p>
                                 </div>
@@ -103,7 +105,7 @@ function Home(props) {
                 </section>
                 <section id="testimonials" className="testimonials">
                     <div className="container">
-                        <div className="section-title"><h2>Reviews</h2></div>
+                        <div className="section-title"><Htag name="h2tag1">Reviews</Htag></div>
                         <div className="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay={100}>
                             <div className="swiper-wrapper">
                                 <div className="swiper-slide">
@@ -112,14 +114,14 @@ function Home(props) {
                                             <img src="assets/img/testimonials/testimonials-1.jpg" className="testimonial-img" alt />
                                             <h3>Jacob Wilsson</h3>
                                             <h4>Writer</h4>
-                                            <p>
+                                            <Titel>
                                                 <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere, lacus ac tincidunt tempor,
                                                 sapien justo ultrices ante, vel pharetra turpis ex ac nisi. Aliquam tempor egestas turpis, nec
                                                 commodo lorem egestas eleifend. Curabitur lacus ipsum, fermentum sit amet leo non, blandit tincidunt
                                                 turpis.
                                                 <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                            </p>
+                                            </Titel>
                                         </div>
                                     </div>
                                 </div>
@@ -129,13 +131,13 @@ function Home(props) {
                                             <img src="assets/img/testimonials/testimonials-2.jpg" className="testimonial-img" alt />
                                             <h3>Ava Smith</h3>
                                             <h4>Artist</h4>
-                                            <p>
+                                            <Titel>
                                                 <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                 Praesent pellentesque leo vestibulum, facilisis ante eget, pharetra mi. Curabitur risus mauris,
                                                 dignissim ullamcorper vehicula id, aliquet ut turpis. Nunc euismod nec nulla non tincidunt. Vivamus
                                                 nisi mauris, blandit quis sem sit amet, posuere blandit diam. Cras quis quam suscipit.
                                                 <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                            </p>
+                                            </Titel>
                                         </div>
                                     </div>
                                 </div>
@@ -145,14 +147,14 @@ function Home(props) {
                                             <img src="assets/img/testimonials/testimonials-3.jpg" className="testimonial-img" alt />
                                             <h3>Abigail Martin</h3>
                                             <h4>Teacher</h4>
-                                            <p>
+                                            <Titel>
                                                 <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                 Fusce ante ipsum, convallis auctor dui sit amet, feugiat blandit ex. Etiam eget tortor sed augue
                                                 laoreet laoreet vel non libero. Sed in nibh ut sem ornare feugiat at at risus. Morbi gravida enim
                                                 vitae tortor fringilla tristique. Nulla ac mauris et elit eleifend suscipit et quis lacus. Nam nec
                                                 ex purus.
                                                 <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                            </p>
+                                            </Titel>
                                         </div>
                                     </div>
                                 </div>
@@ -162,13 +164,13 @@ function Home(props) {
                                             <img src="assets/img/testimonials/testimonials-4.jpg" className="testimonial-img" alt />
                                             <h3>Alexander Tremblay</h3>
                                             <h4>Designer</h4>
-                                            <p>
+                                            <Titel>
                                                 <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                 Nam at est in nibh cursus hendrerit. Nunc commodo diam a erat fermentum aliquet. Integer at interdum
                                                 nisi. Vivamus risus erat, facilisis a blandit ut, sollicitudin sed est. Vestibulum volutpat luctus
                                                 quam sed finibus. Sed luctus odio eget ex posuere hendrerit. Donec iaculis
                                                 <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                            </p>
+                                            </Titel>
                                         </div>
                                     </div>
                                 </div>
@@ -178,13 +180,13 @@ function Home(props) {
                                             <img src="assets/img/testimonials/testimonials-5.jpg" className="testimonial-img" alt />
                                             <h3>Jayden Brown</h3>
                                             <h4>Entrepreneur</h4>
-                                            <p>
+                                            <Titel>
                                                 <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                 Quisque tristique lectus eget pretium lacinia. Mauris suscipit sapien sit amet enim rhoncus
                                                 tristique. Phasellus dictum aliquam nisl vel fermentum. Duis viverra luctus justo, vel aliquam ipsum
                                                 mollis nec. Pellentesque quis suscipit erat. Mauris id lobortis tellus.
                                                 <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                            </p>
+                                            </Titel>
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +197,7 @@ function Home(props) {
                 <section id="gallery" className="gallery">
                     <div className="container">
                         <div className="section-title">
-                            <h2>Gallery</h2>
+                            <Htag name="h2tag1">Gallery</Htag>
                             <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                                 consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
                                 in iste officiis commodi quidem hic quas.</p>

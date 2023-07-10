@@ -7,7 +7,7 @@ export const H2tag = styled.h2`
     padding-bottom: 20px;
     position: relative;
     color: #2c4964;
-  
+
     &::before {
         content: '';
         position: absolute;
@@ -29,4 +29,8 @@ export const H2tag = styled.h2`
         bottom: 0;
         left: calc(50% - 20px);
     }
+`;
+
+export const H2tag1 = styled.h2`
+    color: var(--bs-heading-color);
 `;
