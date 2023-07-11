@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '../container/UI/Button/Button';
-import Input from './Input/Input';
-import Htag from './H1toH6/Htag';
+import Input from './UI/Input/Input';
+import Htag from './UI/H1toH6/Htag';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');

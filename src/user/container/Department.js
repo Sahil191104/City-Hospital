@@ -1,6 +1,6 @@
 import React from 'react';
-import Htag from './H1toH6/Htag';
-import Titel from './Title/Titel';
+import Htag from './UI/H1toH6/Htag';
+import Titel from './UI/Title/Titel';
 
 function Department(props) {
     return (

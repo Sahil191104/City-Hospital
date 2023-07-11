@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import ListMedicine from './ListMedicine';
 import { TextField } from '@mui/material';
-import Htag from '../H1toH6/Htag';
-import Titel from '../Title/Titel';
+import Htag from '../UI/H1toH6/Htag';
+import Titel from '../UI/Title/Titel';
 
 function Medicine(props) {
 
