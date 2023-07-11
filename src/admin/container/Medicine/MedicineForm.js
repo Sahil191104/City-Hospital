@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Button from '../../../user/container/Button/Button';
+import Button from '../../../user/container/UI/Button/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

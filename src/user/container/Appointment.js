@@ -1,6 +1,5 @@
 import React from 'react';
-import { BaseButton } from './Button/button.style';
-import Button from './Button/Button';
+import Button from './UI/Button/Button';
 
 function Appointment(props) {
 

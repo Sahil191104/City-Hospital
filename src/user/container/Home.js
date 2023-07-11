@@ -1,7 +1,7 @@
 import React from 'react';
-import Htag from './H1toH6/Htag';
-import Icon from './Icon/Icon';
-import Titel from './Title/Titel';
+import Htag from './UI/H1toH6/Htag';
+import Icon from './UI/Icon/Icon';
+import Titel from './UI/Title/Titel';
 
 function Home(props) {
     return (

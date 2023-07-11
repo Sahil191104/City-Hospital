@@ -1,8 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { signUpSchema } from '../../schemas/index';
-import Htag from './H1toH6/Htag';
 import Titel from './Title/Titel';
+import Htag from './UI/H1toH6/Htag';
 
 const initialValues = {
     name: "",

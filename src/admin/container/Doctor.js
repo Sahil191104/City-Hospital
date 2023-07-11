@@ -9,7 +9,7 @@ import { Container } from '@mui/system';
 import { FormControl } from '@mui/base';
 import { IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import Button from '../../user/container/Button/Button'
+import Button from '../../user/container/UI/Button/Button'
 
 export default function Doctor() {
     const [open, setOpen] = React.useState(false);
