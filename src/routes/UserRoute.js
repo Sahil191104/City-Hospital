@@ -16,37 +16,47 @@ import Auth from '../user/container/Auth';
 import Footer from '../user/components/Footer';
 import Medicine from '../user/container/Medicine/Medicine';
 import PrivateRoute from '../routes/PrivateRoute';
+import { Provider } from 'react-redux';
+import { configstore } from '../redux/Store';
+import CounterRedux from '../user/container/CounterRedux';
+
 function UserRoute(props) {
+    
+    const store = configstore();
+
     return (
         <>
             <Header />
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/appointment' element={<Appointment />} />
-                <Route path='/contact' element={<Contact />} />
+            <Provider store={store}>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/about' element={<About />} />
+                    <Route path='/appointment' element={<Appointment />} />
+                    <Route path='/contact' element={<Contact />} />
 
-                <Route element={<PrivateRoute />}>
-                    <Route exact path='medicine' element={<Medicine />} />
-                </Route>
+                    <Route element={<PrivateRoute />}>
+                        <Route exact path='medicine' element={<Medicine />} />
+                    </Route>
 
-                {/* <Route path='/contact' element={<Contact1 />} /> */}
-                <Route path='/department' element={<Department />} />
-                <Route path='/form' element={<FormValidation />} />
-                <Route path='/doctors' element={<Doctors />} />
-                <Route path='/slidenav' element={<Slidenav />} />
-                <Route path='/doctor/:id' element={<Doctor />} />
-                <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} />
+                    {/* <Route path='/contact' element={<Contact1 />} /> */}
+                    <Route path='/department' element={<Department />} />
+                    <Route path='/form' element={<FormValidation />} />
+                    <Route path='/doctors' element={<Doctors />} />
+                    <Route path='/slidenav' element={<Slidenav />} />
+                    <Route path='/doctor/:id' element={<Doctor />} />
+                    <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} />
 
-                <Route path='/doctor/'>
-                    <Route path=':id' element={<Doctor />} />
-                    <Route path='visiting_doctor' element={<VisitingDoctor />} />
-                </Route>
+                    <Route path='/doctor/'>
+                        <Route path=':id' element={<Doctor />} />
+                        <Route path='visiting_doctor' element={<VisitingDoctor />} />
+                    </Route>
+                    <Route path='/counter' element={<CounterRedux />} />
+                    <Route path='*' element={<Error />} />
+                    <Route path='/Auth' element={<Auth />} />
+                    {/* <Route path='/Auth' element={<Auth />} /> */}
+                </Routes>
+            </Provider>
 
-                <Route path='*' element={<Error />} />
-                <Route path='/Auth' element={<Auth />} />
-                {/* <Route path='/Auth' element={<Auth />} /> */}
-            </Routes>
             <Footer />
         </>
     );
