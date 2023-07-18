@@ -5,16 +5,23 @@ import Doctor from '../admin/container/Doctor';
 import Contact from '../admin/container/Contact';
 import Medicine from '../admin/container/Medicine';
 import DashBoard from '../admin/container/DashBoard/DashBoard';
+import { configstore } from '../redux/Store';
+import { Provider } from 'react-redux';
 
 function AdminRoute(props) {
+
+    const store = configstore();
+
     return (
         <Layout>
-            <Routes>
-                <Route path='/Doctor' element={<Doctor />} />
-                <Route path='/' element={<DashBoard />}/>
-                <Route path='/Contact' element={<Contact />} />
-                <Route path='/Medicine' element={<Medicine />} />
-            </Routes>
+            <Provider store={store}>
+                <Routes>
+                    <Route path='/Doctor' element={<Doctor />} />
+                    <Route path='/' element={<DashBoard />} />
+                    <Route path='/Contact' element={<Contact />} />
+                    <Route path='/Medicine' element={<Medicine />} />
+                </Routes>
+            </Provider>
         </Layout>
     );
 }

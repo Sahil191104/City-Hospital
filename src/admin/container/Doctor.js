@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -10,10 +10,26 @@ import { FormControl } from '@mui/base';
 import { IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Button from '../../user/container/UI/Button/Button'
+import { useDispatch } from 'react-redux';
+import { fetchdata } from '../../redux/action/doctor.action';
 
 export default function Doctor() {
-    const [open, setOpen] = React.useState(false);
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const dispatch = useDispatch();
+    const [users, setUsers] = useState([])
+
+    fetch("http://localhost:3004/Movie")
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            setUsers(data)
+        })
+
+    useEffect(() => {
+        dispatch(fetchdata())
+    }, [])
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -32,7 +48,8 @@ export default function Doctor() {
     return (
         <div>
             <center>
-                <Button variant="outlined" onClick={handleClickOpen} sx={{ justifyContent: "center" }}>
+                <h1>Doctor</h1>
+                <Button variant="outlined" onClick={handleClickOpen}>
                     Email id
                 </Button>
             </center>
@@ -73,6 +90,18 @@ export default function Doctor() {
                     <Button type='submit'>Subscribe</Button>
                 </DialogActions>
             </Dialog>
+
+            <div>
+                {users.length > 0 && (
+                    <ul>
+                        {users.map(user => (
+                            <li key={user.id}>{user.id}</li>,
+                            <li key={user.id}>{user.name}</li>,
+                            <li key={user.id}>{user.price}</li>
+                        ))}
+                    </ul>
+                )}
+            </div>
         </div>
     );
 }
