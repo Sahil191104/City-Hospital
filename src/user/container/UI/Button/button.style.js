@@ -12,11 +12,11 @@ const BaseButton = styled.button`
 `;
 
 export const PrimaryButton = styled(BaseButton)`
-    background: ${props => props.disabled ? 'gray' : "#FF6337"};
+    background: #FF6337;
     color: #fff;
     
     &:hover {
-        background: ${props => props.disabled ? 'gray' : "#166ab5"};
+        background: #166ab5;
         color: #fff;
     }
 `;

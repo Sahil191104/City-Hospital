@@ -138,7 +138,7 @@ function Auth(props) {
                         </div>
                         <div className="text-center">
                             {
-                                authType === 'login' ? <Button Btndisalbeld={true} type="primary" onClick={handleLogin}>Login</Button> :
+                                authType === 'login' ? <Button type="primary" onClick={handleLogin}>Login</Button> :
                                     authType === 'forgot' ? <Button type="secondry">Conform</Button> : <Button type="outlined">Signup</Button>
                             }
                         </div>
