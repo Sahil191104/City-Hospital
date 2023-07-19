@@ -10,50 +10,34 @@ import { FormControl } from '@mui/base';
 import { IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Button from '../../user/container/UI/Button/Button'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchdata } from '../../redux/action/doctor.action';
+import { DataGrid } from '@mui/x-data-grid';
+import DoctorForm from './Doctor/DoctorForm';
 
 export default function Doctor() {
-    const [open, setOpen] = useState(false);
-    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
-    const [users, setUsers] = useState([])
-
-    fetch("http://localhost:3004/Movie")
-        .then(response => {
-            return response.json()
-        })
-        .then(data => {
-            setUsers(data)
-        })
+    const doctors = useSelector(state => state.doctor)
 
     useEffect(() => {
         dispatch(fetchdata())
     }, [])
 
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleSubmitData = (data) => {
+        dispatch()
+    }
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const columns = [
+        { field: 'name', headerName: 'Name', width: 130 },
+        { field: 'price', headerName: 'Price', width: 130 }
+    ]
 
     return (
         <div>
             <center>
                 <h1>Doctor</h1>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Email id
-                </Button>
             </center>
-            <Dialog open={open} onClose={handleClickOpen}>
+            {/* <Dialog open={open} onClose={handleClickOpen}>
                 <DialogTitle>Doctor Email id</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -89,18 +73,22 @@ export default function Doctor() {
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button type='submit'>Subscribe</Button>
                 </DialogActions>
-            </Dialog>
+            </Dialog> */}
 
-            <div>
-                {users.length > 0 && (
-                    <ul>
-                        {users.map(user => (
-                            <li key={user.id}>{user.id}</li>,
-                            <li key={user.id}>{user.name}</li>,
-                            <li key={user.id}>{user.price}</li>
-                        ))}
-                    </ul>
-                )}
+            <DoctorForm onGetdata={handleSubmitData} />
+
+            <div style={{ height: 400, width: '60%' }}>
+                <DataGrid
+                    rows={doctors.doctor}
+                    columns={columns}
+                    initialState={{
+                        pagination: {
+                            paginationModel: { page: 0, pageSize: 5 },
+                        },
+                    }}
+                    pageSizeOptions={[5, 10]}
+                    checkboxSelection
+                />
             </div>
         </div>
     );
