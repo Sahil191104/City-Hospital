@@ -11,7 +11,7 @@ import { IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/mate
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Button from '../../user/container/UI/Button/Button'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchdata } from '../../redux/action/doctor.action';
+import { adddata, fetchdata } from '../../redux/action/doctor.action';
 import { DataGrid } from '@mui/x-data-grid';
 import DoctorForm from './Doctor/DoctorForm';
 
@@ -24,7 +24,7 @@ export default function Doctor() {
     }, [])
 
     const handleSubmitData = (data) => {
-        dispatch()
+        dispatch(adddata(data))
     }
 
     const columns = [
@@ -37,43 +37,6 @@ export default function Doctor() {
             <center>
                 <h1>Doctor</h1>
             </center>
-            {/* <Dialog open={open} onClose={handleClickOpen}>
-                <DialogTitle>Doctor Email id</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    </DialogContentText>
-                    <TextField
-                        id="demo-helper-text-aligned-no-helper"
-                        label="Name"
-                        sx={{ marginTop: "20px" }}
-                    />
-                    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            type={showPassword ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            label="Password"
-                        />
-                    </FormControl>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button type='submit'>Subscribe</Button>
-                </DialogActions>
-            </Dialog> */}
 
             <DoctorForm onGetdata={handleSubmitData} />
 

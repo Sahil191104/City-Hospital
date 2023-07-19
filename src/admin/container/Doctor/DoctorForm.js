@@ -19,7 +19,6 @@ function DoctorForm({ onGetdata, onUpdate }) {
     }, [onUpdate])
 
     const handleClickOpen = () => {
-        console.log("vfrv");
         setOpen(true);
     };
 
@@ -28,6 +27,7 @@ function DoctorForm({ onGetdata, onUpdate }) {
     };
 
     let d = new Date();
+    let nd = new Date(d.setDate(d.getDate() - 1))
 
     let medicineschema = yup.object({
         name: yup.string().required("Please entre a Name"),
