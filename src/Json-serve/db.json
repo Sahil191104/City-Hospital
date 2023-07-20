@@ -20,12 +20,7 @@
     {
       "id": 101,
       "name": "Fast & furious",
-      "price": "$17.9"
-    },
-    {
-      "id": 102,
-      "name": "Spiderman",
-      "price": "$52.4"
+      "price": "11.5"
     },
     {
       "id": 103,
@@ -35,17 +30,32 @@
     {
       "id": 104,
       "name": "Horror",
-      "price": "$200"
+      "price": "200"
     },
     {
-      "name": "rgfgsdg",
-      "price": "300",
+      "name": "rgfg",
+      "price": "30",
       "id": 105
     },
     {
       "name": "hnhm",
       "price": "2000",
       "id": 106
+    },
+    {
+      "name": "Money Heist",
+      "price": "8000",
+      "id": 107
+    },
+    {
+      "name": "Joker",
+      "price": "800",
+      "id": 108
+    },
+    {
+      "name": "Rajhans",
+      "price": "2000",
+      "id": 109
     }
   ]
 }
