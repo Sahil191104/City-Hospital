@@ -6,7 +6,7 @@ import DoctorForm from './Doctor/DoctorForm';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Box, CircularProgress } from '@mui/material';
+import { Alert, AlertTitle, Box, CircularProgress, Stack } from '@mui/material';
 
 export default function Doctor() {
     const dispatch = useDispatch();
@@ -60,33 +60,39 @@ export default function Doctor() {
         <div>
             {
                 doctors.loading ?
-                    <Box className="d-flex justify-content-center" style={{height: '100vh'}} >
-                        <CircularProgress sx={{color: '#FF6337'}} />
+                    <Box className="d-flex justify-content-center" >
+                        <CircularProgress sx={{ color: '#FF6337' }} />
                     </Box> :
+                    doctors.error ?
+                        <Stack sx={{ width: '100%'}} spacing={2}>
+                            <Alert severity="error">
+                                <AlertTitle>Error</AlertTitle>
+                                This is an error alert — <strong>check it out!</strong>
+                            </Alert>
+                        </Stack> :
+                            <>
+                                <center>
+                                    <h1>Doctor</h1>
 
-                    <>
-                        <center>
-                            <h1>Doctor</h1>
+                                    <DoctorForm onGetdata={handleSubmitData} onUpdate={update} />
 
-                            <DoctorForm onGetdata={handleSubmitData} onUpdate={update} />
-
-                            <div style={{ height: 400, width: '60%' }}>
-                                <DataGrid
-                                    rows={doctors.doctor}
-                                    columns={columns}
-                                    initialState={{
-                                        pagination: {
-                                            paginationModel: { page: 0, pageSize: 5 },
-                                        },
-                                    }}
-                                    pageSizeOptions={[5, 10]}
-                                    checkboxSelection
-                                />
-                            </div>
-                        </center>
-                    </>
+                                    <div style={{ height: 400, width: '60%' }}>
+                                        <DataGrid
+                                            rows={doctors.doctor}
+                                            columns={columns}
+                                            initialState={{
+                                                pagination: {
+                                                    paginationModel: { page: 0, pageSize: 5 },
+                                                },
+                                            }}
+                                            pageSizeOptions={[5, 10]}
+                                            checkboxSelection
+                                        />
+                                    </div>
+                                </center>
+                            </>
             }
 
-        </div>
+                        </div>
     );
 }

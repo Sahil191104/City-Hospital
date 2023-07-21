@@ -4,7 +4,7 @@ export const fetchdata = () => (dispatch) => {
     try {
         dispatch(loading(true))
         setTimeout(() => {
-            fetch("http://localhost:3004/Movi")
+            fetch("http://localhost:3004/Movie")
                 .then(response => {
                     if (response.ok) {
                         return response.json();
@@ -54,11 +54,17 @@ export const deletedoctors = (id) => (dispatch) => {
         fetch("http://localhost:3004/Movie/" + id, {
             method: "DELETE",
         })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Something went wrong');
+            })
             .then(() => {
                 dispatch({ type: ActionType.DELETE_TYPE, payload: id })
             })
             .catch(error => {
-                console.log(error);
+                dispatch(errordata(error))
             })
     } catch (error) {
         console.log(error);
@@ -74,11 +80,17 @@ export const updatedoctors = (data) => (dispatch) => {
             },
             body: JSON.stringify(data)
         })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Something went wrong');
+            })
             .then(
                 dispatch({ type: ActionType.UPDATE_TYPE, payload: data })
             )
             .catch(error => {
-                console.log(error);
+                dispatch(errordata(error))
             })
     } catch (error) {
         console.log(error);
