@@ -64,35 +64,34 @@ export default function Doctor() {
                         <CircularProgress sx={{ color: '#FF6337' }} />
                     </Box> :
                     doctors.error ?
-                        <Stack sx={{ width: '100%'}} spacing={2}>
+                        <Stack sx={{ width: '100%' }} spacing={2}>
                             <Alert severity="error">
                                 <AlertTitle>Error</AlertTitle>
                                 This is an error alert — <strong>check it out!</strong>
                             </Alert>
                         </Stack> :
-                            <>
-                                <center>
-                                    <h1>Doctor</h1>
+                        <>
+                            <center>
+                                <h1>Doctor</h1>
 
-                                    <DoctorForm onGetdata={handleSubmitData} onUpdate={update} />
+                                <DoctorForm onGetdata={handleSubmitData} onUpdate={update} />
 
-                                    <div style={{ height: 400, width: '60%' }}>
-                                        <DataGrid
-                                            rows={doctors.doctor}
-                                            columns={columns}
-                                            initialState={{
-                                                pagination: {
-                                                    paginationModel: { page: 0, pageSize: 5 },
-                                                },
-                                            }}
-                                            pageSizeOptions={[5, 10]}
-                                            checkboxSelection
-                                        />
-                                    </div>
-                                </center>
-                            </>
+                                <div style={{ height: 400, width: '60%' }}>
+                                    <DataGrid
+                                        rows={doctors.doctor}
+                                        columns={columns}
+                                        initialState={{
+                                            pagination: {
+                                                paginationModel: { page: 0, pageSize: 5 },
+                                            },
+                                        }}
+                                        pageSizeOptions={[5, 10]}
+                                        checkboxSelection
+                                    />
+                                </div>
+                            </center>
+                        </>
             }
-
-                        </div>
+        </div>
     );
 }
