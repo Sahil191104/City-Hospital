@@ -6,6 +6,7 @@ import DoctorForm from './Doctor/DoctorForm';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { Box, CircularProgress } from '@mui/material';
 
 export default function Doctor() {
     const dispatch = useDispatch();
@@ -57,25 +58,35 @@ export default function Doctor() {
 
     return (
         <div>
-            <center>
-                <h1>Doctor</h1>
+            {
+                doctors.loading ?
+                    <Box className="d-flex justify-content-center" style={{height: '100vh'}} >
+                        <CircularProgress sx={{color: '#FF6337'}} />
+                    </Box> :
 
-                <DoctorForm onGetdata={handleSubmitData} onUpdate={update} />
+                    <>
+                        <center>
+                            <h1>Doctor</h1>
 
-                <div style={{ height: 400, width: '60%' }}>
-                    <DataGrid
-                        rows={doctors.doctor}
-                        columns={columns}
-                        initialState={{
-                            pagination: {
-                                paginationModel: { page: 0, pageSize: 5 },
-                            },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                    />
-                </div>
-            </center>
+                            <DoctorForm onGetdata={handleSubmitData} onUpdate={update} />
+
+                            <div style={{ height: 400, width: '60%' }}>
+                                <DataGrid
+                                    rows={doctors.doctor}
+                                    columns={columns}
+                                    initialState={{
+                                        pagination: {
+                                            paginationModel: { page: 0, pageSize: 5 },
+                                        },
+                                    }}
+                                    pageSizeOptions={[5, 10]}
+                                    checkboxSelection
+                                />
+                            </div>
+                        </center>
+                    </>
+            }
+
         </div>
     );
 }
