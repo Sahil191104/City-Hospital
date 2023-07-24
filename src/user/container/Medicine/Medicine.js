@@ -53,7 +53,7 @@ function Medicine(props) {
                     onChange={(e) => handleSearch(e.target.value)}
                 />
                 <div className="row mt-5 justify-content-between">
-                    <ListMedicine Mdata={items} />
+                    <ListMedicine Mdata={search.length > 0 ? search : items} />
                 </div>
             </div>
         </section>

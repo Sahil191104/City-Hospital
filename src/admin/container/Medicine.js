@@ -1,80 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
+import MedicineForm from './Medicine/MedicineForm';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import MedicineForm from './Medicine/MedicineForm';
+import { Alert, AlertTitle, Box, CircularProgress, Stack } from '@mui/material';
+import { fetchdata, updatemedicine, adddata, deletemedicine } from '../../redux/action/medicine.action';
 
-export default function FormDialog() {
-    const [items, setItems] = React.useState([]);
-    const [update, setUpadate] = React.useState(null);
+export default function Medicine() {
+    const dispatch = useDispatch();
+    const medicines = useSelector(state => state.medicine)
+    const [update, setUpadate] = useState(null);
+
+    useEffect(() => {
+        dispatch(fetchdata())
+    }, [])
 
     const handleSubmitData = (data) => {
-        console.log(data);
-
-        let rno = Math.floor(Math.random() * 1000);
-
-        let newData = { id: rno, ...data };
-
-        let localdata = JSON.parse(localStorage.getItem("medicines"));
-
-        console.log(localdata);
-
-        if (localdata === null) {
-            localStorage.setItem("medicines", JSON.stringify([newData]))
-            setItems([newData])
+        if (update) {
+            dispatch(updatemedicine(data))
         } else {
-            if (update) {
-                let Udata = localdata.map((v) => {
-                    if (v.id === data.id) {
-                        return data;
-                    } else {
-                        return v;
-                    }
-                })
-                localStorage.setItem("medicines", JSON.stringify(Udata))
-                setItems(Udata)
-            } else {
-                localdata.push(newData)
-                localStorage.setItem("medicines", JSON.stringify(localdata))
-                setItems(localdata)
-            }
+            dispatch(adddata(data))
         }
 
         setUpadate(null)
-    };
-
-    const handleDelete = (id) => {
-        let localData = JSON.parse(localStorage.getItem("medicines"));
-
-        let fdata = localData.filter((v, i) => v.id !== id)
-
-        localStorage.setItem("medicines", JSON.stringify(fdata))
-
-        setItems(fdata)
     }
 
-    useEffect (() => {
-        let localdata = JSON.parse(localStorage.getItem("medicines"));
+    const handleUpdate = (data) => {
+        setUpadate(data)
+    }
 
-        if (localdata !== null) {
-            setItems(localdata)
-        }
-
-    }, []);
-
-    const handleUpdate = (va) => {
-        // formik.setValues(va);
-        // handleClickOpen();
-        setUpadate(va)
+    const handleDelete = (id) => {
+        console.log("Error");
+        dispatch(deletemedicine(id))
     }
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 130 },
         { field: 'name', headerName: 'Name', width: 130 },
-        { field: 'date', headerName: 'ExpiryDate', width: 130 },
+        { field: 'expiry', headerName: 'Expiry', width: 130 },
         { field: 'price', headerName: 'Price', width: 130 },
-        { field: 'desc', headerName: 'Description', width: 130 },
         {
             field: 'action',
             headerName: 'Action',
@@ -91,27 +56,44 @@ export default function FormDialog() {
                 </>
             ),
         }
-    ];
+    ]
 
     return (
-        <>
-            <center>
-                <MedicineForm onGetdata={handleSubmitData} onUpdate={update} />
+        <div>
+            {
+                medicines.loading ?
+                    <Box className="d-flex justify-content-center" >
+                        <CircularProgress sx={{ color: '#FF6337' }} />
+                    </Box> :
+                    medicines.error ?
+                        <Stack sx={{ width: '100%' }} spacing={2}>
+                            <Alert severity="error">
+                                <AlertTitle>Error</AlertTitle>
+                                This is an error alert — <strong>check it out!</strong>
+                            </Alert>
+                        </Stack> :
+                        <>
+                            <center>
+                                <h1>Medicine</h1>
 
-                <div style={{ height: 400, width: '60%' }}>
-                    <DataGrid
-                        rows={items}
-                        columns={columns}
-                        initialState={{
-                            pagination: {
-                                paginationModel: { page: 0, pageSize: 5 },
-                            },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                    />
-                </div>
-            </center>
-        </>
+                                <MedicineForm onGetdata={handleSubmitData} onUpdate={update} />
+
+                                <div style={{ height: 400, width: '60%' }}>
+                                    <DataGrid
+                                        rows={medicines.medicine}
+                                        columns={columns}
+                                        initialState={{
+                                            pagination: {
+                                                paginationModel: { page: 0, pageSize: 5 },
+                                            },
+                                        }}
+                                        pageSizeOptions={[5, 10]}
+                                        checkboxSelection
+                                    />
+                                </div>
+                            </center>
+                        </>
+            }
+        </div>
     );
 }

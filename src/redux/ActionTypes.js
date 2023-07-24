@@ -7,3 +7,10 @@ export const ADD_TYPE = "ADD_TYPE";
 export const UPDATE_TYPE = "UPDATE_TYPE";
 export const DELETE_TYPE = "DELETE_TYPE";
 export const ERROR_TYPE = "ERROR_TYPE";
+
+export const LOADING_MEDICINE = "LOADING_MEDICINE";
+export const FETCH_MEDICINE = "FETCH_MEDICINE";
+export const ADD_MEDICINE = "ADD_MEDICINE";
+export const UPDATE_MEDICINE = "UPDATE_MEDICINE";
+export const DELETE_MEDICINE = "DELETE_MEDICINE";
+export const ERROR_MEDICINE = "ERROR_MEDICINE";

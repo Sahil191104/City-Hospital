@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Button from '../../../user/container/UI/Button/Button';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -8,7 +8,7 @@ import { Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 
 function MedicineForm({ onGetdata, onUpdate }) {
-
+    console.log("xvcdfv");
     const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
@@ -26,14 +26,12 @@ function MedicineForm({ onGetdata, onUpdate }) {
         setOpen(false);
     };
 
-
-
     let d = new Date();
     let nd = new Date(d.setDate(d.getDate() - 1))
 
     let medicineschema = yup.object({
         name: yup.string().required("Please entre a Name"),
-        date: yup.date().min(nd, "Please entre a valid Date").required("Please entre a Date"),
+        expiry: yup.date().min(nd, "Please entre a valid Date").required("Please entre a Date"),
         price: yup.number().required("Please entre a Price"),
         desc: yup.string().required("Please entre a Description")
             .test('desc', 'maxmium 3 word allowed.',
@@ -53,7 +51,7 @@ function MedicineForm({ onGetdata, onUpdate }) {
 
         initialValues: {
             name: '',
-            date: '',
+            expiry: '',
             price: '',
             desc: ''
         },
@@ -93,16 +91,16 @@ function MedicineForm({ onGetdata, onUpdate }) {
                             <TextField
 
                                 margin="dense"
-                                id="date"
-                                name='date'
+                                id="expiry"
+                                name='expiry'
                                 type="date"
                                 fullWidth
                                 variant="standard"
-                                value={values.date}
+                                value={values.expiry}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
-                            <span style={{ color: 'red' }}>{errors.date && touched.date ? errors.date : null} </span>
+                            <span style={{ color: 'red' }}>{errors.expiry && touched.expiry ? errors.expiry : null} </span>
                             <TextField
 
                                 margin="dense"

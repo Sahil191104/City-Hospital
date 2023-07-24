@@ -1,11 +1,15 @@
 import React from 'react';
 import { Button, Card, CardBody, CardSubtitle, CardTitle, CardText } from 'reactstrap';
+import { useDispatch } from 'react-redux';
 
 function UiMedicine({ Udata }) {
+
+    const dispatch = useDispatch();
+
     return (
         <>
             {
-                Udata.map((v) => {
+                dispatch.map((v) => {
                     return (
                         <div className='col-md-3'>
                             <Card
@@ -13,13 +17,6 @@ function UiMedicine({ Udata }) {
                                     width: '18rem'
                                 }}
                             >
-                                {
-                                    v.url ? <img
-                                        alt="Sample"
-                                        src="https://picsum.photos/300/200"
-                                    /> : null
-                                }
-
                                 <CardBody>
                                     <CardTitle tag="h5">
                                         {
@@ -31,7 +28,7 @@ function UiMedicine({ Udata }) {
                                         tag="h6"
                                     >
                                         {
-                                            v.date
+                                            v.expiry
                                         }
                                     </CardSubtitle>
                                     <CardText>
