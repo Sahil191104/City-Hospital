@@ -14,3 +14,8 @@ export const ADD_MEDICINE = "ADD_MEDICINE";
 export const UPDATE_MEDICINE = "UPDATE_MEDICINE";
 export const DELETE_MEDICINE = "DELETE_MEDICINE";
 export const ERROR_MEDICINE = "ERROR_MEDICINE";
+
+export const ADD_TO_CART = "ADD_TO_CART";
+export const INC_QYT = "INC_QYT";
+export const DEC_QYT = "DEC_QYT";
+export const REMOVE_ITEM = "REMOVE_ITEM";

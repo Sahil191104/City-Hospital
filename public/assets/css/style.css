@@ -1774,3 +1774,12 @@ section {
 .form-error {
   color: red;
 }
+
+
+.custom-desc {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+          line-clamp: 5; 
+  -webkit-box-orient: vertical;
+}

@@ -4,7 +4,7 @@ export const fetchdata = () => (dispatch) => {
     try {
         dispatch(loading(true))
         setTimeout(() => {
-            fetch("http://localhost:3004/medicines/")
+            fetch("http://localhost:3004/medicines")
                 .then(response => {
                     if (response.ok) {
                         return response.json();

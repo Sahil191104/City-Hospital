@@ -3,25 +3,24 @@ import ListMedicine from './ListMedicine';
 import { TextField } from '@mui/material';
 import Htag from '../UI/H1toH6/Htag';
 import Titel from '../UI/Title/Titel';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchdata } from '../../../redux/action/medicine.action';
+import { addcart } from '../../../redux/action/cart.action';
 
 function Medicine(props) {
-
-    const [items, setItems] = React.useState([]);
+    const dispatch = useDispatch();
+    const medicines = useSelector(state => state.medicine)
     const [search, setSeacrh] = React.useState([])
+    const [searchvalue, setSeacrhValue] = React.useState([])
 
     useEffect(() => {
-        let localData = JSON.parse(localStorage.getItem("medicines"));
-
-        if (localData) {
-            setItems(localData)
-        }
-
+        dispatch(fetchdata())
     }, [])
 
     const handleSearch = (value) => {
-        let localData = JSON.parse(localStorage.getItem("medicines"));
-
-        let fdata = localData.filter((v) =>
+        setSeacrhValue(value)
+        if (searchvalue) {
+            let fdata = medicines.medicine.filter((v) =>
             v.name.toLowerCase().includes(value.toLowerCase()) ||
             v.date.toString().includes(value) ||
             v.price.toString().includes(value) ||
@@ -29,6 +28,13 @@ function Medicine(props) {
         )
 
         setSeacrh(fdata)
+        }
+        
+    }
+
+    const handleclick = (id) => {
+        dispatch(addcart(id))
+        console.log("Handle Cart", id);
     }
 
     return (
@@ -53,7 +59,7 @@ function Medicine(props) {
                     onChange={(e) => handleSearch(e.target.value)}
                 />
                 <div className="row mt-5 justify-content-between">
-                    <ListMedicine Mdata={search.length > 0 ? search : items} />
+                    <ListMedicine Mdata={search.length > 0 ? search : medicines.medicine} Hadleclick={handleclick} />
                 </div>
             </div>
         </section>

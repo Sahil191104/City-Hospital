@@ -1,22 +1,27 @@
 import React from 'react';
-import { Button, Card, CardBody, CardSubtitle, CardTitle, CardText } from 'reactstrap';
-import { useDispatch } from 'react-redux';
+import {Card, CardBody, CardSubtitle, CardTitle, CardText, Button } from 'reactstrap';
 
-function UiMedicine({ Udata }) {
-
-    const dispatch = useDispatch();
-
+function UiMedicine({ Udata , OnClick}) {
+    console.log(Udata);
     return (
         <>
             {
-                dispatch.map((v) => {
+                Udata.map((v) => {
                     return (
                         <div className='col-md-3'>
                             <Card
                                 style={{
-                                    width: '18rem'
+                                    width: '18rem',
+                                    margin: "15px"
                                 }}
                             >
+                                {
+                                    v.url ? <img
+                                        alt="Sample"
+                                        src="https://picsum.photos/300/200"
+                                    /> : null
+                                }
+
                                 <CardBody>
                                     <CardTitle tag="h5">
                                         {
@@ -28,15 +33,16 @@ function UiMedicine({ Udata }) {
                                         tag="h6"
                                     >
                                         {
-                                            v.expiry
+                                            v.date
                                         }
                                     </CardSubtitle>
                                     <CardText>
+                                        $
                                         {
                                             v.price
                                         }
                                     </CardText>
-                                    <CardText>
+                                    <CardText className='custom-desc'>
                                         {
                                             v.desc
                                         }
@@ -46,6 +52,7 @@ function UiMedicine({ Udata }) {
                                             Button
                                         </Button> : null
                                     }
+                                    <Button outline color="secondary" onClick={() => OnClick(v.id)} >Add Cart</Button>
                                 </CardBody>
                             </Card>
                         </div>

@@ -55,13 +55,6 @@
   ],
   "medicines": [
     {
-      "id": 2,
-      "name": "Jakafi",
-      "price": 800,
-      "expiry": "2023-07-28",
-      "desc": "Ruxolitinib, sold under the brand name Jakafi among others, is a medication used for the treatment of intermediate or high-risk myelofibrosis, a type of myeloproliferative neoplasm that affects the bone."
-    },
-    {
       "id": 4,
       "name": "Hiprex",
       "price": 500,
