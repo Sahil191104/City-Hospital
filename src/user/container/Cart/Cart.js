@@ -1,9 +1,10 @@
 import React from 'react';
 import Htag from '../UI/H1toH6/Htag';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrecart, incretcart, removecart } from '../../../redux/action/cart.action';
 
 function Cart(props) {
-
+    const dispatch = useDispatch();
     const cartData = useSelector(state => state.cart)
     const medicenData = useSelector(state => state.medicine)
 
@@ -19,6 +20,18 @@ function Cart(props) {
 
     console.log(cartItems);
 
+    const handleInc = (id) => {
+        dispatch(incretcart(id))
+    }
+
+    const handleDec = (id) => {
+        dispatch(decrecart(id))
+    }
+
+    const handleRemove = (id) => {
+        dispatch(removecart(id))
+    }
+
     return (
         <section id="medicine" className="medicine">
             <div className="container">
@@ -26,7 +39,6 @@ function Cart(props) {
                     <Htag name="h2tag1">Cart</Htag>
                 </div>
                 {
-
                     cartItems.map((v, i) => {
                         return (
                             <>
@@ -34,22 +46,23 @@ function Cart(props) {
                                     <div className="row d-flex justify-content-between align-items-center">
                                         <div className="col-md-3 col-lg-3 col-xl-3">
                                             <p className="lead fw-normal mb-2">{v.name}</p>
-                                            <p><span class="text-muted">{v.desc.substring(0, 50)}</span></p> 
+                                            <p><span class="text-muted">{v.desc.substring(0, 50)}</span></p>
                                         </div>
                                         <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button className="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                            <button disabled={v.qyt === 0 ? true : false} className="btn btn-link px-2" onClick={() => handleDec(v.pid)}>
                                                 <i className="fas fa-minus" />
                                             </button>
-                                            <input id="form1" min={0} name="quantity" defaultValue={v.qyt} type="number" className="form-control form-control-sm" />
-                                            <button className="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                            <span class="border rounded ps-4 pe-4 pt-1">{v.qyt}</span>
+                                            <h5></h5>
+                                            <button className="btn btn-link px-2" onClick={() => handleInc(v.pid)}>
                                                 <i className="fas fa-plus" />
                                             </button>
                                         </div>
                                         <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <h5 className="mb-0">${v.price}</h5>
+                                            <h5 className="mb-0">${v.price * v.qyt}</h5>
                                         </div>
                                         <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <a href="#!" className="text-danger"><i className="fas fa-trash fa-lg" /></a>
+                                            <a onClick={() => handleRemove(v.pid)} href="#!" className="text-danger"><i className="fas fa-trash fa-lg" /></a>
                                         </div>
                                     </div>
                                 </div>
@@ -57,6 +70,10 @@ function Cart(props) {
                         )
                     })
                 }
+                <div className="d-flex justify-content-between p-2 mb-2" style={{ backgroundColor: '#FFF4F3' }}>
+                    <h5 className="fw-bold mb-0">Total:</h5>
+                    <h5 className="fw-bold mb-0">2261$</h5>
+                </div>
             </div>
         </section>
     );

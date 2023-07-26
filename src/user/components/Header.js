@@ -32,8 +32,6 @@ function Header(props) {
         cartCounter = cartData.item.reduce((acc, v, i) => acc + v.qyt, 0);
     }
 
-    console.log();
-
     return (
         <div className="main-header">
             <div id="topbar" className="d-flex align-items-center fixed-top">
@@ -41,15 +39,6 @@ function Header(props) {
                     <div className="contact-info d-flex align-items-center">
                         <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
                         <i className="bi bi-phone" /> +91 9988776655
-                    </div>
-                    <div>
-                        <Link to="/Cart">
-                            <IconButton aria-label="cart">
-                                <StyledBadge badgeContent={cartCounter} color="secondary">
-                                    <ShoppingCartIcon />
-                                </StyledBadge>
-                            </IconButton>
-                        </Link>
                     </div>
                     <div className="d-none d-lg-flex social-links align-items-center">
                         <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
@@ -87,6 +76,13 @@ function Header(props) {
                             <Link to="/Auth" onClick={handleLogout}><Button>Logout</Button></Link>
                             : <Link to="/Auth"><Button>Login/Signup</Button></Link>
                     }
+                    <Link to="/Cart">
+                        <IconButton aria-label="cart">
+                            <StyledBadge badgeContent={cartCounter} sx={{color: '#FF6337'}}>
+                                <ShoppingCartIcon />
+                            </StyledBadge>
+                        </IconButton>
+                    </Link>
                 </div>
             </header>
         </div>
