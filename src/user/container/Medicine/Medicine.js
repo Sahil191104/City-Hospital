@@ -11,7 +11,7 @@ function Medicine(props) {
     const dispatch = useDispatch();
     const medicines = useSelector(state => state.medicine)
     const [search, setSeacrh] = React.useState([])
-    const [searchvalue, setSeacrhValue] = React.useState([])
+    const [searchvalue, setSeacrhValue] = React.useState(null)
 
     useEffect(() => {
         dispatch(fetchdata())
@@ -21,15 +21,15 @@ function Medicine(props) {
         setSeacrhValue(value)
         if (searchvalue) {
             let fdata = medicines.medicine.filter((v) =>
-            v.name.toLowerCase().includes(value.toLowerCase()) ||
-            v.date.toString().includes(value) ||
-            v.price.toString().includes(value) ||
-            v.name.toLowerCase().includes(value.toLowerCase())
-        )
+                v.name.toLowerCase().includes(value.toLowerCase()) ||
+                v.date.toString().includes(value) ||
+                v.price.toString().includes(value) ||
+                v.name.toLowerCase().includes(value.toLowerCase())
+            )
 
-        setSeacrh(fdata)
+            setSeacrh(fdata)
         }
-        
+
     }
 
     const handleclick = (id) => {

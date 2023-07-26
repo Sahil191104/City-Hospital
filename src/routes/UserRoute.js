@@ -19,15 +19,17 @@ import PrivateRoute from '../routes/PrivateRoute';
 import { Provider } from 'react-redux';
 import { configstore } from '../redux/Store';
 import CounterRedux from '../user/container/CounterRedux';
+import Cart from '../user/container/Cart/Cart';
 
 function UserRoute(props) {
-    
+
     const store = configstore();
 
     return (
         <>
-            <Header />
             <Provider store={store}>
+
+                <Header />
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />} />
@@ -53,11 +55,12 @@ function UserRoute(props) {
                     <Route path='/counter' element={<CounterRedux />} />
                     <Route path='*' element={<Error />} />
                     <Route path='/Auth' element={<Auth />} />
+                    <Route path='/Cart' element={<Cart />} />
                     {/* <Route path='/Auth' element={<Auth />} /> */}
                 </Routes>
-            </Provider>
 
-            <Footer />
+                <Footer />
+            </Provider>
         </>
     );
 }

@@ -1,6 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../container/UI/Button/Button';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from 'react-redux';
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+        right: -3,
+        top: 13,
+        border: `2px solid ${theme.palette.background.paper}`,
+        padding: '0 4px',
+    },
+}));
 
 function Header(props) {
 
@@ -10,6 +24,16 @@ function Header(props) {
         localStorage.removeItem("Loginredirecting")
     }
 
+    const cartData = useSelector(state => state.cart)
+    console.log(cartData);
+    let cartCounter = 0;
+
+    if (cartData.item) {
+        cartCounter = cartData.item.reduce((acc, v, i) => acc + v.qyt, 0);
+    }
+
+    console.log();
+
     return (
         <div className="main-header">
             <div id="topbar" className="d-flex align-items-center fixed-top">
@@ -17,6 +41,15 @@ function Header(props) {
                     <div className="contact-info d-flex align-items-center">
                         <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
                         <i className="bi bi-phone" /> +91 9988776655
+                    </div>
+                    <div>
+                        <Link to="/Cart">
+                            <IconButton aria-label="cart">
+                                <StyledBadge badgeContent={cartCounter} color="secondary">
+                                    <ShoppingCartIcon />
+                                </StyledBadge>
+                            </IconButton>
+                        </Link>
                     </div>
                     <div className="d-none d-lg-flex social-links align-items-center">
                         <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
