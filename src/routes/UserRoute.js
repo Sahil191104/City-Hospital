@@ -14,10 +14,11 @@ import Doctor from '../user/container/Doctor';
 import VisitingDoctor from '../user/container/VisitingDoctor';
 import Auth from '../user/container/Auth';
 import Footer from '../user/components/Footer';
-import Medicine from '../user/container/Medicine/Medicine';
+// import Medicine from '../user/container/Medicine/Medicine';
 import PrivateRoute from '../routes/PrivateRoute';
 import CounterRedux from '../user/container/CounterRedux';
 import Cart from '../user/container/Cart/Cart';
+import Medicine1 from '../user/container/Medicine/Medicine1';
 
 function UserRoute(props) {
 
@@ -31,7 +32,8 @@ function UserRoute(props) {
                 <Route path='/contact' element={<Contact />} />
 
                 <Route element={<PrivateRoute />}>
-                    <Route exact path='medicine' element={<Medicine />} />
+                    <Route exact path='medicine' element={<Medicine1 />} />
+                    {/* <Route exact path='medicine' element={<Medicine />} /> */}
                 </Route>
 
                 {/* <Route path='/contact' element={<Contact1 />} /> */}
