@@ -5,7 +5,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -24,12 +24,19 @@ function Header(props) {
         localStorage.removeItem("Loginredirecting")
     }
 
-    const cartData = useSelector(state => state.cart)
-    console.log(cartData);
+    // const cartData = useSelector(state => state.cart)
+    // console.log(cartData);
+    // let cartCounter = 0;
+
+    // if (cartData.item) {
+    //     cartCounter = cartData.item.reduce((acc, v, i) => acc + v.qyt, 0);
+    // }
+
+    let localdataCart = JSON.parse(localStorage.getItem("CartData"));
     let cartCounter = 0;
 
-    if (cartData.item) {
-        cartCounter = cartData.item.reduce((acc, v, i) => acc + v.qyt, 0);
+    if (localdataCart) {
+        cartCounter = localdataCart.reduce((acc, v, i) => acc + v.qyt, 0);
     }
 
     return (

@@ -32,8 +32,6 @@ function Cart(props) {
         dispatch(removecart(id))
     }
 
-    let totalprice = cartItems.reduce((acc, v , i) => acc + v.price * v.qyt, 0)
-
     return (
         <section id="medicine" className="medicine">
             <div className="container">
@@ -51,7 +49,7 @@ function Cart(props) {
                                             <p><span class="text-muted">{v.desc.substring(0, 50)}</span></p>
                                         </div>
                                         <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button disabled={v.qyt === 1 ? true : false} className="btn btn-link px-2" onClick={() => handleDec(v.pid)}>
+                                            <button disabled={v.qyt === 0 ? true : false} className="btn btn-link px-2" onClick={() => handleDec(v.pid)}>
                                                 <i className="fas fa-minus" />
                                             </button>
                                             <span class="border rounded ps-4 pe-4 pt-1">{v.qyt}</span>
@@ -74,7 +72,7 @@ function Cart(props) {
                 }
                 <div className="d-flex justify-content-between p-2 mb-2" style={{ backgroundColor: '#FFF4F3' }}>
                     <h5 className="fw-bold mb-0">Total:</h5>
-                    <h5 className="fw-bold mb-0">${totalprice}</h5>
+                    <h5 className="fw-bold mb-0">2261$</h5>
                 </div>
             </div>
         </section>

@@ -19,6 +19,7 @@ import PrivateRoute from '../routes/PrivateRoute';
 import CounterRedux from '../user/container/CounterRedux';
 import Cart from '../user/container/Cart/Cart';
 import Medicine1 from '../user/container/Medicine/Medicine1';
+import Cart1 from '../user/container/Cart/Cart1';
 
 function UserRoute(props) {
 
@@ -51,7 +52,8 @@ function UserRoute(props) {
                 <Route path='/counter' element={<CounterRedux />} />
                 <Route path='*' element={<Error />} />
                 <Route path='/Auth' element={<Auth />} />
-                <Route path='/Cart' element={<Cart />} />
+                {/* <Route path='/Cart' element={<Cart />} /> */}
+                <Route path='/Cart' element={<Cart1 />} />
                 {/* <Route path='/Auth' element={<Auth />} /> */}
             </Routes>
 

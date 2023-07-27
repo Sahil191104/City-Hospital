@@ -30,11 +30,11 @@ function Medicine1(props) {
         }
     }
 
-    let localdataCart = JSON.parse(localStorage.getItem("CartData"));
+    // let localdataCart = JSON.parse(localStorage.getItem("CartData"));
     let loacalarr = [];
 
     const handleclick = (id) => {
-        if (localdataCart) {
+        if (loacalarr) {
             loacalarr.push({
                 pid: id,
                 qyt: 1

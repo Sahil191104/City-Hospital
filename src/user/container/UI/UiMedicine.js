@@ -3,6 +3,7 @@ import {Card, CardBody, CardSubtitle, CardTitle, CardText, Button } from 'reacts
 
 function UiMedicine({ Udata , OnClick}) {
     console.log(Udata);
+
     return (
         <>
             {
