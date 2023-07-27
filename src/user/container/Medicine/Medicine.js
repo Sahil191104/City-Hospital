@@ -36,7 +36,7 @@ function Medicine(props) {
         dispatch(addcart(id))
         console.log("Handle Cart", id);
     }
-
+    
     return (
         <section id="medicine" className="medicine">
             <div className="container">
