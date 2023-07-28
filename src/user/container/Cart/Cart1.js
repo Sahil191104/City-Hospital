@@ -42,23 +42,26 @@ function Cart1(props) {
         } catch (error) {
             console.log(error);
         }
-
     }, []);
 
     console.log(cartItems);
 
     const handleInc = (id) => {
-        // dispatch(incretcart(id))
-        console.log(id);
+        
+
+        setCartData(localdataCart)
     }
 
     const handleDec = (id) => {
-        // dispatch(decrecart(id))
-        console.log(id);    }
+        console.log(id);
+    }
 
     const handleRemove = (id) => {
-        // dispatch(removecart(id))
-        console.log(id);
+        let removeiemes = cartData.filter((v) => v.pid != id)
+
+        setCartData(removeiemes)
+
+        localStorage.setItem("CartData", JSON.stringify(removeiemes));
     }
 
     let totalprice = cartItems.reduce((acc, v, i) => acc + v.price * v.qyt, 0)

@@ -1,50 +1,61 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ListMedicine from './ListMedicine';
 import { TextField } from '@mui/material';
 import Htag from '../UI/H1toH6/Htag';
 import Titel from '../UI/Title/Titel';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchdata } from '../../../redux/action/medicine.action';
 
 function Medicine1(props) {
-    const dispatch = useDispatch();
-    const medicines = useSelector(state => state.medicine)
-    const [search, setSeacrh] = React.useState([])
-    const [searchvalue, setSeacrhValue] = React.useState(null)
-
-    useEffect(() => {
-        dispatch(fetchdata())
-    }, [])
+    const [medicenData, setMedicenData] = useState([]);
+    const [search, setSeacrh] = useState([])
+    const [searchvalue, setSeacrhValue] = useState(null)
 
     const handleSearch = (value) => {
         setSeacrhValue(value)
         if (searchvalue) {
-            let fdata = medicines.medicine.filter((v) =>
+            let fdata = medicenData.filter((v) =>
                 v.name.toLowerCase().includes(value.toLowerCase()) ||
                 v.date.toString().includes(value) ||
                 v.price.toString().includes(value) ||
                 v.name.toLowerCase().includes(value.toLowerCase())
             )
-
             setSeacrh(fdata)
         }
     }
+
+    useEffect(() => {
+        try {
+            fetch("http://localhost:3004/medicines")
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Something went wrong');
+                })
+                .then((data) =>
+                    setMedicenData(data)
+                )
+                .catch((error) =>
+                    console.log(error)
+                )
+        } catch (error) {
+            console.log(error);
+        }
+
+    }, []);
 
     // let localdataCart = JSON.parse(localStorage.getItem("CartData"));
     let loacalarr = [];
 
     const handleclick = (id) => {
-        if (loacalarr) {
+        let checkdetails = loacalarr.find((v) => v.pid === id)
+        if (checkdetails) {
+            checkdetails.qyt += 1
+        } else {
             loacalarr.push({
                 pid: id,
                 qyt: 1
             });
             localStorage.setItem("CartData", JSON.stringify(loacalarr));
-        } else {
-            localStorage.setItem("CartData", JSON.stringify({
-                pid: id,
-                qyt: 1
-            }));
         }
         console.log(loacalarr);
     }
@@ -71,7 +82,7 @@ function Medicine1(props) {
                     onChange={(e) => handleSearch(e.target.value)}
                 />
                 <div className="row mt-5 justify-content-between">
-                    <ListMedicine Mdata={search.length > 0 ? search : medicines.medicine} Hadleclick={handleclick} />
+                    <ListMedicine Mdata={search.length > 0 ? search : medicenData} Hadleclick={handleclick} />
                 </div>
             </div>
         </section>
