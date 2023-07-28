@@ -47,13 +47,32 @@ function Cart1(props) {
     console.log(cartItems);
 
     const handleInc = (id) => {
-        
 
-        setCartData(localdataCart)
+        console.log(id);
+
+        let localdataMedicine = cartData.map((v) => {
+            if (v.pid === id) {
+                return { ...v, qyt: v.qyt + 1 }
+            } else {
+                return v;
+            }
+        });
+        setCartData(localdataMedicine)
+        localStorage.setItem('CartData', JSON.stringify(localdataMedicine))
     }
 
     const handleDec = (id) => {
         console.log(id);
+
+        let localdataMedicine = cartData.map((v) => {
+            if (v.pid === id && v.qyt > 1) {
+                return { ...v, qyt: v.qyt - 1 }
+            } else {
+                return v;
+            }
+        });
+        setCartData(localdataMedicine)
+        localStorage.setItem('CartData', JSON.stringify(localdataMedicine))
     }
 
     const handleRemove = (id) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../user/components/Header';
 import { Route, Routes } from 'react-router';
 import Home from '../user/container/Home';
@@ -23,9 +23,11 @@ import Cart1 from '../user/container/Cart/Cart1';
 
 function UserRoute(props) {
 
+    const [cartCount, setCartCount] = useState(0);
+
     return (
         <>
-            <Header />
+            <Header count={cartCount} />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
@@ -33,7 +35,7 @@ function UserRoute(props) {
                 <Route path='/contact' element={<Contact />} />
 
                 <Route element={<PrivateRoute />}>
-                    <Route exact path='medicine' element={<Medicine1 />} />
+                    <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} />
                     {/* <Route exact path='medicine' element={<Medicine />} /> */}
                 </Route>
 
