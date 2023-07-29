@@ -1,7 +1,9 @@
 import React from 'react';
-import {Card, CardBody, CardSubtitle, CardTitle, CardText, Button } from 'reactstrap';
+import { Card, CardBody, CardSubtitle, CardTitle, CardText, Button } from 'reactstrap';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { Link } from 'react-router-dom';
 
-function UiMedicine({ Udata , OnClick}) {
+function UiMedicine({ Udata, OnClick, Onicon }) {
     console.log(Udata);
 
     return (
@@ -24,10 +26,15 @@ function UiMedicine({ Udata , OnClick}) {
                                 }
 
                                 <CardBody>
-                                    <CardTitle tag="h5">
+                                    <CardTitle className="d-flex" tag="h5">
                                         {
                                             v.name
                                         }
+                                        <Link to="/medicindetails" >
+                                            <Button class="bg-white border-0 text-dark" onClick={() => Onicon(v.id)} >
+                                                <FavoriteBorderIcon />
+                                            </Button>
+                                        </Link>
                                     </CardTitle>
                                     <CardSubtitle
                                         className="mb-2 text-muted"

@@ -20,6 +20,7 @@ import CounterRedux from '../user/container/CounterRedux';
 import Cart from '../user/container/Cart/Cart';
 import Medicine1 from '../user/container/Medicine/Medicine1';
 import Cart1 from '../user/container/Cart/Cart1';
+import MedicinDetails from '../user/container/MedicinDetails';
 
 function UserRoute(props) {
 
@@ -45,6 +46,7 @@ function UserRoute(props) {
                 <Route path='/doctors' element={<Doctors />} />
                 <Route path='/slidenav' element={<Slidenav />} />
                 <Route path='/doctor/:id' element={<Doctor />} />
+                <Route path='/medicindetails' element={<MedicinDetails />} />
                 <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} />
 
                 <Route path='/doctor/'>
