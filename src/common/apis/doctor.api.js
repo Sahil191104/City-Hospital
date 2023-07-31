@@ -1,7 +1,17 @@
-import { getRequest } from "../request"
+import { addRequest, deleteRequest, getRequest, putRequest } from "../request"
 
 export const getDoctorData = () => {
-    let data = getRequest('Movie');
+    return getRequest('Movie');
+}
 
-    console.log(data);
+export const addDoctorData = (data) => {
+    return addRequest('Movie', data);
+}
+
+export const deleteDoctorData = (data) => {
+    return deleteRequest('Movie/'+data.id, data);
+}
+
+export const putDoctorData = (id) => {
+    return putRequest('Movie/'+id);
 }

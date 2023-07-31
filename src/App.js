@@ -8,7 +8,9 @@ import { configstore } from './redux/Store';
 
 function App() {
 
-  const {store, persistor} = configstore();
+  const { store, persistor } = configstore();
+
+  // console.log(store);
 
   return (
     <Provider store={store}>

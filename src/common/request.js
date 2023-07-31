@@ -16,3 +16,32 @@ export const getRequest = (path) => {
         url: path
     })
 }
+
+export const addRequest = (data, path) => {
+    return addRequest({
+        method: 'POST',
+        url: path,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(data)
+    })
+}
+
+export const deleteRequest = (path) => {
+    return sendRequest({
+        method: 'DELETE',
+        url: path
+    })
+}
+
+export const putRequest = (data, path) => {
+    return sendRequest({
+        method: 'PUT',
+        url: path,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(data)
+    })
+}

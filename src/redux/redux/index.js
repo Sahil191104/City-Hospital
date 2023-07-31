@@ -4,7 +4,7 @@ import { doctorsreducer } from "./doctor.reducer.js";
 import { medicinereducer } from "./medicine.reducer.js";
 import { cartreducer } from "./cart.reducer.js";
 
-export const routerReducer = combineReducers ({
+export const rootReducer = combineReducers ({
     couter: counterreducer,
     doctor: doctorsreducer,
     medicine: medicinereducer,
