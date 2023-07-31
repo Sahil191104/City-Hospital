@@ -7,7 +7,6 @@ import MedicinDetails from '../MedicinDetails';
 
 function Medicine1(props) {
     const [medicenData, setMedicenData] = useState([]);
-    const [medicenDetails, setMedicenDetails] = useState([]);
     const [search, setSeacrh] = useState([])
     const [searchvalue, setSeacrhValue] = useState(null)
 
@@ -64,7 +63,6 @@ function Medicine1(props) {
 
     const handleicon = (id) => {
         let checkdetails = loacalarr.find((v) => v.pid === id)
-
         if (checkdetails) {
             loacalarr.push({
                 pid: id,

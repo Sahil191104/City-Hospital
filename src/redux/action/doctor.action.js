@@ -1,22 +1,25 @@
+import { getDoctorData } from "../../common/apis/doctor.api"
 import * as ActionType from "../ActionTypes"
 
 export const fetchdata = () => (dispatch) => {
     try {
         dispatch(loading(true))
         setTimeout(() => {
-            fetch("http://localhost:3004/Movie")
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error('Something went wrong');
-                })
-                .then(data => {
-                    dispatch({ type: ActionType.FETCH_TYPE, payload: data })
-                })
-                .catch(error => {
-                    dispatch(errordata(error))
-                })
+            // getDoctorData()
+               
+            // fetch("http://localhost:3004/Movie")
+            //     .then(response => {
+            //         if (response.ok) {
+            //             return response.json();
+            //         }
+            //         throw new Error('Something went wrong');
+            //     })
+            //     .then(data => {
+            //         dispatch({ type: ActionType.FETCH_TYPE, payload: data })
+            //     })
+            //     .catch(error => {
+            //         dispatch(errordata(error))
+            //     })
         }, 3000)
     } catch (error) {
         console.log(error);
