@@ -8,10 +8,10 @@ export const addDoctorData = (data) => {
     return addRequest('Movie', data);
 }
 
-export const deleteDoctorData = (data) => {
-    return deleteRequest('Movie/'+data.id, data);
+export const deleteDoctorData = (id) => {
+    return deleteRequest('Movie/' + id);
 }
 
-export const putDoctorData = (id) => {
-    return putRequest('Movie/'+id);
+export const putDoctorData = (data) => {
+    return putRequest('Movie/' + data.id, data);
 }

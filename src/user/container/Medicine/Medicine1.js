@@ -3,7 +3,6 @@ import ListMedicine from './ListMedicine';
 import { TextField } from '@mui/material';
 import Htag from '../UI/H1toH6/Htag';
 import Titel from '../UI/Title/Titel';
-import MedicinDetails from '../MedicinDetails';
 
 function Medicine1(props) {
     const [medicenData, setMedicenData] = useState([]);
@@ -85,7 +84,8 @@ function Medicine1(props) {
                     <Htag name="h2tag1">Medicine</Htag>
                     <Titel>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                         blandit quam volutpat sollicitudin. Aenean ac turpis ante. Mauris velit sapien, aliquet aliquet rhoncus quis,
-                        luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.</Titel>
+                        luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.
+                    </Titel>
                 </div>
             </div>
             <div className="container">

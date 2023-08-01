@@ -18,7 +18,7 @@ export const getRequest = (path) => {
 }
 
 export const addRequest = (data, path) => {
-    return addRequest({
+    return sendRequest({
         method: 'POST',
         url: path,
         headers: {

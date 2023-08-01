@@ -1,4 +1,4 @@
-import { addDoctorData, getDoctorData } from "../../common/apis/doctor.api"
+import { addDoctorData, deleteDoctorData, getDoctorData, putDoctorData } from "../../common/apis/doctor.api"
 import * as ActionType from "../ActionTypes"
 
 export const fetchdata = () => (dispatch) => {
@@ -34,8 +34,8 @@ export const fetchdata = () => (dispatch) => {
 export const adddata = (data) => (dispatch) => {
     try {
         addDoctorData(data)
-            .then(data => {
-                dispatch({ type: ActionType.ADD_TYPE, payload: data })
+            .then(response => {
+                dispatch({ type: ActionType.ADD_TYPE, payload: response.data })
             })
             .catch(error => {
                 dispatch(errordata(error))
@@ -66,6 +66,13 @@ export const adddata = (data) => (dispatch) => {
 
 export const deletedoctors = (id) => (dispatch) => {
     try {
+        deleteDoctorData(id)
+            .then(() => {
+                dispatch({ type: ActionType.DELETE_TYPE, payload: id })
+            })
+            .catch(error => {
+                dispatch(errordata(error))
+            })
         // fetch("http://localhost:3004/Movie/" + id, {
         //     method: "DELETE",
         // })
@@ -88,6 +95,13 @@ export const deletedoctors = (id) => (dispatch) => {
 
 export const updatedoctors = (data) => (dispatch) => {
     try {
+        putDoctorData(data)
+            .then(
+                dispatch({ type: ActionType.UPDATE_TYPE, payload: data })
+            )
+            .catch(error => {
+                dispatch(errordata(error))
+            })
         // fetch("http://localhost:3004/Movie/" + data.id, {
         //     method: "PUT",
         //     headers: {

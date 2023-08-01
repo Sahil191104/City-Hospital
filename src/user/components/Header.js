@@ -5,6 +5,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 // import { useSelector } from 'react-redux';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -37,6 +38,15 @@ function Header(props) {
 
     if (localdataCart) {
         cartCounter = localdataCart.reduce((acc, v, i) => acc + v.qyt, 0);
+    }
+
+    let localdataheart = JSON.parse(localStorage.getItem("CartDetails"));
+    console.log(localdataheart);
+    let heartCounter = 0;
+
+    if (localdataheart) {
+        heartCounter = localdataheart.reduce((acc, v, i) => acc + v.qyt, 0);
+        console.log(heartCounter);
     }
 
     return (
@@ -85,14 +95,21 @@ function Header(props) {
                     }
                     <Link to="/Cart">
                         <IconButton aria-label="cart">
-                            <StyledBadge badgeContent={cartCounter} sx={{color: '#FF6337'}}>
+                            <StyledBadge badgeContent={cartCounter} sx={{ color: '#FF6337' }}>
                                 <ShoppingCartIcon />
                             </StyledBadge>
                         </IconButton>
                     </Link>
+                    <Link to="/medicindetails">
+                        <IconButton aria-label="heart">
+                            <StyledBadge badgeContent={heartCounter} sx={{ color: '#FF6337' }}>
+                                <FavoriteIcon />
+                            </StyledBadge>
+                        </IconButton>
+                    </Link>
                 </div>
-            </header>
-        </div>
+            </header >
+        </div >
     );
 }
 
