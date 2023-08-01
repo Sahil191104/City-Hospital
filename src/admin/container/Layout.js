@@ -20,11 +20,13 @@ import ListItemText from '@mui/material/ListItemText';
 import { GiDoctorFace } from 'react-icons/gi';
 import { AiFillMedicineBox } from 'react-icons/ai';
 import { AiFillContacts } from 'react-icons/ai';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 
 const Doctordetails = [
   { Tool: 'Doctor', to: '/admin/Doctor', icon: <GiDoctorFace /> },
   { Tool: 'Contact', to: '/admin/Contact', icon: <AiFillContacts /> },
   { Tool: 'Medicine', to: '/admin/Medicine', icon: <AiFillMedicineBox /> },
+  { Tool: 'Department', to: '/admin/Department', icon: <AddBusinessIcon /> },
 ]
 
 const drawerWidth = 240;

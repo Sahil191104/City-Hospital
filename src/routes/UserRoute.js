@@ -5,7 +5,6 @@ import Home from '../user/container/Home';
 import About from '../user/container/About';
 import Appointment from '../user/container/Appointment';
 import Contact from '../user/container/Contact';
-import Department from '../user/container/Department';
 import FormValidation from '../user/container/FormValidation';
 import Doctors from '../user/container/Doctors';
 import Error from '../user/components/Error';
@@ -21,6 +20,7 @@ import Cart from '../user/container/Cart/Cart';
 import Medicine1 from '../user/container/Medicine/Medicine1';
 import Cart1 from '../user/container/Cart/Cart1';
 import MedicinDetails from '../user/container/MedicinDetails';
+import Department from '../user/container/Department/Department';
 
 function UserRoute(props) {
 
@@ -38,10 +38,10 @@ function UserRoute(props) {
                 <Route element={<PrivateRoute />}>
                     {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
                     <Route exact path='medicine' element={<Medicine />} />
+                    <Route exact path='department' element={<Department />} />
                 </Route>
 
                 {/* <Route path='/contact' element={<Contact1 />} /> */}
-                <Route path='/department' element={<Department />} />
                 <Route path='/form' element={<FormValidation />} />
                 <Route path='/doctors' element={<Doctors />} />
                 <Route path='/slidenav' element={<Slidenav />} />
