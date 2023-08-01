@@ -1,17 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { counterdicreament, counterincreament } from '../../redux/action/counter.action';
+import { decrement, increment } from '../../redux/slice/counterSlice';
 
 function CounterRedux(props) {
     const dispatch = useDispatch();
     const counteVal = useSelector(state => state.couter);
 
     const increse = () => {
-        dispatch(counterincreament());
+        dispatch(increment(3));
     };
 
     const dicrese = () => {
-        dispatch(counterdicreament());
+        dispatch(decrement(4));
     };
 
     return (

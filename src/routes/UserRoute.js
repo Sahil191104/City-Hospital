@@ -14,7 +14,7 @@ import Doctor from '../user/container/Doctor';
 import VisitingDoctor from '../user/container/VisitingDoctor';
 import Auth from '../user/container/Auth';
 import Footer from '../user/components/Footer';
-// import Medicine from '../user/container/Medicine/Medicine';
+import Medicine from '../user/container/Medicine/Medicine';
 import PrivateRoute from '../routes/PrivateRoute';
 import CounterRedux from '../user/container/CounterRedux';
 import Cart from '../user/container/Cart/Cart';
@@ -36,8 +36,8 @@ function UserRoute(props) {
                 <Route path='/contact' element={<Contact />} />
 
                 <Route element={<PrivateRoute />}>
-                    <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} />
-                    {/* <Route exact path='medicine' element={<Medicine />} /> */}
+                    {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
+                    <Route exact path='medicine' element={<Medicine />} />
                 </Route>
 
                 {/* <Route path='/contact' element={<Contact1 />} /> */}
@@ -56,8 +56,8 @@ function UserRoute(props) {
                 <Route path='/counter' element={<CounterRedux />} />
                 <Route path='*' element={<Error />} />
                 <Route path='/Auth' element={<Auth />} />
-                {/* <Route path='/Cart' element={<Cart />} /> */}
-                <Route path='/Cart' element={<Cart1 />} />
+                <Route path='/Cart' element={<Cart />} />
+                {/* <Route path='/Cart' element={<Cart1 />} /> */}
                 {/* <Route path='/Auth' element={<Auth />} /> */}
             </Routes>
 

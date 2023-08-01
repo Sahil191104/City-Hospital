@@ -5,7 +5,7 @@ import Htag from '../UI/H1toH6/Htag';
 import Titel from '../UI/Title/Titel';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchdata } from '../../../redux/action/medicine.action';
-import { addcart } from '../../../redux/action/cart.action';
+import  {addtocart}  from '../../../redux/slice/cartSlice';
 
 function Medicine(props) {
     const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function Medicine(props) {
     }
 
     const handleclick = (id) => {
-        dispatch(addcart(id))
+        dispatch(addtocart({pid: id, qyt: 1}))
         console.log("Handle Cart", id);
     }
     

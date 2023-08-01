@@ -58,7 +58,7 @@ function UiMedicine({ Udata, OnClick, Onicon }) {
                                                     <FavoriteIcon />
                                                 </Button>
                                                 :
-                                                <Button className='bg-white border-0' style={{ color: "#FF6337" }} onClick={() => onicondata={v.id}, Onicon(v.id)} >
+                                                <Button className='bg-white border-0' style={{ color: "#FF6337" }} onClick={() =>  Onicon(v.id)} >
                                                     <FavoriteBorderIcon />
                                                 </Button>
                                         }
