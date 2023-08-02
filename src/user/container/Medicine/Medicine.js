@@ -29,7 +29,6 @@ function Medicine(props) {
 
             setSeacrh(fdata)
         }
-
     }
 
     const handleclick = (id) => {

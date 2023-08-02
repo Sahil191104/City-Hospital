@@ -6,23 +6,28 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Alert, AlertTitle, Box, CircularProgress, Stack } from '@mui/material';
 import DepartmentForm from './Department/DepartmentForm';
-import { adddata, deletedepartment, fetchdata, updatedepartment } from '../../redux/action/department.action';
+// import { adddata, deletedepartment, fetchdata, updatedepartment } from '../../redux/action/department.action';
+import { addDepartment, deleteDepartment, fetchDepartment, updateDepartment } from '../../redux/slice/departmentSlice';
 
 export default function Department() {
     console.log("cdsvc");
     const dispatch = useDispatch();
-    const doctors = useSelector(state => state.doctor)
+    const departments = useSelector(state => state.department);
+
+    console.log(departments);
+    
     const [update, setUpadate] = useState(null);
 
     useEffect(() => {
-        dispatch(fetchdata())
+        console.log("oooijoij");
+        dispatch(fetchDepartment())
     }, [])
 
     const handleSubmitData = (data) => {
         if (update) {
-            dispatch(updatedepartment(data))
+            dispatch(updateDepartment(data))
         } else {
-            dispatch(adddata(data))
+            dispatch(addDepartment(data))
         }
 
         setUpadate(null)
@@ -33,7 +38,7 @@ export default function Department() {
     }
 
     const handleDelete = (id) => {
-        dispatch(deletedepartment(id))
+        dispatch(deleteDepartment(id))
     }
 
     const columns = [
@@ -60,11 +65,11 @@ export default function Department() {
     return (
         <div>
             {
-                doctors.loading ?
+                departments.loading ?
                     <Box className="d-flex justify-content-center" >
                         <CircularProgress sx={{ color: '#FF6337' }} />
                     </Box> :
-                    doctors.error ?
+                    departments.error ?
                         <Stack sx={{ width: '100%' }} spacing={2}>
                             <Alert severity="error">
                                 <AlertTitle>Error</AlertTitle>
@@ -79,7 +84,7 @@ export default function Department() {
 
                                 <div style={{ height: 400, width: '60%' }}>
                                     <DataGrid
-                                        rows={doctors.doctor}
+                                        rows={departments.department}
                                         columns={columns}
                                         initialState={{
                                             pagination: {
