@@ -12,9 +12,9 @@ import { addDepartment, deleteDepartment, fetchDepartment, updateDepartment } fr
 export default function Department() {
     console.log("cdsvc");
     const dispatch = useDispatch();
-    const departments = useSelector(state => state.department);
+    const departmentsdata = useSelector(state => state.department);
 
-    console.log(departments);
+    console.log(departmentsdata);
     
     const [update, setUpadate] = useState(null);
 
@@ -26,6 +26,7 @@ export default function Department() {
     const handleSubmitData = (data) => {
         if (update) {
             dispatch(updateDepartment(data))
+            console.log(data);
         } else {
             dispatch(addDepartment(data))
         }
@@ -65,11 +66,11 @@ export default function Department() {
     return (
         <div>
             {
-                departments.loading ?
+                departmentsdata.loading ?
                     <Box className="d-flex justify-content-center" >
                         <CircularProgress sx={{ color: '#FF6337' }} />
                     </Box> :
-                    departments.error ?
+                    departmentsdata.error ?
                         <Stack sx={{ width: '100%' }} spacing={2}>
                             <Alert severity="error">
                                 <AlertTitle>Error</AlertTitle>
@@ -84,9 +85,9 @@ export default function Department() {
 
                                 <div style={{ height: 400, width: '60%' }}>
                                     <DataGrid
-                                        rows={departments.department}
+                                        rows={departmentsdata.department}
                                         columns={columns}
-                                        initialState={{
+                                        initialState={{ 
                                             pagination: {
                                                 paginationModel: { page: 0, pageSize: 5 },
                                             },

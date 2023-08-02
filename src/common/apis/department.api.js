@@ -1,4 +1,4 @@
-import { addRequest, deleteRequest, getRequest, putRequest } from "../request"
+import { addRequest, deleteRequest, errorRequest, getRequest, loadingRequest, putRequest } from "../request"
 
 export const getDepartmentData = () => {
     return getRequest('department');
@@ -15,3 +15,11 @@ export const deleteDepartmentData = (id) => {
 export const putDepartmentData = (data) => {
     return putRequest('department/' + data.id, data);
 }
+
+// export const loadingDepartmentData = (status) => {
+//     return loadingRequest('department', status);
+// }
+
+// export const errorDepartmentData = (errormaesage) => {
+//     return errorRequest('department', errormaesage);
+// }

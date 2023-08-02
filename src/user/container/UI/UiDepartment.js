@@ -23,7 +23,7 @@ function UiDepartment({ Udata, OnClick, Onicon }) {
 
     return (
         <>
-            {/* <section id="departments" className="departments">
+            <section id="departments" className="departments">
                 <div className="container">
                     <div className="section-title">
                         <Htag name="h2tag1">Departments</Htag>
@@ -53,9 +53,9 @@ function UiDepartment({ Udata, OnClick, Onicon }) {
                                                         <h3>{v.name}</h3>
                                                         <Titel className="fst-italic">{v.desc}</Titel>
                                                     </div>
-                                                    <div className="col-lg-4 text-center order-1 order-lg-2">
+                                                    {/* <div className="col-lg-4 text-center order-1 order-lg-2">
                                                         <img src="../assets/img/departments-1.jpg" alt className="img-fluid" />
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         )
@@ -65,7 +65,7 @@ function UiDepartment({ Udata, OnClick, Onicon }) {
                         </div>
                     </div>
                 </div>
-            </section> */}
+            </section>
             {
                 Udata.map((v) => {
                     return (

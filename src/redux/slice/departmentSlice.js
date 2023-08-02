@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { addDepartmentData, deleteDepartmentData, getDepartmentData, putDepartmentData } from '../../common/apis/department.api';
+import { addDepartmentData, deleteDepartmentData, errorDepartmentData, getDepartmentData, loadingDepartmentData, putDepartmentData } from '../../common/apis/department.api';
 
 const initialState = {
     department: [],
@@ -19,6 +19,7 @@ export const addDepartment = createAsyncThunk(
     'department/add',
     async (data) => {
         const response = await addDepartmentData(data);
+        console.log("axsacdsv");
         return response.data
     }
 )
@@ -39,6 +40,22 @@ export const deleteDepartment = createAsyncThunk(
     }
 )
 
+// export const loadingDepartment = createAsyncThunk(
+//     'department/loading',
+//     async (status) => {
+//         const response = await loadingDepartmentData(status);
+//         return response.status
+//     }
+// )
+
+// export const errorDepartment = createAsyncThunk(
+//     'department/error',
+//     async (errormaesage) => {
+//         const response = await errorDepartmentData(errormaesage);
+//         return response.errormaesage
+//     }
+// )
+
 export const departmentSlice = createSlice({
     name: 'department',
     initialState,
@@ -55,7 +72,7 @@ export const departmentSlice = createSlice({
             })
             .addCase(updateDepartment.fulfilled, (state, action) => {
                 console.log(action);
-                state.department.map((v) => {
+                state.department = state.department.map((v) => {
                     if (v.id === action.payload.id) {
                         return action.payload;
                     } else {
@@ -65,8 +82,24 @@ export const departmentSlice = createSlice({
             })
             .addCase(deleteDepartment.fulfilled, (state, action) => {
                 console.log(action);
-                state.department.filter((v) => v.id != action.payload)
+                state.department = state.department.filter((v) => v.id != action.payload)
             })
+            // .addCase(loadingDepartment.pending, (state, action) => {
+            //     console.log(action);
+            //     return {
+            //         department: [],
+            //         loading: action.payload,
+            //         error: null
+            //     }
+            // })
+            // .addCase(errorDepartment.pending, (state, action) => {
+            //     console.log(action);
+            //     return {
+            //         department: [],
+            //         loading: false,
+            //         error: action.payload
+            //     }
+            // })
     },
 })
 
