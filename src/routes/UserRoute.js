@@ -21,6 +21,8 @@ import Medicine1 from '../user/container/Medicine/Medicine1';
 import Cart1 from '../user/container/Cart/Cart1';
 import MedicinDetails from '../user/container/MedicinDetails';
 import Department from '../user/container/Department/Department';
+import Counter from '../user/container/Context/Counter';
+import { CounterProvider } from '../user/container/Context/counterContext'
 
 function UserRoute(props) {
 
@@ -28,40 +30,43 @@ function UserRoute(props) {
 
     return (
         <>
-            <Header count={cartCount} />
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/appointment' element={<Appointment />} />
-                <Route path='/contact' element={<Contact />} />
+            <CounterProvider>
+                <Header count={cartCount} />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/about' element={<About />} />
+                    <Route path='/appointment' element={<Appointment />} />
+                    <Route path='/contact' element={<Contact />} />
 
-                <Route element={<PrivateRoute />}>
-                    {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
-                    <Route exact path='medicine' element={<Medicine />} />
-                    <Route exact path='department' element={<Department />} />
-                </Route>
+                    <Route element={<PrivateRoute />}>
+                        {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
+                        <Route exact path='medicine' element={<Medicine />} />
+                        <Route exact path='department' element={<Department />} />
+                    </Route>
 
-                {/* <Route path='/contact' element={<Contact1 />} /> */}
-                <Route path='/form' element={<FormValidation />} />
-                <Route path='/doctors' element={<Doctors />} />
-                <Route path='/slidenav' element={<Slidenav />} />
-                <Route path='/doctor/:id' element={<Doctor />} />
-                <Route path='/medicindetails' element={<MedicinDetails />} />
-                <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} />
+                    {/* <Route path='/contact' element={<Contact1 />} /> */}
+                    <Route path='/form' element={<FormValidation />} />
+                    <Route path='/doctors' element={<Doctors />} />
+                    <Route path='/slidenav' element={<Slidenav />} />
+                    <Route path='/doctor/:id' element={<Doctor />} />
+                    <Route path='/medicindetails' element={<MedicinDetails />} />
+                    <Route path='/doctor/visiting_doctor' element={<VisitingDoctor />} />
 
-                <Route path='/doctor/'>
-                    <Route path=':id' element={<Doctor />} />
-                    <Route path='visiting_doctor' element={<VisitingDoctor />} />
-                </Route>
-                <Route path='/counter' element={<CounterRedux />} />
-                <Route path='*' element={<Error />} />
-                <Route path='/Auth' element={<Auth />} />
-                <Route path='/Cart' element={<Cart />} />
-                {/* <Route path='/Cart' element={<Cart1 />} /> */}
-                {/* <Route path='/Auth' element={<Auth />} /> */}
-            </Routes>
+                    <Route path='/doctor/'>
+                        <Route path=':id' element={<Doctor />} />
+                        <Route path='visiting_doctor' element={<VisitingDoctor />} />
+                    </Route>
+                    <Route path='/counter' element={<CounterRedux />} />
+                    <Route path='*' element={<Error />} />
+                    <Route path='/Auth' element={<Auth />} />
+                    <Route path='/Cart' element={<Cart />} />
+                    <Route path='/Context' element={<Counter />} />
+                    {/* <Route path='/Cart' element={<Cart1 />} /> */}
+                    {/* <Route path='/Auth' element={<Auth />} /> */}
+                </Routes>
 
-            <Footer />
+                <Footer />
+            </CounterProvider>
         </>
     );
 }
