@@ -17,25 +17,26 @@ export const getRequest = (path) => {
     })
 }
 
-export const addRequest = (data, path) => {
+export const addRequest = (path, data) => {
+    console.log(data, path);
     return sendRequest({
         method: 'POST',
         url: path,
         data: JSON.stringify(data),
         headers: {
-            'content-type': 'application/json'
-        }
+            'Content-Type': 'application/json'
+          }
     })
 }
 
-export const deleteRequest = (path) => {
+export const deleteRequest = (path, id) => {
     return sendRequest({
         method: 'DELETE',
-        url: path
+        url: path + id
     })
 }
 
-export const putRequest = (data, path) => {
+export const putRequest = (path, data) => {
     return sendRequest({
         method: 'PUT',
         url: path,
@@ -45,25 +46,3 @@ export const putRequest = (data, path) => {
         }
     })
 }
-
-// export const loadingRequest = (path, status) => {
-//     return sendRequest({
-//         method: 'LOADING',
-//         url: path,
-//         data: JSON.stringify(status),
-//         headers: {
-//             'content-type': 'application/json'
-//         }
-//     })
-// }
-
-// export const errorRequest = (path, errormaesage) => {
-//     return sendRequest({
-//         method: 'ERROR',
-//         url: path,
-//         data: JSON.stringify(errormaesage),
-//         headers: {
-//             'content-type': 'application/json'
-//         }
-//     })
-// }

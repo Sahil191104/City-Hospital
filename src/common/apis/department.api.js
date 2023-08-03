@@ -9,7 +9,7 @@ export const addDepartmentData = (data) => {
 }
 
 export const deleteDepartmentData = (id) => {
-    return deleteRequest('department/' + id);
+    return deleteRequest('department/' , id);
 }
 
 export const putDepartmentData = (data) => {

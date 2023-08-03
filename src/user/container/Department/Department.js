@@ -80,25 +80,6 @@ function Department(props) {
     return (
         <section id="medicine" className="medicine">
             <div className="container">
-                <div className="section-title">
-                    <Htag name="h2tag1">Department</Htag>
-                    <Titel>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
-                        blandit quam volutpat sollicitudin. Aenean ac turpis ante. Mauris velit sapien, aliquet aliquet rhoncus quis,
-                        luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.
-                    </Titel>
-                </div>
-            </div>
-            <div className="container">
-                <TextField
-                    margin="dense"
-                    id="search"
-                    label="Search"
-                    name='search'
-                    type="search"
-                    fullWidth
-                    variant="standard"
-                    onChange={(e) => handleSearch(e.target.value)}
-                />
                 <div className="row mt-5 justify-content-between">
                     <ListDepartment Mdata={search.length > 0 ? search : medicenData} Hadleclick={handleclick} Handleicon={handleicon} />
                 </div>

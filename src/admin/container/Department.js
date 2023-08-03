@@ -68,7 +68,7 @@ export default function Department() {
             {
                 departmentsdata.loading ?
                     <Box className="d-flex justify-content-center" >
-                        <CircularProgress sx={{ color: '#FF6337' }} />
+                        <CircularProgress sx={{ color: '#FF6337', margin: "300px auto" }} />
                     </Box> :
                     departmentsdata.error ?
                         <Stack sx={{ width: '100%' }} spacing={2}>

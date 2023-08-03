@@ -63,7 +63,7 @@ export default function Medicine() {
             {
                 medicines.loading ?
                     <Box className="d-flex justify-content-center" >
-                        <CircularProgress sx={{ color: '#FF6337' }} />
+                        <CircularProgress sx={{ color: '#FF6337', margin: "300px auto" }} />
                     </Box> :
                     medicines.error ?
                         <Stack sx={{ width: '100%' }} spacing={2}>
