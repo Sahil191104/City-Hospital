@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../container/UI/Button/Button';
 import Badge from '@mui/material/Badge';
@@ -6,6 +6,8 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { ThemeContext } from '../container/Context/ThemeContext';
+import { ToggleButtonGroup  } from '@mui/material';
 // import { useSelector } from 'react-redux';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -18,6 +20,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function Header(props) {
+
+    let theme = useContext(ThemeContext);
 
     let localStatus = localStorage.getItem("Loginredirecting")
 
@@ -51,7 +55,7 @@ function Header(props) {
 
     return (
         <div className="main-header">
-            <div id="topbar" className="d-flex align-items-center fixed-top">
+            <div id="topbar" className={`d-flex align-items-center fixed-top ${theme.theme}`}>
                 <div className="container d-flex justify-content-between">
                     <div className="contact-info d-flex align-items-center">
                         <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
@@ -62,6 +66,8 @@ function Header(props) {
                         <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
                         <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
                         <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
+                        <ToggleButtonGroup />
+                        <button onClick={() => theme.togletheme(theme.theme)}>Toggle</button>
                     </div>
                 </div>
             </div>

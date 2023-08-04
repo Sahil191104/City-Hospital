@@ -1811,3 +1811,13 @@ section {
   font-size: 25px;
   font-weight: bold;
 }
+
+.light {
+  color: #ed3c0d !important;
+  background-color: white !important;
+}
+
+.dark {
+  color: #fff !important;
+  background-color: black !important;
+}

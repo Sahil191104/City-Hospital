@@ -4,6 +4,7 @@ import counterContext from './counterContext';
 
 function Counter() {
     const { counter, increment, decrement } = useContext(counterContext)
+    
     return (
         <section id="medicine" className="medicine">
             <center>
