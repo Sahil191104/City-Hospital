@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../container/UI/Button/Button';
 import Badge from '@mui/material/Badge';
@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { ThemeContext } from '../container/Context/ThemeContext';
-import { ToggleButtonGroup  } from '@mui/material';
+import { ToggleButtonGroup } from '@mui/material';
 // import { useSelector } from 'react-redux';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -58,16 +58,17 @@ function Header(props) {
             <div id="topbar" className={`d-flex align-items-center fixed-top ${theme.theme}`}>
                 <div className="container d-flex justify-content-between">
                     <div className="contact-info d-flex align-items-center">
-                        <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
-                        <i className="bi bi-phone" /> +91 9988776655
+                        <i className={`bi bi-envelope ${theme.theme}`} /> <a href="mailto:contact@example.com" className={`${theme.theme}`}>cityhospital@example.com</a>
+                        <i className={`bi bi-phone ${theme.theme}`} /> +91 9988776655
                     </div>
-                    <div className="d-none d-lg-flex social-links align-items-center">
-                        <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
-                        <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
-                        <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
-                        <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
-                        <ToggleButtonGroup />
-                        <button onClick={() => theme.togletheme(theme.theme)}>Toggle</button>
+                    <div className={`d-none d-lg-flex social-links align-items-center ${theme.theme}`}>
+                        <a href="#" className="twitter"><i className= {`bi bi-twitter ${theme.theme}`} /></a>
+                        <a href="#" className="facebook"><i className= {`bi bi-facebook ${theme.theme}`} /></a>
+                        <a href="#" className="instagram"><i className= {`bi bi-instagram ${theme.theme}`} /></a>
+                        <a href="#" className="linkedin"><i className= {`bi bi-linkedin ${theme.theme}`} /></a>
+                        <div className="form-check form-switch">
+                            <input onClick={() => theme.togletheme(theme.theme)} className="form-check-input ms-1 bg-info" type="checkbox" role="switch" id="flexSwitchCheckChecked" defaultChecked />
+                        </div>
                     </div>
                 </div>
             </div>
