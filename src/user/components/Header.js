@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../container/UI/Button/Button';
+import CustButton from '../container/UI/Button/CustButton';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
@@ -92,13 +92,13 @@ function Header(props) {
                         </ul>
                         <i className="bi bi-list mobile-nav-toggle" />
                     </nav>
-                    <Link to="/appointment" className="appointment-btn scrollto"><Button className="d-none d-md-inline">Make an Appointment</Button>
+                    <Link to="/appointment" className="appointment-btn scrollto"><CustButton className="d-none d-md-inline">Make an Appointment</CustButton>
                     </Link>
                     {/* <Link to="/appointment" className="nav-link scrollto">Appointment</Link> */}
                     {
                         localStatus ?
-                            <Link to="/Auth" onClick={handleLogout}><Button>Logout</Button></Link>
-                            : <Link to="/Auth"><Button>Login/Signup</Button></Link>
+                            <Link to="/Auth" onClick={handleLogout}><CustButton>Logout</CustButton></Link>
+                            : <Link to="/Auth"><CustButton>Login/Signup</CustButton></Link>
                     }
                     <Link to="/Cart">
                         <IconButton aria-label="cart">

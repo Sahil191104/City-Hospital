@@ -2,11 +2,13 @@ import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import Button from '../container/UI/Button/Button';
+import Button from '@mui/material/Button';
+import CustButton from '../container/UI/Button/CustButton';
 import Input from './UI/Input/Input';
 import Htag from './UI/H1toH6/Htag';
 import { auth } from '../../firebase';
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
@@ -90,7 +92,15 @@ function Auth(props) {
             });
     }
     const handleForget = () => {
-
+        sendPasswordResetEmail(auth, values.email)
+            .then(() => {
+                console.log("Password reset link sent to your email id.");
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
     }
 
     const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
@@ -103,13 +113,26 @@ function Auth(props) {
             } else if (authType === 'signup') {
                 handleRegister(values)
             } else if (authType === 'forgot') {
-                handleForget()
+                handleForget(values)
             }
             action.resetForm()
             alert(JSON.stringify(values, null, 2));
         },
     });
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handlesend = () => {
+
+    }
 
     return (
         <div>
@@ -175,8 +198,33 @@ function Auth(props) {
                         </div>
                         <div className="text-center">
                             {
-                                authType === 'login' ? <Button type="primary" onClick={handleLogin}>Login</Button> :
-                                    authType === 'forgot' ? <Button type="secondry">Conform</Button> : <Button type="outlined">Signup</Button>
+                                authType === 'login' ? <CustButton type="primary" onClick={handleLogin}>Login</CustButton> :
+                                    authType === 'forgot' ?
+                                        <>
+                                            <CustButton class='btncolor'>Conform</CustButton>
+                                            {/* <Dialog open={open}>
+                                                <DialogTitle>Choose a new password</DialogTitle>
+                                                <DialogContent>
+                                                    <DialogContentText>
+                                                        Create a new password that is at least 6 characters long. A strong password has a combination of letters, digits and punctuation marks.
+                                                    </DialogContentText>
+                                                    <TextField
+                                                        autoFocus
+                                                        margin="dense"
+                                                        id="password"
+                                                        label="password"
+                                                        type="password"
+                                                        fullWidth
+                                                        variant="standard"
+                                                    />
+                                                </DialogContent>
+                                                <DialogActions>
+                                                    <CustButton onClick={handleClose}>Cancel</CustButton>
+                                                    <CustButton onClick={handleClose}>Continue</CustButton>
+                                                </DialogActions>
+                                            </Dialog> */}
+                                        </> :
+                                        <CustButton type="outlined">Signup</CustButton>
                             }
                         </div>
                         <br />

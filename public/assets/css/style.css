@@ -1784,7 +1784,7 @@ section {
   -webkit-box-orient: vertical;
 }
 
-.container1{
+.container1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1820,4 +1820,16 @@ section {
 .dark {
   color: #fff !important;
   background-color: #166AB5 !important;
+}
+
+.btncolor {
+  background: #FF6337;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  display: inline-block;
+  border: none;
 }

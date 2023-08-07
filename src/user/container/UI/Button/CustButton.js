@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseButton, OutlinedButton, PrimaryButton, SecondryButton } from './button.style';
 
-function Button({ children, type, Btndisalbeld }) {
+function CustButton({ children, type, Btndisalbeld }) {
 
     const BasebuttonCuttoms = () => {
         switch (type) {
@@ -25,4 +25,4 @@ function Button({ children, type, Btndisalbeld }) {
     );
 }
 
-export default Button;
+export default CustButton;

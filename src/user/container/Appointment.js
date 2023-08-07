@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './UI/Button/Button';
+import CustButton from './UI/Button/CustButton';
 
 function Appointment(props) {
 
@@ -51,7 +51,7 @@ function Appointment(props) {
                         <div className="error-message" />
                         <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
                     </div>
-                    <div className="text-center"><Button type="submit">Make an Appointment</Button></div>
+                    <div className="text-center"><CustButton type="submit">Make an Appointment</CustButton></div>
                 </form>
             </div>
         </section>
