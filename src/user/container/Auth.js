@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import Button from '../container/UI/Button/Button';
 import Input from './UI/Input/Input';
 import Htag from './UI/H1toH6/Htag';
+import { auth } from '../../firebase';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
@@ -44,13 +46,48 @@ function Auth(props) {
 
     let userSchema = Yup.object(SchemaObj)
 
-    const handleLogin = () => {
+    const handleLogin = (values) => {
         let data = localStorage.setItem("Loginredirecting", "true")
         navigate("/")
+
+        signInWithEmailAndPassword(auth, values.email, values.password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+                if (user.emailVerified) {
+                    console.log("Email Login Successfully");
+                } else {
+                    console.log("Please Enter the valid Email");
+                }
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
     }
 
-    const handleRegister = () => {
-
+    const handleRegister = (values) => {
+        createUserWithEmailAndPassword(auth, values.email, values.password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                onAuthStateChanged(auth, (user) => {
+                    sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                            // Email verification sent!
+                            // ...
+                            console.log("Email Verification in Successfully");
+                        });
+                })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+            });
     }
     const handleForget = () => {
 
@@ -62,9 +99,9 @@ function Auth(props) {
         enableReinitialize: true,
         onSubmit: (values, action) => {
             if (authType === "login") {
-                handleLogin()
+                handleLogin(values)
             } else if (authType === 'signup') {
-                handleRegister()
+                handleRegister(values)
             } else if (authType === 'forgot') {
                 handleForget()
             }
