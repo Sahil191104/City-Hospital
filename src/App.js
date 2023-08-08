@@ -4,14 +4,10 @@ import AdminRoute from './routes/AdminRoute';
 import PrivateRoute from './routes/PrivateRoute';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
-import { configstore } from './redux/Store';
+import { persistor, store } from './redux/Store';
 import {ThemeProvider } from './user/container/Context/ThemeContext';
 
 function App() {
-
-  const { store, persistor } = configstore();
-
-  // console.log(store);
 
   return (
     <Provider store={store}>

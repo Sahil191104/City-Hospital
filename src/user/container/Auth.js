@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '@mui/material/Button';
@@ -9,11 +10,14 @@ import Htag from './UI/H1toH6/Htag';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import { signupRequest } from '../../redux/action/auth.action';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
     const [data, setData] = useState([])
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
 
     let SchemaObj = {}, intial = {}
 
@@ -49,8 +53,7 @@ function Auth(props) {
     let userSchema = Yup.object(SchemaObj)
 
     const handleLogin = (values) => {
-        let data = localStorage.setItem("Loginredirecting", "true")
-        navigate("/")
+
 
         signInWithEmailAndPassword(auth, values.email, values.password)
             .then((userCredential) => {
@@ -59,6 +62,8 @@ function Auth(props) {
                 // ...
                 if (user.emailVerified) {
                     console.log("Email Login Successfully");
+                    localStorage.setItem("Loginredirecting", "true")
+                    navigate("/")
                 } else {
                     console.log("Please Enter the valid Email");
                 }
@@ -67,34 +72,18 @@ function Auth(props) {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
             });
     }
 
     const handleRegister = (values) => {
-        createUserWithEmailAndPassword(auth, values.email, values.password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user);
-                onAuthStateChanged(auth, (user) => {
-                    sendEmailVerification(auth.currentUser)
-                        .then(() => {
-                            // Email verification sent!
-                            // ...
-                            console.log("Email Verification in Successfully");
-                        });
-                })
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode);
-            });
+        dispatch(signupRequest(values))
     }
+    
     const handleForget = () => {
         sendPasswordResetEmail(auth, values.email)
             .then(() => {
-                console.log("Password reset link sent to your email id.");
+                console.log("Password reset email sent!.");
             })
             .catch((error) => {
                 const errorCode = error.code;
