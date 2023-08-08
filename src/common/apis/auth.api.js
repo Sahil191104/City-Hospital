@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification } from "firebase/auth";
 import { auth } from "../../firebase";
 
-export const signupApi = (values) => {
+export const signupAPI = (values) => {
     console.log(values);
     try {
         createUserWithEmailAndPassword(auth, values.email, values.password)

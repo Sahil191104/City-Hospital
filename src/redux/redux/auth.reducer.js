@@ -10,7 +10,9 @@ export const signupreducer = (state = initState, action) => {
     console.log(action);
     switch (action.type) {
         case ActionType.SIGNUP_REQUEST:
-            return {...state}
+            return {
+                ...state
+            }
         default:
             return state
     }

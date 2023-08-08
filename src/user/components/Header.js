@@ -21,7 +21,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function Header(props) {
 
+
     let theme = useContext(ThemeContext);
+    let color = theme.theme === 'dark' ? 'color' : 'navbar';
 
     let localStatus = localStorage.getItem("Loginredirecting")
 
@@ -62,14 +64,18 @@ function Header(props) {
                         <i className={`bi bi-phone ${theme.theme}`} /> +91 9988776655
                     </div>
                     <div className={`d-none d-lg-flex social-links align-items-center ${theme.theme}`}>
-                        <a href="#" className="twitter"><i className= {`bi bi-twitter ${theme.theme}`} /></a>
-                        <a href="#" className="facebook"><i className= {`bi bi-facebook ${theme.theme}`} /></a>
-                        <a href="#" className="instagram"><i className= {`bi bi-instagram ${theme.theme}`} /></a>
-                        <a href="#" className="linkedin"><i className= {`bi bi-linkedin ${theme.theme}`} /></a>
-                        <div className="form-check form-switch">
-                            <input onClick={() => theme.togletheme(theme.theme)} className="form-check-input ms-1 bg-info" type="checkbox" role="switch" id="flexSwitchCheckChecked" defaultChecked />
+                        <a href="#" className="twitter"><i className={`bi bi-twitter ${theme.theme}`} /></a>
+                        <a href="#" className="facebook"><i className={`bi bi-facebook ${theme.theme}`} /></a>
+                        <a href="#" className="instagram"><i className={`bi bi-instagram ${theme.theme}`} /></a>
+                        <a href="#" className="linkedin"><i className={`bi bi-linkedin ${theme.theme}`} /></a>
+                        <div className="cl-toggle-switch">
+                            <label className="cl-switch" >
+                                <input type="checkbox" onClick={() => theme.togletheme(theme.theme)} />
+                                <span />
+                            </label>
                         </div>
                     </div>
+
                 </div>
             </div>
             <header id="header" className="fixed-top">
@@ -80,7 +86,7 @@ function Header(props) {
                             <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>
                         </a>
                     </div>
-                    <nav id="navbar" className="navbar order-last order-lg-0">
+                    <nav id="navbar" className={`navbar order-last order-lg-0 ${theme.theme} ${color}`} >
                         <ul>
                             <li><Link to="/" className="nav-link scrollto" >Home</Link></li>
                             <li><Link to="/department" className="nav-link scrollto">Departments</Link></li>

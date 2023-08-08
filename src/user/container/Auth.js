@@ -53,8 +53,6 @@ function Auth(props) {
     let userSchema = Yup.object(SchemaObj)
 
     const handleLogin = (values) => {
-
-
         signInWithEmailAndPassword(auth, values.email, values.password)
             .then((userCredential) => {
                 // Signed in 
@@ -80,7 +78,7 @@ function Auth(props) {
         dispatch(signupRequest(values))
     }
     
-    const handleForget = () => {
+    const handleForget = (values) => {
         sendPasswordResetEmail(auth, values.email)
             .then(() => {
                 console.log("Password reset email sent!.");
