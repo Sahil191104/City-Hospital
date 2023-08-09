@@ -1817,20 +1817,44 @@ section {
   background-color: white !important;
 }
 
-.dark {
-  color: #166AB5 !important;
-  background-color: white !important;
+.color2 {
+  background: #292537;
+  padding: 70px 0 60px;
 }
 
-.color {
-  color: #2c4964;
+.dark {
+  color: #fff !important;
+  background-color: #18122B !important;
+}
+
+.color a,
+.counts .count-box .color,
+.color,
+#services .color,
+#hero .color {
+  color: gray;
+}
+
+.counts .count-box .color4 {
+  background-color: #111;
+}
+
+.color1 {
+  color: white;
+}
+
+.color3 {
+  background-color: #18122B !important;
+}
+
+.color a {
+  border: none;
 }
 
 .color li:hover>a {
-  color: #166AB5 !important;
-  border-color: #166AB5 !important;
+  border-bottom: 2px solid #fff !important;
+  color: #fff !important;
 }
-
 
 .btncolor {
   background: #FF6337;
@@ -1846,14 +1870,15 @@ section {
 
 .cl-toggle-switch {
   position: relative;
- }
- 
- .cl-switch {
+}
+
+.cl-switch {
   position: relative;
   display: inline-block;
- }
- /* Input */
- .cl-switch > input {
+}
+
+/* Input */
+.cl-switch>input {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -1872,9 +1897,10 @@ section {
   transform: scale(1);
   pointer-events: none;
   transition: opacity 0.3s 0.1s, transform 0.2s 0.1s;
- }
- /* Track */
- .cl-switch > span::before {
+}
+
+/* Track */
+.cl-switch>span::before {
   content: "";
   float: right;
   display: inline-block;
@@ -1885,9 +1911,10 @@ section {
   background-color: #FF6337;
   vertical-align: top;
   transition: background-color 0.2s, opacity 0.2s;
- }
- /* Thumb */
- .cl-switch > span::after {
+}
+
+/* Thumb */
+.cl-switch>span::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -1898,62 +1925,65 @@ section {
   background-color: #fff;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   transition: background-color 0.2s, transform 0.2s;
- }
- 
- /* Checked */
- .cl-switch > input:checked {
+}
+
+/* Checked */
+.cl-switch>input:checked {
   right: -10px;
-  background-color: #5383ae ;
- }
- 
- .cl-switch > input:checked + span::before {
-  background-color: #5383ae ;
- }
- 
- .cl-switch > input:checked + span::after {
+  background-color: gray;
+}
+
+.cl-switch>input:checked+span::before {
+  background-color: gray;
+}
+
+.cl-switch>input:checked+span::after {
   background-color: #fff;
   transform: translateX(16px);
- }
- /* Hover, Focus */
- .cl-switch:hover > input {
+}
+
+/* Hover, Focus */
+.cl-switch:hover>input {
   opacity: 0.04;
- }
- 
- .cl-switch > input:focus {
+}
+
+.cl-switch>input:focus {
   opacity: 0.12;
- }
- 
- .cl-switch:hover > input:focus {
+}
+
+.cl-switch:hover>input:focus {
   opacity: 0.16;
- }
- /* Active */
- .cl-switch > input:active {
+}
+
+/* Active */
+.cl-switch>input:active {
   opacity: 1;
   transform: scale(0);
   transition: transform 0s, opacity 0s;
- }
- 
- .cl-switch > input:active + span::before {
-  background-color: #8f8f8f;
- }
+}
 
- 
- .cl-switch > input:checked:active + span::before {
+.cl-switch>input:active+span::before {
+  background-color: #8f8f8f;
+}
+
+
+.cl-switch>input:checked:active+span::before {
   background-color: #85b8b7;
- }
- /* Disabled */
- .cl-switch > input:disabled {
+}
+
+/* Disabled */
+.cl-switch>input:disabled {
   opacity: 0;
- }
- 
- .cl-switch > input:disabled + span::before {
+}
+
+.cl-switch>input:disabled+span::before {
   background-color: #ddd;
- }
- 
- .cl-switch > input:checked:disabled + span::before {
+}
+
+.cl-switch>input:checked:disabled+span::before {
   background-color: #bfdbda;
- }
- 
- .cl-switch > input:checked:disabled + span::after {
+}
+
+.cl-switch>input:checked:disabled+span::after {
   background-color: #61b5b4;
- }
+}

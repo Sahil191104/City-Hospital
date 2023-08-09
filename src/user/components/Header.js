@@ -20,10 +20,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function Header(props) {
-
-
     let theme = useContext(ThemeContext);
     let color = theme.theme === 'dark' ? 'color' : 'navbar';
+    let color1 = theme.theme === 'dark' ? 'color1' : 'navbar';
 
     let localStatus = localStorage.getItem("Loginredirecting")
 
@@ -56,7 +55,7 @@ function Header(props) {
     }
 
     return (
-        <div className="main-header">
+        <div className={`main-header ${theme.theme}`}>
             <div id="topbar" className={`d-flex align-items-center fixed-top ${theme.theme}`}>
                 <div className="container d-flex justify-content-between">
                     <div className="contact-info d-flex align-items-center">
@@ -78,12 +77,12 @@ function Header(props) {
 
                 </div>
             </div>
-            <header id="header" className="fixed-top">
+            <header id="header" className={`fixed-top ${theme.theme}`}>
                 <div className="container d-flex align-items-center">
                     <div className="logo">
                         <a href="index.html">
-                            <h1 className="logo me-auto">City</h1><br />
-                            <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>
+                            <h1 className= {`logo me-auto ${color}`}>City</h1><br />
+                            <h2 className= {`logo-tiny-text me-auto ${color1}`}>Multispeciality Hospital</h2>
                         </a>
                     </div>
                     <nav id="navbar" className={`navbar order-last order-lg-0 ${theme.theme} ${color}`} >

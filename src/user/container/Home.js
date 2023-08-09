@@ -1,58 +1,66 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Htag from './UI/H1toH6/Htag';
 import Icon from './UI/Icon/Icon';
 import Titel from './UI/Title/Titel';
+import { ThemeContext } from './Context/ThemeContext';
 
 function Home(props) {
+    let theme = useContext(ThemeContext);
+    let color = theme.theme === 'dark' ? 'color' : '';
+    let color1 = theme.theme === 'dark' ? 'color1' : '';
+    let color2 = theme.theme === 'dark' ? 'color2' : 'counts';
+    let color3 = theme.theme === 'dark' ? 'color3' : 'services';
+    let color4 = theme.theme === 'dark' ? 'color4' : '';
+
     return (
         <div>
             <section id="hero" className="d-flex align-items-center">
                 <div className="container">
-                    <h1>Welcome to City <br />Multispeciality Hospital</h1>
-                    <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+                    <h1 className= {`${color}`}>Welcome to City <br />Multispeciality Hospital</h1>
+                    <h2 className= {`${color}`}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
                 </div>
             </section>
             <main id="main">
                 <section id="why-us" className="why-us">
                 </section>
-                <section id="counts" className="counts">
+                <section id="counts" className={`counts ${color2}`}>
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 col-md-6">
-                                <div className="count-box">
-                                    <i className="fas fa-user-md" />
-                                    <span>23</span>
-                                    <p>Doctors</p>
+                                <div className={`count-box ${color3}`}>
+                                    <i className= {`fas fa-user-md ${color4}`} />
+                                    <span className={`${color}`}>23</span>
+                                    <p className={`${color1}`}>Doctors</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 mt-5 mt-md-0">
-                                <div className="count-box">
-                                    <i className="far fa-hospital" />
-                                    <span>18</span>
-                                    <p>Departments</p>
+                                <div className={`count-box ${color3}`}>
+                                    <i className= {`far fa-hospital ${color4}`} />
+                                    <span className={`${color}`}>18</span>
+                                    <p className={`${color1}`}>Departments</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                                <div className="count-box">
-                                    <i className="fas fa-heartbeat" />
-                                    <span>980</span>
-                                    <p>Patients</p>
+                                <div className={`count-box ${color3}`}>
+                                    <i className= {`fas fa-heartbeat ${color4}`} />
+                                    <span className={`${color}`}>980</span>
+                                    <p className={`${color1}`}>Patients</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                                <div className="count-box">
-                                    <i className="fas fa-award" />
-                                    <span>12</span>
-                                    <p>Awards</p>
+                                <div className={`count-box ${color3}`}>
+                                    <i className= {`fas fa-award ${color4}`} />
+                                    <span className={`${color}`}>12</span>
+                                    <p className={`${color1}`}>Awards</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section id="services" className="services">
+                <section id="services" className={`services ${color3}`}>
                     <div className="container">
                         <div className="section-title">
-                            <Htag name="h2tag">Our Facilities</Htag>
+                            <Htag name="h2tag" className={`${color}`}>Our Facilities</Htag>
                             <p>Nunc aliquam eget nibh eu euismod. Donec dapibus blandit quam volutpat sollicitudin. Fusce tincidunt sit
                                 amet ex in volutpat. Donec lacinia finibus tortor. Curabitur luctus eleifend odio. Phasellus placerat mi et
                                 suscipit pulvinar. Donec quis tristique lectus.</p>
