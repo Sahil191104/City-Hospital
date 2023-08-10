@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { TextField } from '@mui/material';
 import Htag from '../UI/H1toH6/Htag';
 import Titel from '../UI/Title/Titel';
 import ListDepartment from './ListDepartment';
+import { ThemeContext } from '../Context/ThemeContext';
 
 function Department(props) {
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
+
     const [medicenData, setMedicenData] = useState([]);
     const [search, setSeacrh] = useState([])
     const [searchvalue, setSeacrhValue] = useState(null)
@@ -78,7 +83,7 @@ function Department(props) {
     }
 
     return (
-        <section id="medicine" className="medicine">
+        <section id="departments" className={`departments ${color9}`}>
             <div className="container">
                 <div className="row mt-5 justify-content-between">
                     <ListDepartment Mdata={search.length > 0 ? search : medicenData} Hadleclick={handleclick} Handleicon={handleicon} />

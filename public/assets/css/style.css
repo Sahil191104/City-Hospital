@@ -168,6 +168,9 @@ h6 {
   z-index: 997;
   padding: 15px 0;
   top: 40px;
+}
+
+.header {
   box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
 
@@ -936,6 +939,11 @@ section {
   transition: all ease-in-out 0.3s;
 }
 
+.services .icon-box .icon i {
+  color: #fff;
+  font-size: 28px;
+}
+
 .services .icon-box .icon {
   margin: 0 auto;
   width: 64px;
@@ -986,6 +994,10 @@ section {
 
 .services .icon-box:hover .icon {
   background: #fff;
+}
+
+.services .icon-box:hover .icon i {
+  color: #FF6337;
 }
 
 .services .icon-box:hover .icon::before {
@@ -1604,9 +1616,13 @@ section {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
 #footer {
   color: #444444;
   font-size: 14px;
+}
+
+.footer {
   background: #FFF4F3;
 }
 
@@ -1817,20 +1833,83 @@ section {
   background-color: white !important;
 }
 
-.dark {
-  color: #166AB5 !important;
-  background-color: white !important;
+.color2 {
+  background: #292537;
+  padding: 70px 0 60px;
 }
 
-.color {
-  color: #2c4964;
+.color7 {
+  color: #444444;
+  font-size: 14px;
+  background: #292537;
+}
+
+.testimonials .color5,
+.color5,
+.doctors .color5 {
+  box-shadow: 0px 2px 12px rgb(76 76 76);
+  background-color: #18122B !important;
+}
+
+.dark{
+  color: #fff !important;
+  background-color: #18122B !important;
+}
+
+.color9 {
+  color: gray;
+  background-color: #18122B !important;
+}
+
+.departments .color9,
+.departments .details .color10 {
+  color: white;
+}
+
+.departments .color9:hover,
+.departments .color9.active {
+  color: gray;
+  border-color: gray;
+}
+
+.color a,
+.counts .count-box .color,
+.color,
+.testimonials .testimonial-item .color,
+#services .color,
+#hero .color {
+  color: gray;
+}
+
+.counts .count-box .color4{
+  background-color: #111;
+}
+
+.testimonials .testimonial-item .color8 {
+  color: #292537;
+}
+
+.color1 {
+  color: white;
+}
+
+.gallery .color6 {
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+.color3 {
+  background-color: #18122B !important;
+}
+
+.color a {
+  border: none;
 }
 
 .color li:hover>a {
-  color: #166AB5 !important;
-  border-color: #166AB5 !important;
+  border-bottom: 2px solid #fff !important;
+  color: #fff !important;
 }
-
 
 .btncolor {
   background: #FF6337;
@@ -1846,14 +1925,15 @@ section {
 
 .cl-toggle-switch {
   position: relative;
- }
- 
- .cl-switch {
+}
+
+.cl-switch {
   position: relative;
   display: inline-block;
- }
- /* Input */
- .cl-switch > input {
+}
+
+/* Input */
+.cl-switch>input {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -1872,9 +1952,10 @@ section {
   transform: scale(1);
   pointer-events: none;
   transition: opacity 0.3s 0.1s, transform 0.2s 0.1s;
- }
- /* Track */
- .cl-switch > span::before {
+}
+
+/* Track */
+.cl-switch>span::before {
   content: "";
   float: right;
   display: inline-block;
@@ -1885,9 +1966,10 @@ section {
   background-color: #FF6337;
   vertical-align: top;
   transition: background-color 0.2s, opacity 0.2s;
- }
- /* Thumb */
- .cl-switch > span::after {
+}
+
+/* Thumb */
+.cl-switch>span::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -1898,62 +1980,65 @@ section {
   background-color: #fff;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   transition: background-color 0.2s, transform 0.2s;
- }
- 
- /* Checked */
- .cl-switch > input:checked {
+}
+
+/* Checked */
+.cl-switch>input:checked {
   right: -10px;
-  background-color: #5383ae ;
- }
- 
- .cl-switch > input:checked + span::before {
-  background-color: #5383ae ;
- }
- 
- .cl-switch > input:checked + span::after {
+  background-color: gray;
+}
+
+.cl-switch>input:checked+span::before {
+  background-color: gray;
+}
+
+.cl-switch>input:checked+span::after {
   background-color: #fff;
   transform: translateX(16px);
- }
- /* Hover, Focus */
- .cl-switch:hover > input {
+}
+
+/* Hover, Focus */
+.cl-switch:hover>input {
   opacity: 0.04;
- }
- 
- .cl-switch > input:focus {
+}
+
+.cl-switch>input:focus {
   opacity: 0.12;
- }
- 
- .cl-switch:hover > input:focus {
+}
+
+.cl-switch:hover>input:focus {
   opacity: 0.16;
- }
- /* Active */
- .cl-switch > input:active {
+}
+
+/* Active */
+.cl-switch>input:active {
   opacity: 1;
   transform: scale(0);
   transition: transform 0s, opacity 0s;
- }
- 
- .cl-switch > input:active + span::before {
-  background-color: #8f8f8f;
- }
+}
 
- 
- .cl-switch > input:checked:active + span::before {
+.cl-switch>input:active+span::before {
+  background-color: #8f8f8f;
+}
+
+
+.cl-switch>input:checked:active+span::before {
   background-color: #85b8b7;
- }
- /* Disabled */
- .cl-switch > input:disabled {
+}
+
+/* Disabled */
+.cl-switch>input:disabled {
   opacity: 0;
- }
- 
- .cl-switch > input:disabled + span::before {
+}
+
+.cl-switch>input:disabled+span::before {
   background-color: #ddd;
- }
- 
- .cl-switch > input:checked:disabled + span::before {
+}
+
+.cl-switch>input:checked:disabled+span::before {
   background-color: #bfdbda;
- }
- 
- .cl-switch > input:checked:disabled + span::after {
+}
+
+.cl-switch>input:checked:disabled+span::after {
   background-color: #61b5b4;
- }
+}

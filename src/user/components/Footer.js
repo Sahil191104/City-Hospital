@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../container/Context/ThemeContext';
 
 function Footer(props) {
+    let theme = useContext(ThemeContext);
+    let color7 = theme.theme === 'dark' ? 'color7' : 'footer';
+    let color = theme.theme === 'dark' ? 'color' : '';
+
     return (
-        <footer id="footer">
+        <footer id="footer" className={`footer ${color7}`}>
             <div className="container d-md-flex py-4">
                 <div className="me-md-auto text-center text-md-start">
                     <div>
-                        <h4>Address</h4>
-                        <p>
+                        <h4 className={`${color}`}>Address</h4>
+                        <p className={`${color}`}>
                             F-505, <br />
                             Inovative Plazza<br />
                             New Delhi, India<br /><br />

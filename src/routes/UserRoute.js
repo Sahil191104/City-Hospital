@@ -38,11 +38,11 @@ function UserRoute(props) {
                     <Route path='/appointment' element={<Appointment />} />
                     <Route path='/contact' element={<Contact />} />
 
-                    <Route element={<PrivateRoute />}>
+                    {/* <Route element={<PrivateRoute />}> */}
                         {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
                         <Route exact path='medicine' element={<Medicine />} />
                         <Route exact path='department' element={<Department />} />
-                    </Route>
+                    {/* </Route> */}
 
                     {/* <Route path='/contact' element={<Contact1 />} /> */}
                     <Route path='/form' element={<FormValidation />} />

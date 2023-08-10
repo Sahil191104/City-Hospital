@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Htag from './UI/H1toH6/Htag';
 import Titel from './UI/Title/Titel';
+import { ThemeContext } from './Context/ThemeContext';
 
 function Doctors(props) {
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
+    let color5 = theme.theme === 'dark' ? 'color5' : '';
 
     const information = [
         {
@@ -37,20 +42,19 @@ function Doctors(props) {
     ]
 
     return (
-        <section id="doctors" className="doctors">
+        <section id="doctors" className={`doctors ${color9}`}>
             <div className="container">
                 <div className="section-title">
                     <Htag name="h2tag1">Doctors</Htag>
                     <Titel>Duis sagittis rutrum neque, quis tincidunt arcu pretium ac. Suspendisse sem risus, molestie vitae arcu et,
                         tincidunt viverra erat. Quisque in lectus id nulla viverra sodales in a risus. Aliquam ut sem ex. Duis viverra
                         ipsum lacus, ut pharetra arcu sagittis nec. Phasellus a eleifend elit.</Titel>
-                        <Link className="appointment-btn scrollto mt-4" to={'/doctor/visiting_doctor'}>Visiting Doctor</Link>
                 </div>
                 <div className="row">
                     {
                         information.map((value, i) => {
                             return (
-                                <div className="col-lg-6 mt-4 mt-lg-0">
+                                <div className= {`col-lg-6 mt-4 ${color5}`}>
                                     <Link to={`/doctor/${value.id}`}>
                                         <div className="member d-flex align-items-start">
                                             <div className="pic"><img src={value.url} className="img-doctor" alt /></div>
