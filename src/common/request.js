@@ -6,7 +6,7 @@ const instance = axios.create({
     timeout: 1000
 });
 
-const sendRequest = (config) => {
+export const sendRequest = (config) => {
     return instance.request(config)
 }
 
@@ -18,21 +18,22 @@ export const getRequest = (path) => {
 }
 
 export const addRequest = (path, data) => {
-    console.log(data, path);
+    console.log(path, data);
     return sendRequest({
         method: 'POST',
         url: path,
-        data: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
-          }
+        },
+        data: JSON.stringify(data)
+
     })
 }
 
-export const deleteRequest = (path, id) => {
+export const deleteRequest = (path) => {
     return sendRequest({
         method: 'DELETE',
-        url: path + id
+        url: path
     })
 }
 
@@ -40,9 +41,9 @@ export const putRequest = (path, data) => {
     return sendRequest({
         method: 'PUT',
         url: path,
-        data: JSON.stringify(data),
         headers: {
-            'content-type': 'application/json'
-        }
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(data)
     })
 }

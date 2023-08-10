@@ -1,4 +1,5 @@
 import * as ActionType from "../ActionTypes"
+import { setAlert } from "../slice/alertSlice"
 
 export const fetchdata = () => (dispatch) => {
     try {
@@ -39,9 +40,11 @@ export const adddata = (data) => (dispatch) => {
                 throw new Error('Something went wrong');
             })
             .then(data => {
+                dispatch(setAlert({ text: 'Add Data', color: 'success' }))
                 dispatch({ type: ActionType.ADD_MEDICINE, payload: data })
             })
             .catch(error => {
+                dispatch(setAlert({ text: 'No Add Please Check Your process', color: 'error' }))
                 dispatch(errordata(error))
             })
     } catch (error) {
@@ -61,9 +64,11 @@ export const deletemedicine = (id) => (dispatch) => {
                 throw new Error('Something went wrong');
             })
             .then(() => {
+                dispatch(setAlert({ text: 'delete Data', color: 'success' }))
                 dispatch({ type: ActionType.DELETE_MEDICINE, payload: id })
             })
             .catch(error => {
+                dispatch(setAlert({ text: 'No delete Please Check Your process', color: 'error' }))
                 dispatch(errordata(error))
             })
     } catch (error) {
@@ -86,10 +91,12 @@ export const updatemedicine = (data) => (dispatch) => {
                 }
                 throw new Error('Something went wrong');
             })
-            .then(
+            .then(() => {
+                dispatch(setAlert({ text: 'Update Data', color: 'success' }))
                 dispatch({ type: ActionType.UPDATE_MEDICINE, payload: data })
-            )
+            })
             .catch(error => {
+                dispatch(setAlert({ text: 'No Update Please Check Your process', color: 'error' }))
                 dispatch(errordata(error))
             })
     } catch (error) {
