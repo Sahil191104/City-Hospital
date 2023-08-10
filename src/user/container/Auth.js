@@ -77,7 +77,7 @@ function Auth(props) {
                 handleForget(values)
             }
             action.resetForm()
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
         },
     });
 

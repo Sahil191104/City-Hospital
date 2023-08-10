@@ -24,11 +24,11 @@ export const signupAPI = (values) => {
                     // const errorMessage = error.message;
 
                     if (errorCode.localeCompare("auth/network-request-failed") === 0) {
-                        rejecte("Please check your internet Conection.");
+                        rejecte({message :"Please check your internet Conection."});
                     } else if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
-                        rejecte("Email id is already used.");
+                        rejecte({message :"Email id is already used."});
                     } else if (errorCode.localeCompare("auth/wrong-password") === 0) {
-                        rejecte("Wrong Password! Please check your Password.");
+                        rejecte({message :"Wrong Password! Please check your Password."});
                     }
 
                     // rejecte(errorCode, errorMessage);
@@ -62,11 +62,11 @@ export const loginAPI = (values) => {
                     // const errorMessage = error.message;
 
                     if (errorCode.localeCompare("auth/network-request-failed") === 0) {
-                        rejecte("Please check your internet Conection.");
+                        rejecte({message :"Please check your internet Conection."});
                     } else if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
-                        rejecte("Email id is already used.");
+                        rejecte({message :"Email id is already used."});
                     } else if (errorCode.localeCompare("auth/wrong-password") === 0) {
-                        rejecte("Wrong Password! Please check your Password.");
+                        rejecte({message :"Wrong Password! Please check your Password."});
                     }
 
                     // console.log(errorCode, errorMessage);
@@ -90,7 +90,7 @@ export const forgotAPI = (values) => {
                     // const errorMessage = error.message;
 
                     if (errorCode.localeCompare("auth/network-request-failed") === 0) {
-                        rejecte("Please check your internet Conection.");
+                        rejecte({message :"Please check your internet Conection."});
                     }
 
                     // console.log(errorCode, errorMessage);
