@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
 export const signupAPI = (values) => {
@@ -24,11 +24,11 @@ export const signupAPI = (values) => {
                     // const errorMessage = error.message;
 
                     if (errorCode.localeCompare("auth/network-request-failed") === 0) {
-                        rejecte({message :"Please check your internet Conection."});
+                        rejecte({ message: "Please check your internet Conection." });
                     } else if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
-                        rejecte({message :"Email id is already used."});
+                        rejecte({ message: "Email id is already used." });
                     } else if (errorCode.localeCompare("auth/wrong-password") === 0) {
-                        rejecte({message :"Wrong Password! Please check your Password."});
+                        rejecte({ message: "Wrong Password! Please check your Password." });
                     }
 
                     // rejecte(errorCode, errorMessage);
@@ -49,7 +49,7 @@ export const loginAPI = (values) => {
                     const user = userCredential.user;
                     // ...
                     if (user.emailVerified) {
-                        resolve({ message: "Email Login Successfully" });
+                        resolve({ user: user, message: "Email Login Successfully" });
                         // localStorage.setItem("Loginredirecting", "true")
                         // navigate("/")
                     } else {
@@ -62,11 +62,11 @@ export const loginAPI = (values) => {
                     // const errorMessage = error.message;
 
                     if (errorCode.localeCompare("auth/network-request-failed") === 0) {
-                        rejecte({message :"Please check your internet Conection."});
+                        rejecte({ message: "Please check your internet Conection." });
                     } else if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
-                        rejecte({message :"Email id is already used."});
+                        rejecte({ message: "Email id is already used." });
                     } else if (errorCode.localeCompare("auth/wrong-password") === 0) {
-                        rejecte({message :"Wrong Password! Please check your Password."});
+                        rejecte({ message: "Wrong Password! Please check your Password." });
                     }
 
                     // console.log(errorCode, errorMessage);
@@ -83,18 +83,38 @@ export const forgotAPI = (values) => {
         return new Promise((resolve, rejecte) => {
             sendPasswordResetEmail(auth, values.email)
                 .then(() => {
-                    resolve({message :"Password reset email sent!."});
+                    resolve({ message: "Password reset email sent!." });
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     // const errorMessage = error.message;
 
                     if (errorCode.localeCompare("auth/network-request-failed") === 0) {
-                        rejecte({message :"Please check your internet Conection."});
+                        rejecte({ message: "Please check your internet Conection." });
                     }
 
                     // console.log(errorCode, errorMessage);
                 });
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+export const logoutAPI = (values) => {
+    console.log(values);
+    try {
+        return new Promise((resolve, rejecte) => {
+            signOut(auth).then(() => {
+                resolve({ message: "Logout Successfully." });
+            }).catch((error) => {
+                const errorCode = error.code;
+
+                if (errorCode.localeCompare("auth/network-request-failed") === 0) {
+                    rejecte({ message: "Please check your internet Conection." });
+                }
+            });
         })
     } catch (error) {
         console.log(error);

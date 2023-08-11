@@ -21,5 +21,9 @@ export const DEC_QYT = "DEC_QYT";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 
 export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+export const EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGGED_IN = "LOGGED_IN";
+export const LOGG_OUT = "LOGG_OUT";
 export const FORGOT_REQUEST = "FORGOT_REQUEST";
+export const AUTH_ERROR = "AUTH_ERROR";

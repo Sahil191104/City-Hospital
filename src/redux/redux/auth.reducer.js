@@ -6,12 +6,40 @@ const initState = {
     error: null
 }
 
-export const signupreducer = (state = initState, action) => {
+export const authreducer = (state = initState, action) => {
+
     console.log(action);
     switch (action.type) {
         case ActionType.SIGNUP_REQUEST:
+        case ActionType.LOGIN_REQUEST:
             return {
-                ...state
+                user: null,
+                loading: true,
+                error: null
+            }
+        case ActionType.EMAIL_VERIFICATION:
+            return {
+                user: null,
+                loading: false,
+                error: null
+            }
+        case ActionType.LOGGED_IN:
+            return {
+                user: action.payload,
+                loading: false,
+                error: null
+            }
+        case ActionType.LOGG_OUT:
+            return {
+                user: null,
+                loading: false,
+                error: null
+            }
+        case ActionType.AUTH_ERROR:
+            return {
+                user: null,
+                loading: false,
+                error: action.payload
             }
         default:
             return state

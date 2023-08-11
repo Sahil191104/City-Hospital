@@ -1,16 +1,17 @@
 import { all, call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import * as ActionType from "../ActionTypes"
-import { forgotAPI, loginAPI, signupAPI } from '../../common/apis/auth.api'
+import { forgotAPI, loginAPI, logoutAPI, signupAPI } from '../../common/apis/auth.api'
 import { setAlert } from '../slice/alertSlice';
+import { authError, emailVerification, loggedIn } from '../action/auth.action';
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* signupUser(action) {
     try {
         const user = yield call(signupAPI, action.payload)
-        console.log(user);
+        yield put(emailVerification())
         yield put(setAlert({ text: user.message, color: 'success' }))
     } catch (e) {
-        console.log(e);
+        yield put(authError(e.message))
         yield put(setAlert({ text: e.message, color: 'error' }))
     }
 }
@@ -18,21 +19,31 @@ function* signupUser(action) {
 function* loginUser(action) {
     try {
         const user = yield call(loginAPI, action.payload)
-        console.log(user);
+        yield put(loggedIn(user.user))
         yield put(setAlert({ text: user.message, color: 'success' }))
+        console.log(user);
     } catch (e) {
-        console.log(e);
+        yield put(authError(e.message))
         yield put(setAlert({ text: e.message, color: 'error' }))
     }
 }
 
 function* forgotUser(action) {
     try {
-        const user = yield call(forgotAPI, action.payload)
-        console.log(user);
+        const user = yield call(logoutAPI, action.payload)
         yield put(setAlert({ text: user.message, color: 'success' }))
     } catch (e) {
-        console.log(e);
+        yield put(authError(e.message))
+        yield put(setAlert({ text: e.message, color: 'error' }))
+    }
+}
+
+function* logoutUser(action) {
+    try {
+        const user = yield call(log, action.payload)
+        yield put(setAlert({ text: user.message, color: 'success' }))
+    } catch (e) {
+        yield put(authError(e.message))
         yield put(setAlert({ text: e.message, color: 'error' }))
     }
 }
@@ -49,10 +60,15 @@ function* forgotSaga() {
     yield takeEvery(ActionType.FORGOT_REQUEST, forgotUser)
 }
 
+function* logoutSaga() {
+    yield takeEvery(ActionType.FORGOT_REQUEST, forgotUser)
+}
+
 export function* authSaga() {
     yield all([
         signupSaga(),
         loginSaga(),
-        forgotSaga()
+        forgotSaga(),
+        logoutSaga()
     ])
 }
