@@ -1,14 +1,19 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Yup from 'yup';
+import { ThemeContext } from './Context/ThemeContext';
 
 function Contact1(props) {
+
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
 
     let userSchema = Yup.object({
         name: Yup.string().required('Please enter your name').min(2).max(15),
         email: Yup.string().email('Please enter your valid email').required('Please enter your email'),
         subject: Yup.string().required('Please enter your subject'),
-        message: Yup.string().required('Please enter your message').min(2).test('message','atlist maximum 50 words message', function(value) {
+        message: Yup.string().required('Please enter your message').min(2).test('message', 'atlist maximum 50 words message', function (value) {
             let ans = value.split(" ");
 
             if (ans.length > 50) {
@@ -33,7 +38,7 @@ function Contact1(props) {
     });
 
     return (
-        <section id="contact" className="contact">
+        <section id="contact" className={`contact ${color9}`}>
             <div className="container">
                 <div className="section-title">
                     <h2>Contact</h2>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useFormik } from 'formik';
 import { signUpSchema } from '../../schemas/index';
 import Titel from './UI/Title/Titel';
 import Htag from './UI/H1toH6/Htag';
+import { ThemeContext } from './Context/ThemeContext';
 
 const initialValues = {
     name: "",
@@ -12,7 +13,10 @@ const initialValues = {
 }
 
 const Contact = (props) => {
+    let theme = useContext(ThemeContext);
 
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
+    
     const { values, errors, handleBlur, touched, handleChange, handleSubmit } = useFormik({
         initialValues: initialValues,
         validationSchema: signUpSchema,
@@ -22,7 +26,7 @@ const Contact = (props) => {
     })
 
     return (
-        <section id="contact" className="contact">
+        <section id="contact" className={`contact ${color9}`}>
             <div className="container">
                 <div className="section-title">
                     <Htag name="h2tag1">Contact</Htag>
@@ -34,7 +38,7 @@ const Contact = (props) => {
             <div className="container">
                 <div className="row mt-5">
                     <div className="col-lg-4">
-                        <div className="info">
+                        <div className= {`info ${color9}`}>
                             <div className="address">
                                 <i className="bi bi-geo-alt" />
                                 <h4>Location:</h4>
@@ -53,29 +57,29 @@ const Contact = (props) => {
                         </div>
                     </div>
                     <div className="col-lg-8 mt-5 mt-lg-0">
-                        <form className="php-email-form" onSubmit={handleSubmit}>
-                            <div className="row">
+                        <form className= {`php-email-form ${color9}`} onSubmit={handleSubmit}>
+                            <div className={`row ${color9}`}>
                                 <div className="col-md-6 form-group">
-                                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" autoComplete='off' value={values.name} onChange={handleChange} onBlur={handleBlur} />
+                                    <input type="text" name="name" className={`form-control ${color9}`} id="name" placeholder="Your Name" autoComplete='off' value={values.name} onChange={handleChange} onBlur={handleBlur} />
                                     {
                                         errors.name && touched.name ? <p className='form-error'>{errors.name}</p> : null
                                     }
                                 </div>
                                 <div className="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" autoComplete='off' value={values.email} onChange={handleChange} onBlur={handleBlur} />
+                                    <input type="email" className={`form-control ${color9}`} name="email" id="email" placeholder="Your Email" autoComplete='off' value={values.email} onChange={handleChange} onBlur={handleBlur} />
                                     {
                                         errors.email && touched.email ? <p className='form-error'>{errors.email}</p> : null
                                     }
                                 </div>
                             </div>
                             <div className="form-group mt-3">
-                                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" autoComplete='off' value={values.subject} onChange={handleChange} onBlur={handleBlur} />
+                                <input type="text" className={`form-control ${color9}`} name="subject" id="subject" placeholder="Subject" autoComplete='off' value={values.subject} onChange={handleChange} onBlur={handleBlur} />
                                 {
                                     errors.subject && touched.subject ? <p className='form-error'>{errors.subject}</p> : null
                                 }
                             </div>
-                            <div className="form-group mt-3">
-                                <textarea className="form-control" name="message" rows={5} placeholder="Message" autoComplete='off' defaultValue={""} value={values.message} onChange={handleChange} onBlur={handleBlur} />
+                            <div className="form-group mt-3 mb-1">
+                                <textarea className={`form-control ${color9}`} name="message" rows={5} placeholder="Message" autoComplete='off' defaultValue={""} value={values.message} onChange={handleChange} onBlur={handleBlur} />
                                 {
                                     errors.message && touched.message ? <p className='form-error'>{errors.message}</p> : null
                                 }

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CustButton from './UI/Button/CustButton';
+import { ThemeContext } from './Context/ThemeContext';
 
 function Appointment(props) {
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
 
     return (
-        <section id="appointment" className="appointment">
+        <section id="appointment" className={`appointment ${color9}`}>
             <div className="container">
                 <div className="section-title">
                     <h2>Make an Appointment</h2>
@@ -12,28 +16,28 @@ function Appointment(props) {
                         blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
                         Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
                 </div>
-                <form action method="post" role="form" className="php-email-form">
+                <form action method="post" role="form" className="php-email-form" >
                     <div className="row">
                         <div className="col-md-4 form-group">
-                            <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <input type="text" name="name" className={`form-control ${color9}`} id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                             <div className="validate" />
                         </div>
                         <div className="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <input type="email" className={`form-control ${color9}`} name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                             <div className="validate" />
                         </div>
                         <div className="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <input type="tel" className={`form-control ${color9}`} name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                             <div className="validate" />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-4 form-group mt-3">
-                            <input type="datetime" name="date" className="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <input type="datetime" name="date" className={`form-control datepicker ${color9}`} id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                             <div className="validate" />
                         </div>
                         <div className="col-md-4 form-group mt-3">
-                            <select name="department" id="department" className="form-select">
+                            <select name="department" id="department" className={`form-select ${color9}`}>
                                 <option value>Select Department</option>
                                 <option value="Department 1">Department 1</option>
                                 <option value="Department 2">Department 2</option>
@@ -43,7 +47,7 @@ function Appointment(props) {
                         </div>
                     </div>
                     <div className="form-group mt-3">
-                        <textarea className="form-control" name="message" rows={5} placeholder="Message (Optional)" defaultValue={""} />
+                        <textarea className={`form-control ${color9}`} name="message" rows={5} placeholder="Message (Optional)" defaultValue={""} />
                         <div className="validate" />
                     </div>
                     <div className="mb-3">

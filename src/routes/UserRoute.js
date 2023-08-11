@@ -59,9 +59,9 @@ function UserRoute(props) {
                     <Route path='/counter' element={<CounterRedux />} />
                     <Route path='*' element={<Error />} />
                     <Route path='/Auth' element={<Auth />} />
-                    <Route path='/Cart' element={<Cart />} />
+                    {/* <Route path='/Cart' element={<Cart />} /> */}
                     <Route path='/Context' element={<Counter />} />
-                    {/* <Route path='/Cart' element={<Cart1 />} /> */}
+                    <Route path='/Cart' element={<Cart1 />} />
                     {/* <Route path='/Auth' element={<Auth />} /> */}
                 </Routes>
 

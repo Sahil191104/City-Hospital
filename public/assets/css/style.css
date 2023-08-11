@@ -1183,9 +1183,12 @@ section {
 
 .doctors .member {
   position: relative;
-  box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
   padding: 30px;
   border-radius: 10px;
+}
+
+.memberdata {
+  box-shadow: 0px 2px 15px rgba(134, 134, 134, 0.08);
 }
 
 .doctors .member .pic {
@@ -1847,7 +1850,7 @@ section {
 .testimonials .color5,
 .color5,
 .doctors .color5 {
-  box-shadow: 0px 2px 12px rgb(76 76 76);
+  box-shadow: 0px 2px 15px rgba(134, 134, 134, 0.08);
   background-color: #18122B !important;
 }
 

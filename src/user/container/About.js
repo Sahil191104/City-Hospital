@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from './Context/ThemeContext';
 
 function About(props) {
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
+
     return (
-        <section id="about" class="about">
+        <section id="about" class={`about ${color9}`}>
             <div class="container">
 
                 <div class="row">

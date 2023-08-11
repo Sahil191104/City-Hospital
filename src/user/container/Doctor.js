@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ThemeContext } from './Context/ThemeContext';
 
 function Doctor(props) {
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
 
     const information = [
         {
@@ -42,7 +46,7 @@ function Doctor(props) {
 
     return (
         <div>
-            <section className="about-area pt-120 pb-90">
+            <section className= {`about-area pt-120 pb-90 ${color9}`}>
                 <div className="container">
                     <div className="row">
                         {

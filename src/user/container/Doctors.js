@@ -8,7 +8,7 @@ function Doctors(props) {
     let theme = useContext(ThemeContext);
 
     let color9 = theme.theme === 'dark' ? 'color9' : '';
-    let color5 = theme.theme === 'dark' ? 'color5' : '';
+    let color5 = theme.theme === 'dark' ? 'memberdata' : 'memberdata';
 
     const information = [
         {

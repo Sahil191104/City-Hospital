@@ -41,7 +41,9 @@ function DepartmentForm({ onGetdata, onUpdate }) {
                     } else {
                         return true
                     }
-                })
+                }),
+
+        image: yup.string().required("Please entre a Image")
     });
 
     const formik = useFormik({
@@ -49,7 +51,8 @@ function DepartmentForm({ onGetdata, onUpdate }) {
 
         initialValues: {
             name: '',
-            desc: ''
+            desc: '',
+            image: ''
         },
         onSubmit: (values, action) => {
             action.resetForm()
@@ -98,6 +101,20 @@ function DepartmentForm({ onGetdata, onUpdate }) {
                                 onBlur={handleBlur}
                             />
                             <span style={{ color: 'red' }}>{errors.desc && touched.desc ? errors.desc : null} </span>
+                            <TextField
+
+                                margin="dense"
+                                id="image"
+                                label="image"
+                                name='image'
+                                type="file"
+                                fullWidth
+                                variant="standard"
+                                value={values.image}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
+                            <span style={{ color: 'red' }}>{errors.image && touched.image ? errors.image : null} </span>
                             <DialogActions>
                                 <Button onClick={handleClose}>Cancel</Button>
                                 <Button type='submit' >submit</Button>

@@ -45,6 +45,7 @@ export default function Department() {
     const columns = [
         { field: 'name', headerName: 'Name', width: 130 },
         { field: 'desc', headerName: 'Description', width: 130 },
+        { field: 'image', headerName: 'Image', width: 130 },
         {
             field: 'action',
             headerName: 'Action',

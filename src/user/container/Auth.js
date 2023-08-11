@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -11,12 +11,17 @@ import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { Box, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 import { forgotRequest, loginRequest, signupRequest } from '../../redux/action/auth.action';
+import { ThemeContext } from './Context/ThemeContext';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
     const [data, setData] = useState([])
     const navigate = useNavigate()
     const auth = useSelector(state => state.auth)
+
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
 
     const dispatch = useDispatch()
 
@@ -98,7 +103,7 @@ function Auth(props) {
 
     return (
         <div>
-            <section id="appointment" className="appointment">
+            <section id="appointment" className={`appointment ${color9}`}>
                 <div className="container">
                     <div className="section-title">
                         {
@@ -112,22 +117,23 @@ function Auth(props) {
                     {
                         auth.loading ?
                             <Box className="d-flex justify-content-center" >
-                                <CircularProgress sx={{ color: '#FF6337', margin: "300px auto" }} />
+                                <CircularProgress sx={{ color: '#FF6337', margin: "300px auto", backgroundColor: "rgba(255,255,255,0.7)", zIndex: "9999" }} />
                             </Box> :
+
                             <>
                                 <form method="post" role="form" onSubmit={handleSubmit} className="php-email-form">
                                     <div className="row justify-content-center">
                                         {
                                             authType === 'signup' ?
                                                 <div className="col-md-7 form-group">
-                                                    <Input type="text" name="name" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.name} onChange={handleChange} onBlur={handleBlur}
+                                                    <Input type="text" name="name" id="name" className={`form-control ${color9}`} placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.name} onChange={handleChange} onBlur={handleBlur}
                                                         errorText={errors.name && touched.name ? errors.name : null}
                                                     />
                                                     <div className="validate" />
                                                 </div> : null
                                         }
                                         <div className="col-md-7 form-group mt-3 mt-md-0">
-                                            <Input type="email" name="email" id="email" placeholder="Email" value={values.email} onChange={handleChange} onBlur={handleBlur}
+                                            <Input type="email" name="email" id="email" className={`form-control ${color9}`} placeholder="Email" value={values.email} onChange={handleChange} onBlur={handleBlur}
                                                 errorText={errors.email && touched.email ? errors.email : null}
                                             />
                                             <div className="validate" />
@@ -135,21 +141,12 @@ function Auth(props) {
                                         {
                                             authType === 'forgot' ? null :
                                                 <div className="col-md-7 form-group mt-3 mt-md-0">
-                                                    <Input type="password" name="password" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.password} onChange={handleChange} onBlur={handleBlur}
+                                                    <Input type="password" name="password" id="password" className={`form-control ${color9}`} placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value={values.password} onChange={handleChange} onBlur={handleBlur}
                                                         errorText={errors.password && touched.password ? errors.password : null}
                                                     />
                                                     <div className="validate" />
                                                 </div>
                                         }
-
-                                        {/* <div className="col-md-7 form-group mt-3 mt-md-0">
-                                <input type="email" className="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid Password" />
-                                <div className="validate" />
-                            </div>
-                            <div className="col-md-7 form-group mt-3 mt-md-0">
-                                <input type="password" className="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                <div className="validate" />
-                            </div> */}
                                     </div>
                                     <br />
                                     <div className="text-center mb-2">
@@ -166,32 +163,12 @@ function Auth(props) {
                                     </div>
                                     <div className="text-center">
                                         {
-                                            authType === 'login' ? <CustButton type="primary" onClick={handleLogin}>Login</CustButton> :
+                                            authType === 'login' ?
+                                                <CustButton type="primary" onClick={handleLogin}>Login</CustButton>
+                                                :
                                                 authType === 'forgot' ?
-                                                    <>
-                                                        <CustButton class='btncolor'>Conform</CustButton>
-                                                        {/* <Dialog open={open}>
-                                                <DialogTitle>Choose a new password</DialogTitle>
-                                                <DialogContent>
-                                                    <DialogContentText>
-                                                        Create a new password that is at least 6 characters long. A strong password has a combination of letters, digits and punctuation marks.
-                                                    </DialogContentText>
-                                                    <TextField
-                                                        autoFocus
-                                                        margin="dense"
-                                                        id="password"
-                                                        label="password"
-                                                        type="password"
-                                                        fullWidth
-                                                        variant="standard"
-                                                    />
-                                                </DialogContent>
-                                                <DialogActions>
-                                                    <CustButton onClick={handleClose}>Cancel</CustButton>
-                                                    <CustButton onClick={handleClose}>Continue</CustButton>
-                                                </DialogActions>
-                                            </Dialog> */}
-                                                    </> :
+                                                    <CustButton class='btncolor'>Conform</CustButton>
+                                                    :
                                                     <CustButton type="outlined">Signup</CustButton>
                                         }
                                     </div>

@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Card, CardBody, CardSubtitle, CardTitle, CardText, Button } from 'reactstrap';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Htag from './UI/H1toH6/Htag';
+import { ThemeContext } from './Context/ThemeContext';
 
 function MedicinDetails() {
+
+    let theme = useContext(ThemeContext);
+
+    let color9 = theme.theme === 'dark' ? 'color9' : '';
 
     const [cartData, setCartData] = useState([]);
     const [medicenData, setMedicenData] = useState([]);
@@ -44,7 +49,7 @@ function MedicinDetails() {
 
     return (
         <>
-            <section id="medicine" className="medicine">
+            <section id="medicine" className={`medicine ${color9}`}>
                 <div className="container">
                     <div className="section-title">
                         <Htag name="h2tag1">Favorite</Htag>

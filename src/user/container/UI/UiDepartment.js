@@ -31,9 +31,9 @@ function UiDepartment({ Udata }) {
                                             <li className="nav-item">
                                                 {
                                                     v.id === 1 ?
-                                                        <a className= {`nav-link active show ${color9}`} data-bs-toggle="tab" href={`#tab-${v.id}`}>{v.name}</a>
+                                                        <a className={`nav-link active show ${color9}`} data-bs-toggle="tab" href={`#tab-${v.id}`}>{v.name}</a>
                                                         :
-                                                        <a className={`nav-link ${color9}`} data-bs-toggle="tab"  href={`#tab-${v.id}`}>{v.name}</a>
+                                                        <a className={`nav-link ${color9}`} data-bs-toggle="tab" href={`#tab-${v.id}`}>{v.name}</a>
                                                 }
                                             </li>
                                         )
@@ -50,8 +50,11 @@ function UiDepartment({ Udata }) {
                                                 <div className="tab-pane active show" id={`tab-${v.id}`} key={v.id}>
                                                     <div className="row">
                                                         <div className="col-lg-8 details order-2 order-lg-1">
-                                                            <h3 className= {`${color10}`} >{v.name}</h3>
+                                                            <h3 className={`${color10}`} >{v.name}</h3>
                                                             <Titel className="fst-italic">{v.desc}</Titel>
+                                                        </div>
+                                                        <div className="col-lg-4 text-center order-1 order-lg-2">
+                                                            <img src={v.image} alt className="img-fluid" />
                                                         </div>
                                                         {/* <div className="col-lg-4 text-center order-1 order-lg-2">
                                                         <img src="../assets/img/departments-1.jpg" alt className="img-fluid" />
@@ -62,8 +65,11 @@ function UiDepartment({ Udata }) {
                                                 <div className="tab-pane" id={`tab-${v.id}`} key={v.id}>
                                                     <div className="row">
                                                         <div className="col-lg-8 details order-2 order-lg-1">
-                                                            <h3 className= {`${color10}`} >{v.name}</h3>
+                                                            <h3 className={`${color10}`} >{v.name}</h3>
                                                             <Titel className="fst-italic">{v.desc}</Titel>
+                                                        </div>
+                                                        <div className="col-lg-4 text-center order-1 order-lg-2">
+                                                            <img src={v.image} alt className="img-fluid" />
                                                         </div>
                                                         {/* <div className="col-lg-4 text-center order-1 order-lg-2">
                                                         <img src="../assets/img/departments-1.jpg" alt className="img-fluid" />
