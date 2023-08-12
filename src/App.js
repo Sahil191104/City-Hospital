@@ -12,21 +12,21 @@ import { SnackbarProvider } from 'notistack';
 function App() {
 
   return (
-      <SnackbarProvider maxSnack={3} >
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <ThemeProvider>
-              <Alert />
-              <Routes>
-                <Route path='/*' element={<UserRouet />} />
-                <Route>
-                  <Route path='/admin/*' element={<AdminRoute />} />
-                </Route>
-              </Routes>
-            </ThemeProvider>
-          </PersistGate>
-        </Provider>
-      </SnackbarProvider>
+    <SnackbarProvider maxSnack={3} >
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider>
+            <Alert />
+            <Routes>
+              <Route path='/*' element={<UserRouet />} />
+              <Route element={<PrivateRoute />}>
+                <Route path='/admin/*' element={<AdminRoute />} />
+              </Route>
+            </Routes>
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
+    </SnackbarProvider>
   );
 }
 

@@ -20,8 +20,12 @@ export const loggedIn = (data) => (dispatch) => {
     dispatch({ type: ActionType.LOGGED_IN, payload: data })
 }
 
-export const logoutrequest = (data) => (dispatch) => {
-    dispatch({ type: ActionType.LOGG_OUT, payload: data })
+export const logoutrequest = () => (dispatch) => {
+    dispatch({ type: ActionType.LOGG_OUT })
+}
+
+export const logoutresponse = () => (dispatch) => {
+    dispatch({ type: ActionType.LOGGOUt_RESPONSE })
 }
 
 export const forgotRequest = (data) => (dispatch) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Routes } from 'react-router';
 import Layout from '../admin/container/Layout';
 import Doctor from '../admin/container/Doctor';
@@ -10,15 +10,15 @@ import Department from '../admin/container/Department';
 function AdminRoute(props) {
 
     return (
-        <Layout>
-            <Routes>
-                <Route path='/Doctor' element={<Doctor />} />
-                <Route path='/' element={<DashBoard />} />
-                <Route path='/Contact' element={<Contact />} />
-                <Route path='/Medicine' element={<Medicine />} />
-                <Route path='/Department' element={<Department />} />
-            </Routes>
-        </Layout>
+            <Layout>
+                <Routes>
+                    <Route path='/Doctor' element={<Doctor />} />
+                    <Route path='/' element={<DashBoard />} />
+                    <Route path='/Contact' element={<Contact />} />
+                    <Route path='/Medicine' element={<Medicine />} />
+                    <Route path='/Department' element={<Department />} />
+                </Routes>
+            </Layout>
     );
 }
 

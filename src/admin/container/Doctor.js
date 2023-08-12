@@ -25,7 +25,7 @@ export default function Doctor() {
         }
 
         setUpadate(null)
-    }
+    }           
 
     const handleUpdate = (data) => {
         setUpadate(data)

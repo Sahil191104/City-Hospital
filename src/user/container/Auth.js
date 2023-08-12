@@ -59,7 +59,12 @@ function Auth(props) {
     let userSchema = Yup.object(SchemaObj)
 
     const handleLogin = (values) => {
-        dispatch(loginRequest(values))
+        dispatch(loginRequest({
+            data: values,
+            callback: (route) => {
+                navigate(route)
+            }
+        }))
     }
 
     const handleRegister = (values) => {

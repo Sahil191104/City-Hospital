@@ -12,6 +12,7 @@ export const authreducer = (state = initState, action) => {
     switch (action.type) {
         case ActionType.SIGNUP_REQUEST:
         case ActionType.LOGIN_REQUEST:
+        case ActionType.LOGG_OUT:
             return {
                 user: null,
                 loading: true,
@@ -29,7 +30,7 @@ export const authreducer = (state = initState, action) => {
                 loading: false,
                 error: null
             }
-        case ActionType.LOGG_OUT:
+        case ActionType.LOGGOUt_RESPONSE:
             return {
                 user: null,
                 loading: false,

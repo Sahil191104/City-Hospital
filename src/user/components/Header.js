@@ -8,6 +8,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { ThemeContext } from '../container/Context/ThemeContext';
 import { ToggleButtonGroup } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutrequest } from '../../redux/action/auth.action';
 // import { useSelector } from 'react-redux';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -25,10 +27,13 @@ function Header(props) {
     let color1 = theme.theme === 'dark' ? 'color1' : 'navbar';
     let color5 = theme.theme === 'dark' ? 'color5' : 'header';
 
-    let localStatus = localStorage.getItem("Loginredirecting")
+    const auth = useSelector(state => state.auth)
+    let dispatch = useDispatch()
+
+    // let localStatus = localStorage.getItem("Loginredirecting")
 
     const handleLogout = () => {
-        localStorage.removeItem("Loginredirecting")
+        dispatch(logoutrequest())
     }
 
     // const cartData = useSelector(state => state.cart)
@@ -102,9 +107,9 @@ function Header(props) {
                     </Link>
                     {/* <Link to="/appointment" className="nav-link scrollto">Appointment</Link> */}
                     {
-                        localStatus ?
+                        auth.user ?
                             <Link to="/Auth" onClick={handleLogout}><CustButton>Logout</CustButton></Link>
-                            : <Link to="/Auth"><CustButton>Login/Signup</CustButton></Link>
+                            : <Link to="/Auth" ><CustButton>Login/Signup</CustButton></Link>
                     }
                     <Link to="/Cart">
                         <IconButton aria-label="cart">

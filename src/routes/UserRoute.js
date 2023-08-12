@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Header from '../user/components/Header';
 import { Route, Routes } from 'react-router';
 import Home from '../user/container/Home';
@@ -23,13 +23,16 @@ import MedicinDetails from '../user/container/MedicinDetails';
 import Department from '../user/container/Department/Department';
 import Counter from '../user/container/Context/Counter';
 import { CounterProvider } from '../user/container/Context/counterContext'
+import { ThemeContext } from '../user/container/Context/ThemeContext';
 
 function UserRoute(props) {
+    let theme = useContext(ThemeContext);
 
     const [cartCount, setCartCount] = useState(0);
 
     return (
-        <>
+        <div className={`${theme.theme}`}>
+
             <CounterProvider>
                 <Header count={cartCount} />
                 <Routes>
@@ -39,9 +42,9 @@ function UserRoute(props) {
                     <Route path='/contact' element={<Contact />} />
 
                     {/* <Route element={<PrivateRoute />}> */}
-                        {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
-                        <Route exact path='medicine' element={<Medicine />} />
-                        <Route exact path='department' element={<Department />} />
+                    {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
+                    <Route exact path='medicine' element={<Medicine />} />
+                    <Route exact path='department' element={<Department />} />
                     {/* </Route> */}
 
                     {/* <Route path='/contact' element={<Contact1 />} /> */}
@@ -67,7 +70,7 @@ function UserRoute(props) {
 
                 <Footer />
             </CounterProvider>
-        </>
+        </div>
     );
 }
 
