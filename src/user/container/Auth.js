@@ -122,7 +122,7 @@ function Auth(props) {
                     {
                         auth.loading ?
                             <Box className="d-flex justify-content-center" >
-                                <CircularProgress sx={{ color: '#FF6337', margin: "300px auto", backgroundColor: "rgba(255,255,255,0.7)", zIndex: "9999" }} />
+                                <CircularProgress backdrop sx={{ color: '#FF6337', margin: "300px auto", backgroundColor: "rgba(255,255,255,0.7)", zIndex: "9999" }} />
                             </Box> :
 
                             <>

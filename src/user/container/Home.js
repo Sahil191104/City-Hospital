@@ -1,70 +1,58 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Htag from './UI/H1toH6/Htag';
-import Icon from './UI/Icon/Icon';
 import Titel from './UI/Title/Titel';
-import { ThemeContext } from './Context/ThemeContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 function Home(props) {
-    let theme = useContext(ThemeContext);
-    let color = theme.theme === 'dark' ? 'color' : '';
-    let color1 = theme.theme === 'dark' ? 'color1' : '';
-    let color2 = theme.theme === 'dark' ? 'color2' : 'counts';
-    let color3 = theme.theme === 'dark' ? 'color3' : 'services';
-    let color4 = theme.theme === 'dark' ? 'color4' : '';
-    let color5 = theme.theme === 'dark' ? 'color5' : '';
-    let color6 = theme.theme === 'dark' ? 'color6' : '';
-    let color8 = theme.theme === 'dark' ? 'color8' : '';
-
     return (
         <div>
             <section id="hero" className="d-flex align-items-center">
                 <div className="container">
-                    <h1 className={`${color}`}>Welcome to City <br />Multispeciality Hospital</h1>
-                    <h2 className={`${color}`}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+                    <h1>Welcome to City <br />Multispeciality Hospital</h1>
+                    <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
                 </div>
             </section>
             <main id="main">
                 <section id="why-us" className="why-us">
                 </section>
-                <section id="counts" className={`counts ${color2}`}>
+                <section id="counts" className="counts">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 col-md-6">
-                                <div className={`count-box ${color3}`}>
-                                    <i className={`fas fa-user-md ${color4}`} />
-                                    <span className={`${color}`}>23</span>
-                                    <p className={`${color1}`}>Doctors</p>
+                                <div className="count-box">
+                                    <i className="fas fa-user-md" />
+                                    <span>23</span>
+                                    <p>Doctors</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 mt-5 mt-md-0">
-                                <div className={`count-box ${color3}`}>
-                                    <i className={`far fa-hospital ${color4}`} />
-                                    <span className={`${color}`}>18</span>
-                                    <p className={`${color1}`}>Departments</p>
+                                <div className="count-box">
+                                    <i className="far fa-hospital" />
+                                    <span>18</span>
+                                    <p>Departments</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                                <div className={`count-box ${color3}`}>
-                                    <i className={`fas fa-heartbeat ${color4}`} />
-                                    <span className={`${color}`}>980</span>
-                                    <p className={`${color1}`}>Patients</p>
+                                <div className="count-box">
+                                    <i className="fas fa-heartbeat" />
+                                    <span>980</span>
+                                    <p>Patients</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                                <div className={`count-box ${color3}`}>
-                                    <i className={`fas fa-award ${color4}`} />
-                                    <span className={`${color}`}>12</span>
-                                    <p className={`${color1}`}>Awards</p>
+                                <div className="count-box">
+                                    <i className="fas fa-award" />
+                                    <span>12</span>
+                                    <p>Awards</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section id="services" className={`services ${color3}`}>
+                <section id="services" className="services">
                     <div className="container">
-                        <div className={`section-title ${color}`}>
+                        <div className="section-title">
                             <Htag name="h2tag" >Our Facilities</Htag>
                             <p>Nunc aliquam eget nibh eu euismod. Donec dapibus blandit quam volutpat sollicitudin. Fusce tincidunt sit
                                 amet ex in volutpat. Donec lacinia finibus tortor. Curabitur luctus eleifend odio. Phasellus placerat mi et
@@ -116,7 +104,7 @@ function Home(props) {
                         </div>
                     </div>
                 </section>
-                <section id="testimonials" className={`testimonials ${color3}`}>
+                <section id="testimonials" className="testimonials">
                     <div className="container">
                         <div className="section-title"><Htag name="h2tag1">Reviews</Htag></div>
 
@@ -125,17 +113,17 @@ function Home(props) {
                                 <SwiperSlide>
                                     <div className="swiper-slide">
                                         <div className="testimonial-wrap">
-                                            <div className={`testimonial-item ${color5}`}>
+                                            <div className="testimonial-item">
                                                 <img src="assets/img/testimonials/testimonials-1.jpg" className="testimonial-img" alt />
-                                                <h3 className={`${color}`}>Jacob Wilsson</h3>
+                                                <h3>Jacob Wilsson</h3>
                                                 <h4>Writer</h4>
                                                 <Titel>
-                                                    <i className={`bx bxs-quote-alt-left quote-icon-left ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere, lacus ac tincidunt tempor,
                                                     sapien justo ultrices ante, vel pharetra turpis ex ac nisi. Aliquam tempor egestas turpis, nec
                                                     commodo lorem egestas eleifend. Curabitur lacus ipsum, fermentum sit amet leo non, blandit tincidunt
                                                     turpis.
-                                                    <i className={`bx bxs-quote-alt-right quote-icon-right ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
                                                 </Titel>
                                             </div>
                                         </div>
@@ -144,16 +132,16 @@ function Home(props) {
                                 <SwiperSlide>
                                     <div className="swiper-slide">
                                         <div className="testimonial-wrap">
-                                            <div className={`testimonial-item ${color5}`}>
+                                            <div className="testimonial-item">
                                                 <img src="assets/img/testimonials/testimonials-2.jpg" className="testimonial-img" alt />
-                                                <h3 className={`${color}`}>Ava Smith</h3>
+                                                <h3>Ava Smith</h3>
                                                 <h4>Artist</h4>
                                                 <Titel>
-                                                    <i className={`bx bxs-quote-alt-left quote-icon-left ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                     Praesent pellentesque leo vestibulum, facilisis ante eget, pharetra mi. Curabitur risus mauris,
                                                     dignissim ullamcorper vehicula id, aliquet ut turpis. Nunc euismod nec nulla non tincidunt. Vivamus
                                                     nisi mauris, blandit quis sem sit amet, posuere blandit diam. Cras quis quam suscipit.
-                                                    <i className={`bx bxs-quote-alt-right quote-icon-right ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
                                                 </Titel>
                                             </div>
                                         </div>
@@ -162,17 +150,17 @@ function Home(props) {
                                 <SwiperSlide>
                                     <div className="swiper-slide">
                                         <div className="testimonial-wrap">
-                                            <div className={`testimonial-item ${color5}`}>
+                                            <div className="testimonial-item">
                                                 <img src="assets/img/testimonials/testimonials-3.jpg" className="testimonial-img" alt />
-                                                <h3 className={`${color}`}>Abigail Martin</h3>
+                                                <h3>Abigail Martin</h3>
                                                 <h4>Teacher</h4>
                                                 <Titel>
-                                                    <i className={`bx bxs-quote-alt-left quote-icon-left ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                     Fusce ante ipsum, convallis auctor dui sit amet, feugiat blandit ex. Etiam eget tortor sed augue
                                                     laoreet laoreet vel non libero. Sed in nibh ut sem ornare feugiat at at risus. Morbi gravida enim
                                                     vitae tortor fringilla tristique. Nulla ac mauris et elit eleifend suscipit et quis lacus. Nam nec
                                                     ex purus.
-                                                    <i className={`bx bxs-quote-alt-right quote-icon-right ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
                                                 </Titel>
                                             </div>
                                         </div>
@@ -181,16 +169,16 @@ function Home(props) {
                                 <SwiperSlide>
                                     <div className="swiper-slide">
                                         <div className="testimonial-wrap">
-                                            <div className={`testimonial-item ${color5}`}>
+                                            <div className="testimonial-item">
                                                 <img src="assets/img/testimonials/testimonials-4.jpg" className="testimonial-img" alt />
-                                                <h3 className={`${color}`}>Alexander Tremblay</h3>
+                                                <h3>Alexander Tremblay</h3>
                                                 <h4>Designer</h4>
                                                 <Titel>
-                                                    <i className={`bx bxs-quote-alt-left quote-icon-left ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                     Nam at est in nibh cursus hendrerit. Nunc commodo diam a erat fermentum aliquet. Integer at interdum
                                                     nisi. Vivamus risus erat, facilisis a blandit ut, sollicitudin sed est. Vestibulum volutpat luctus
                                                     quam sed finibus. Sed luctus odio eget ex posuere hendrerit. Donec iaculis
-                                                    <i className={`bx bxs-quote-alt-right quote-icon-right ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
                                                 </Titel>
                                             </div>
                                         </div>
@@ -199,16 +187,16 @@ function Home(props) {
                                 <SwiperSlide>
                                     <div className="swiper-slide">
                                         <div className="testimonial-wrap">
-                                            <div className={`testimonial-item ${color5}`}>
+                                            <div className="testimonial-item">
                                                 <img src="assets/img/testimonials/testimonials-5.jpg" className="testimonial-img" alt />
-                                                <h3 className={`${color}`}>Jayden Brown</h3>
+                                                <h3>Jayden Brown</h3>
                                                 <h4>Entrepreneur</h4>
                                                 <Titel>
-                                                    <i className={`bx bxs-quote-alt-left quote-icon-left ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
                                                     Quisque tristique lectus eget pretium lacinia. Mauris suscipit sapien sit amet enim rhoncus
                                                     tristique. Phasellus dictum aliquam nisl vel fermentum. Duis viverra luctus justo, vel aliquam ipsum
                                                     mollis nec. Pellentesque quis suscipit erat. Mauris id lobortis tellus.
-                                                    <i className={`bx bxs-quote-alt-right quote-icon-right ${color8}`} />
+                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
                                                 </Titel>
                                             </div>
                                         </div>
@@ -220,11 +208,11 @@ function Home(props) {
                         </div>
                     </div>
                 </section>
-                <section id="gallery" className={`gallery ${color3}`}>
+                <section id="gallery" className="gallery">
                     <div className="container">
                         <div className="section-title">
                             <Htag name="h2tag1">Gallery</Htag>
-                            <p className={`${color}`}>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+                            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                                 consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
                                 in iste officiis commodi quidem hic quas.</p>
                         </div>
@@ -232,56 +220,56 @@ function Home(props) {
                     <div className="container-fluid">
                         <div className="row no-gutters">
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-1.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-1.jpg" alt className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-2.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-2.jpg" alt className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-3.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-3.jpg" alt className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-4.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-4.jpg" alt className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-5.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-5.jpg" alt className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-6.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-6.jpg" alt className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-7.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-7.jpg" alt className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-4">
-                                <div className={`gallery-item ${color6}`}>
+                                <div className="gallery-item">
                                     <a href="assets/img/gallery/gallery-8.jpg" className="galelry-lightbox">
                                         <img src="assets/img/gallery/gallery-8.jpg" alt className="img-fluid" />
                                     </a>

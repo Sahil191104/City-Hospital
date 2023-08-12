@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CustButton from '../container/UI/Button/CustButton';
 import Badge from '@mui/material/Badge';
@@ -11,6 +11,7 @@ import { ToggleButtonGroup } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutrequest } from '../../redux/action/auth.action';
 // import { useSelector } from 'react-redux';
+import { Drawer, Button, Placeholder } from 'rsuite';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -23,9 +24,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function Header(props) {
     let theme = useContext(ThemeContext);
-    let color = theme.theme === 'dark' ? 'color' : 'navbar';
-    let color1 = theme.theme === 'dark' ? 'color1' : 'navbar';
-    let color5 = theme.theme === 'dark' ? 'color5' : 'header';
 
     const auth = useSelector(state => state.auth)
     let dispatch = useDispatch()
@@ -60,19 +58,22 @@ function Header(props) {
         console.log(heartCounter);
     }
 
+    // const [backdrop, setBackdrop] = useState('static');
+    const [open, setOpen] = useState(false);
+
     return (
-        <div className={`main-header header ${theme.theme} ${color5}`}>
-            <div id="topbar" className={`d-flex align-items-center fixed-top ${theme.theme}`}>
+        <div className="main-header header">
+            <div id="topbar" className="d-flex align-items-center fixed-top">
                 <div className="container d-flex justify-content-between">
                     <div className="contact-info d-flex align-items-center">
-                        <i className={`bi bi-envelope ${theme.theme}`} /> <a href="mailto:contact@example.com" className={`${theme.theme}`}>cityhospital@example.com</a>
-                        <i className={`bi bi-phone ${theme.theme}`} /> +91 9988776655
+                        <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
+                        <i className="bi bi-phone" /> +91 9988776655
                     </div>
-                    <div className={`d-none d-lg-flex social-links align-items-center ${theme.theme}`}>
-                        <a href="#" className="twitter"><i className={`bi bi-twitter ${theme.theme}`} /></a>
-                        <a href="#" className="facebook"><i className={`bi bi-facebook ${theme.theme}`} /></a>
-                        <a href="#" className="instagram"><i className={`bi bi-instagram ${theme.theme}`} /></a>
-                        <a href="#" className="linkedin"><i className={`bi bi-linkedin ${theme.theme}`} /></a>
+                    <div className="d-none d-lg-flex social-links align-items-center">
+                        <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
+                        <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
+                        <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
+                        <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
                         <div className="cl-toggle-switch">
                             <label className="cl-switch" >
                                 <input type="checkbox" onClick={() => theme.togletheme(theme.theme)} />
@@ -83,15 +84,15 @@ function Header(props) {
 
                 </div>
             </div>
-            <header id="header" className={`fixed-top header ${color5} `}>
+            <header id="header" className="fixed-top">
                 <div className="container d-flex align-items-center">
                     <div className="logo">
                         <a href="index.html">
-                            <h1 className={`logo me-auto ${color}`}>City</h1><br />
-                            <h2 className={`logo-tiny-text me-auto ${color1}`}>Multispeciality Hospital</h2>
+                            <h1 className="logo me-auto">City</h1><br />
+                            <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>
                         </a>
                     </div>
-                    <nav id="navbar" className={`navbar order-last order-lg-0 ${theme.theme} ${color}`} >
+                    <nav id="navbar" className="navbar order-last order-lg-0" >
                         <ul>
                             <li><Link to="/" className="nav-link scrollto" >Home</Link></li>
                             <li><Link to="/department" className="nav-link scrollto">Departments</Link></li>
@@ -101,7 +102,7 @@ function Header(props) {
                             <li><Link to="/medicine" className="nav-link scrollto">Medicine</Link></li>
                             <li><Link to="/counter" className="nav-link scrollto">Counter</Link></li>
                         </ul>
-                        <i className="bi bi-list mobile-nav-toggle" />
+                        <i onClick={() => setOpen(true)} className="bi bi-list mobile-nav-toggle" />
                     </nav>
                     <Link to="/appointment" className="appointment-btn scrollto"><CustButton className="d-none d-md-inline">Make an Appointment</CustButton>
                     </Link>
@@ -125,8 +126,30 @@ function Header(props) {
                             </StyledBadge>
                         </IconButton>
                     </Link>
+
+                </div>
+                <div className='drawer'>
+                    <Drawer backdrop={"static"} open={open} onClose={() => setOpen(false)}>
+                        <Drawer.Header>
+                            <Drawer.Title>Navbar List</Drawer.Title>
+                        </Drawer.Header>
+                        <Drawer.Body>
+                            <nav>
+                                <ul>
+                                    <li><Link to="/">Home</Link></li>
+                                    <li><Link to="/department">Departments</Link></li>
+                                    <li><Link to="/doctors">Doctors</Link></li>
+                                    <li><Link to="/about">About</Link></li>
+                                    <li><Link to="/contact">Contact</Link></li>
+                                    <li><Link to="/medicine">Medicine</Link></li>
+                                    <li><Link to="/counter">Counter</Link></li>
+                                </ul>
+                            </nav>
+                        </Drawer.Body>
+                    </Drawer>
                 </div>
             </header >
+
         </div >
     );
 }

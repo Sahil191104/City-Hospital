@@ -1,15 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Htag from './UI/H1toH6/Htag';
 import Titel from './UI/Title/Titel';
-import { ThemeContext } from './Context/ThemeContext';
 
 function Department(props) {
-    let theme = useContext(ThemeContext);
-
-    let color9 = theme.theme === 'dark' ? 'color9' : '';
-
     return (
-        <section id="departments" className={`departments ${color9}`}>
+        <section id="departments" className="departments">
             <div className="container">
                 <div className="section-title">
                     <Htag name="h2tag1">Departments</Htag>

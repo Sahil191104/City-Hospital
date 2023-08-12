@@ -168,10 +168,7 @@ h6 {
   z-index: 997;
   padding: 15px 0;
   top: 40px;
-}
-
-.header {
-  box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
+  box-shadow: 0px 2px 12px rgb(44 73 100 / 8%);
 }
 
 #header.header-scrolled {
@@ -442,7 +439,8 @@ h6 {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
+.navbar-mobile .dropdown ul li:hover>a,
+.drawer .nav-link {
   color: #FF6337;
 }
 
@@ -1139,6 +1137,7 @@ section {
 
 .departments .nav-link.active {
   color: #FF6337;
+  background-color: #fff;
   border-color: #FF6337;
 }
 
@@ -1184,11 +1183,9 @@ section {
 .doctors .member {
   position: relative;
   padding: 30px;
+  box-shadow: 0px 2px 15px rgb(44 73 100 / 8%);
+  padding: 30px;
   border-radius: 10px;
-}
-
-.memberdata {
-  box-shadow: 0px 2px 15px rgba(134, 134, 134, 0.08);
 }
 
 .doctors .member .pic {
@@ -1370,7 +1367,6 @@ section {
   min-height: 200px;
   box-shadow: 0px 2px 12px rgba(44, 73, 100, 0.08);
   position: relative;
-  background: #fff;
 }
 
 .testimonials .testimonial-item .testimonial-img {
@@ -1473,7 +1469,6 @@ section {
 --------------------------------------------------------------*/
 .contact .info {
   width: 100%;
-  background: #fff;
 }
 
 .contact .info i {
@@ -1519,7 +1514,6 @@ section {
 
 .contact .php-email-form {
   width: 100%;
-  background: #fff;
 }
 
 .contact .php-email-form .form-group {
@@ -1621,7 +1615,6 @@ section {
 --------------------------------------------------------------*/
 
 #footer {
-  color: #444444;
   font-size: 14px;
 }
 
@@ -1832,9 +1825,17 @@ section {
 }
 
 .light {
-  color: #ed3c0d !important;
+  color: #2c4964 !important;
   background-color: white !important;
 }
+
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next,
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  color: #FF6337;
+}
+
 
 /* .color2 {
   background: #292537;
@@ -1856,9 +1857,30 @@ section {
 
 .dark,
 .dark #header,
-.dark{
+.dark,
+.dark #topbar,
+.dark .doctors {
   color: #fff !important;
   background-color: #18122B !important;
+}
+
+.dark .departments .nav-link.active:hover {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.dark .nav-link {
+  color: #fff;
+  /* border-bottom: 2px solid #ebf1f6; */
+}
+
+.dark .counts {
+  background-color: #292537;
+}
+
+.dark .footer {
+  color: #fff;
+  background-color: #292537;
 }
 
 /* .color9 {
@@ -1907,13 +1929,77 @@ section {
   background-color: #18122B !important;
 } */
 
-.color a {
+.dark .testimonials .testimonial-item,
+.dark #header,
+.dark .doctors .member {
+  box-shadow: 0px 2px 12px rgb(68, 68, 68);
+}
+
+.dark .departments .nav-link.active {
+  color: #FF6337;
+  border-color: #FF6337;
+  background-color: transparent !important;
+}
+
+.dark a,
+.light a {
   border: none;
 }
 
-.color li:hover>a {
+.dark .gallery .gallery-item {
+  border-right: 3px solid #18122B;
+  border-bottom: 3px solid #18122B;
+}
+
+.dark #topbar .contact-info i,
+.dark #topbar .contact-info a,
+.dark #topbar .social-links a,
+.dark #header .logo,
+.dark .section-title h2,
+.dark .services .icon-box h4 a,
+.dark .testimonials .testimonial-item h3,
+.dark .testimonials .testimonial-item h4,
+.dark .testimonials .testimonial-item p,
+.dark .swiper-button-prev,
+.swiper-container-rtl .swiper-button-next,
+.dark .swiper-button-next,
+.swiper-container-rtl .swiper-button-prev,
+.dark .departments .details h3,
+.dark .departments .details p,
+.dark .section-title p,
+.dark .member-info p,
+.dark .member-info h4,
+.dark .member-info span,
+.dark .about h3,
+.dark .about-title h2,
+.dark .about-title h5,
+.dark .info h4,
+.dark .info p,
+.dark .medicine label,
+.dark .medicine input {
+  color: #fff;
+}
+
+.dark .medicine .css-l4u8b9-MuiInputBase-root-MuiInput-root,
+.dark .medicine .css-l4u8b9-MuiInputBase-root-MuiInput-root:after {
+  border-bottom: 2px solid #fff;
+}
+
+.dark #hero h1,
+.dark #hero h2,
+.dark .counts .count-box span,
+.dark .counts .count-box p {
+  color: #111;
+}
+
+.dark .header li:hover>a {
   border-bottom: 2px solid #fff !important;
   color: #fff !important;
+}
+
+.light .header li:hover>a {
+  border-bottom: 2px solid #ed3c0d !important;
+  color: #2c4964 !important;
 }
 
 .btncolor {
@@ -2046,4 +2132,26 @@ section {
 
 .cl-switch>input:checked:disabled+span::after {
   background-color: #61b5b4;
+}
+
+/* Drawer */
+
+nav ul li a {
+  font-size: 16px;
+  padding: 20px 18px;
+  color: #2c4964;
+}
+
+nav a:hover {
+  color: #FF6337;
+}
+
+nav ul li a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 20px 27px;
+}
+
+nav ul {
+  list-style: none;
 }

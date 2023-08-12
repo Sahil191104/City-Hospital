@@ -1,11 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { ThemeContext } from './Context/ThemeContext';
 
 function Doctor(props) {
-    let theme = useContext(ThemeContext);
-
-    let color9 = theme.theme === 'dark' ? 'color9' : '';
 
     const information = [
         {
@@ -46,7 +42,7 @@ function Doctor(props) {
 
     return (
         <div>
-            <section className= {`about-area pt-120 pb-90 ${color9}`}>
+            <section className= "about-area pt-120 pb-90">
                 <div className="container">
                     <div className="row">
                         {
@@ -56,17 +52,14 @@ function Doctor(props) {
                                         <div className="col-xl-6 col-lg-5 about_left" style={{ width: "50%", flex: "0 0 auto" }}>
                                             <div className="about-left-side pos-rel mb-30" style={{ marginBottom: "30px" }}>
                                                 <div className="about-front-img" style={{ boxShadow: "0 16px 32px 0 hsl(0deg 0% 53% / 20%)" }}>
-                                                    <img src={value.url} style={{ width: "100%", height: "85%" }} alt />
-                                                </div>
-                                                <div className="about-shape" style={{ position: "absolute", top: "60px", zIndex: "-9" }}>
-                                                    <img src="/assets\img\about-shape.png" alt />
+                                                    <img src={value.url} style={{ width: "100%", maxHeight: "30%" }} alt />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-xl-6 col-lg-7">
                                             <div className="about-right-side pt-55 mb-30" style={{ paddingLeft: "23px", paddingTop: "55px", paddingBottom: "55px", marginBottom: "30px" }}>
                                                 <div className="about-title mb-20">
-                                                    <h1 style={{ fontSize: "60px", letterSpacing: "-.3px", lineHeight: "1.22", color: "#223645", fontWeight: "600", lineHeight: "1.1", marginTop: "0", textTransform: "normal" }}>{value.name}</h1>
+                                                    <h2 style={{ fontSize: "60px", letterSpacing: "-.3px", lineHeight: "1.22", color: "#223645", fontWeight: "600", lineHeight: "1.1", marginTop: "0", textTransform: "normal" }}>{value.name}</h2>
                                                     <h5 style={{ marginBottom: "27px", color: "#647589", fontSize: "18px", fontWeight: "500" }}>{value.designation}</h5>
                                                 </div>
                                                 <div className="about-text">

@@ -18,7 +18,6 @@ const sagaMiddleware = createSagaMiddleware()
 
 const allMiddleware = [thunk, sagaMiddleware]
 
-
 export const configstore = () => {
     let store  = createStore(persistedReducer, applyMiddleware(...allMiddleware));
 

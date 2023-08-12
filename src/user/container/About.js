@@ -1,17 +1,10 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from './Context/ThemeContext';
+import React from 'react';
 
 function About(props) {
-    let theme = useContext(ThemeContext);
-
-    let color9 = theme.theme === 'dark' ? 'color9' : '';
-
     return (
-        <section id="about" class={`about ${color9}`}>
+        <section id="about" className="about">
             <div class="container">
-
                 <div class="row">
-
                     <div
                         class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center px-lg-5 abouttop">
                         <h3>Fusce nec risus at enim congue bibendum quis at augue. </h3>
@@ -23,7 +16,6 @@ function About(props) {
                             rutrum neque, quis tincidunt arcu pretium ac. Suspendisse sem </p>
                     </div>
                 </div>
-
             </div>
         </section>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import ListMedicine from './ListMedicine';
 import { TextField } from '@mui/material';
 import Htag from '../UI/H1toH6/Htag';
@@ -6,17 +6,12 @@ import Titel from '../UI/Title/Titel';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchdata } from '../../../redux/action/medicine.action';
 import { addtocart } from '../../../redux/slice/cartSlice';
-import { ThemeContext } from '../Context/ThemeContext';
 
 function Medicine(props) {
     const dispatch = useDispatch();
     const medicines = useSelector(state => state.medicine)
     const [search, setSeacrh] = React.useState([])
     const [searchvalue, setSeacrhValue] = React.useState(null)
-
-    let theme = useContext(ThemeContext);
-
-    let color9 = theme.theme === 'dark' ? 'color9' : '';
 
     useEffect(() => {
         dispatch(fetchdata())
@@ -42,7 +37,7 @@ function Medicine(props) {
     }
 
     return (
-        <section id="medicine" className={`medicine ${color9}`}>
+        <section id="medicine" className="medicine">
             <div className="container">
                 <div className="section-title">
                     <Htag name="h2tag1">Medicine</Htag>
@@ -60,7 +55,6 @@ function Medicine(props) {
                     type="search"
                     fullWidth
                     variant="standard"
-                    className={`${color9}`}
                     sx={{ color: 'gray', borderColor: 'white' }}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
