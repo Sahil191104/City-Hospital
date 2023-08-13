@@ -7,17 +7,17 @@ import Button from '@mui/material/Button';
 import CustButton from '../container/UI/Button/CustButton';
 import Input from './UI/Input/Input';
 import Htag from './UI/H1toH6/Htag';
-import { auth } from '../../firebase';
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { Box, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 import { forgotRequest, loginRequest, signupRequest } from '../../redux/action/auth.action';
 import { ThemeContext } from './Context/ThemeContext';
+import { auth, googleProvider } from '../../firebase';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
     const [data, setData] = useState([])
     const navigate = useNavigate()
-    const auth = useSelector(state => state.auth)
+    const auths = useSelector(state => state.auth)
 
     let theme = useContext(ThemeContext);
 
@@ -92,19 +92,13 @@ function Auth(props) {
         },
     });
 
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
+    const signInWithGoogle = async () => {
+        try {
+            await signInWithPopup(auth, googleProvider);
+        } catch (err) {
+            console.error(err);
+        }
     };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const handlesend = () => {
-
-    }
 
     return (
         <div>
@@ -120,7 +114,7 @@ function Auth(props) {
                             Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
                     </div>
                     {
-                        auth.loading ?
+                        auths.loading ?
                             <Box className="d-flex justify-content-center" >
                                 <CircularProgress backdrop sx={{ color: '#FF6337', margin: "300px auto", backgroundColor: "rgba(255,255,255,0.7)", zIndex: "9999" }} />
                             </Box> :
@@ -169,7 +163,10 @@ function Auth(props) {
                                     <div className="text-center">
                                         {
                                             authType === 'login' ?
-                                                <CustButton type="primary" onClick={handleLogin}>Login</CustButton>
+                                                <>
+                                                    <CustButton type="primary" onClick={handleLogin}>Login</CustButton>
+                                                    <CustButton type="primary" onClick={signInWithGoogle}>Signin with google</CustButton>
+                                                </>
                                                 :
                                                 authType === 'forgot' ?
                                                     <CustButton class='btncolor'>Conform</CustButton>

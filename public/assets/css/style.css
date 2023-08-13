@@ -208,13 +208,6 @@ h6 {
 * Appointment Button *
 */
 
-@media (max-width: 768px) {
-  .appointment-btn {
-    margin: 0 15px 0 0;
-    padding: 6px 18px;
-  }
-}
-
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -1832,7 +1825,8 @@ section {
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next,
 .swiper-button-next,
-.swiper-container-rtl .swiper-button-prev {
+.swiper-container-rtl .swiper-button-prev,
+.php-email-form span a {
   color: #FF6337;
 }
 

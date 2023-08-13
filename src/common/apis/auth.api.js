@@ -120,3 +120,27 @@ export const logoutAPI = (values) => {
         console.log(error);
     }
 }
+
+// export const googleAPI = (values) => {
+//     console.log(values);
+//     try {
+//         return new Promise((resolve, rejecte) => {
+//             signInWi(auth, values.email)
+//                 .then(() => {
+//                     resolve({ message: "Password reset email sent!." });
+//                 })
+//                 .catch((error) => {
+//                     const errorCode = error.code;
+//                     // const errorMessage = error.message;
+
+//                     if (errorCode.localeCompare("auth/network-request-failed") === 0) {
+//                         rejecte({ message: "Please check your internet Conection." });
+//                     }
+
+//                     // console.log(errorCode, errorMessage);
+//                 });
+//         })
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }

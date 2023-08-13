@@ -42,7 +42,7 @@ function Doctor(props) {
 
     return (
         <div>
-            <section className= "about-area pt-120 pb-90">
+            <section className="about-area pt-120 pb-90">
                 <div className="container">
                     <div className="row">
                         {
@@ -59,11 +59,11 @@ function Doctor(props) {
                                         <div className="col-xl-6 col-lg-7">
                                             <div className="about-right-side pt-55 mb-30" style={{ paddingLeft: "23px", paddingTop: "55px", paddingBottom: "55px", marginBottom: "30px" }}>
                                                 <div className="about-title mb-20">
-                                                    <h2 style={{ fontSize: "60px", letterSpacing: "-.3px", lineHeight: "1.22", color: "#223645", fontWeight: "600", lineHeight: "1.1", marginTop: "0", textTransform: "normal" }}>{value.name}</h2>
-                                                    <h5 style={{ marginBottom: "27px", color: "#647589", fontSize: "18px", fontWeight: "500" }}>{value.designation}</h5>
+                                                    <h2 style={{ fontSize: "60px", letterSpacing: "-.3px", lineHeight: "1.22", fontWeight: "600", marginTop: "0", textTransform: "normal" }}>{value.name}</h2>
+                                                    <h5 style={{ marginBottom: "27px", fontSize: "18px", fontWeight: "500" }}>{value.designation}</h5>
                                                 </div>
                                                 <div className="about-text">
-                                                    <p style={{ paddingRight: "46px", fontSize: "14px", color: "#647589", fontWeight: "400", lineHeight: "26px", marginBottom: "15px" }}>
+                                                    <p style={{ paddingRight: "46px", fontSize: "14px", fontWeight: "400", lineHeight: "26px", marginBottom: "15px" }}>
                                                         {value.description}
                                                     </p>
                                                     <br />

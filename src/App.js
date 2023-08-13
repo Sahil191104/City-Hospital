@@ -9,25 +9,30 @@ import { ThemeProvider } from './user/container/Context/ThemeContext';
 import Alert from './user/components/Alert/Alert';
 import { SnackbarProvider } from 'notistack';
 import './rsuite.css';
+import React, { Fragment } from 'react';
+import ScrollButton from './user/components/ScrollButton';
 
 function App() {
 
   return (
-    <SnackbarProvider maxSnack={3} >
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider>
-            <Alert />
-            <Routes>
-              <Route path='/*' element={<UserRouet />} />
-              <Route element={<PrivateRoute />}>
-                <Route path='/admin/*' element={<AdminRoute />} />
-              </Route>
-            </Routes>
-          </ThemeProvider>
-        </PersistGate>
-      </Provider>
-    </SnackbarProvider>
+    <React.Fragment>
+      <SnackbarProvider maxSnack={3} >
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <ThemeProvider>
+              <Alert />
+              <Routes>
+                <Route path='/*' element={<UserRouet />} />
+                <Route element={<PrivateRoute />}>
+                  <Route path='/admin/*' element={<AdminRoute />} />
+                </Route>
+              </Routes>
+              <ScrollButton />
+            </ThemeProvider>
+          </PersistGate>
+        </Provider>
+      </SnackbarProvider>
+    </React.Fragment>
   );
 }
 

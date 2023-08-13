@@ -6,10 +6,13 @@ import Contact from '../admin/container/Contact';
 import Medicine from '../admin/container/Medicine';
 import DashBoard from '../admin/container/DashBoard/DashBoard';
 import Department from '../admin/container/Department';
+import { ThemeContext } from '../user/container/Context/ThemeContext';
 
 function AdminRoute(props) {
-
+    let theme = useContext(ThemeContext);
+console.log(ThemeContext);
     return (
+        <div className={`${theme.theme}`}>
             <Layout>
                 <Routes>
                     <Route path='/Doctor' element={<Doctor />} />
@@ -19,6 +22,7 @@ function AdminRoute(props) {
                     <Route path='/Department' element={<Department />} />
                 </Routes>
             </Layout>
+        </div>
     );
 }
 

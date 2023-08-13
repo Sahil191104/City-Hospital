@@ -48,12 +48,13 @@ function DepartmentForm({ onGetdata, onUpdate }) {
 
     const formik = useFormik({
         validationSchema: medicineschema,
-
+        
         initialValues: {
             name: '',
             desc: '',
             image: ''
         },
+        
         onSubmit: (values, action) => {
             action.resetForm()
             onGetdata(values)

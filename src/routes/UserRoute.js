@@ -27,6 +27,7 @@ import { ThemeContext } from '../user/container/Context/ThemeContext';
 
 function UserRoute(props) {
     let theme = useContext(ThemeContext);
+    console.log(theme.theme);
 
     const [cartCount, setCartCount] = useState(0);
 
