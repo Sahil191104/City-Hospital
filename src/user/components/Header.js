@@ -34,20 +34,19 @@ function Header(props) {
         dispatch(logoutrequest())
     }
 
-    // const cartData = useSelector(state => state.cart)
-    // console.log(cartData);
-    // let cartCounter = 0;
-
-    // if (cartData.item) {
-    //     cartCounter = cartData.item.reduce((acc, v, i) => acc + v.qyt, 0);
-    // }
-
-    let localdataCart = JSON.parse(localStorage.getItem("CartData"));
+    const cartData = useSelector(state => state.cart)
     let cartCounter = 0;
 
-    if (localdataCart) {
-        cartCounter = localdataCart.reduce((acc, v, i) => acc + v.qyt, 0);
+    if (cartData.item) {
+        cartCounter = cartData.item.reduce((acc, v, i) => acc + v.qyt, 0);
     }
+
+    // let localdataCart = JSON.parse(localStorage.getItem("CartData"));
+    // let cartCounter = 0;
+
+    // if (localdataCart) {
+    //     cartCounter = localdataCart.reduce((acc, v, i) => acc + v.qyt, 0);
+    // }
 
     let localdataheart = JSON.parse(localStorage.getItem("CartDetails"));
     console.log(localdataheart);
@@ -104,7 +103,6 @@ function Header(props) {
                                 <li><Link to="/about" className="nav-link scrollto">About</Link></li>
                                 <li><Link to="/contact" className="nav-link scrollto">Contact</Link></li>
                                 <li><Link to="/medicine" className="nav-link scrollto">Medicine</Link></li>
-                                <li><Link to="/counter" className="nav-link scrollto">Counter</Link></li>
                             </ul>
                             <i onClick={() => setOpen(true)} className="bi bi-list mobile-nav-toggle" />
                         </nav>
@@ -146,7 +144,6 @@ function Header(props) {
                                         <li><Link to="/about">About</Link></li>
                                         <li><Link to="/contact">Contact</Link></li>
                                         <li><Link to="/medicine">Medicine</Link></li>
-                                        <li><Link to="/counter">Counter</Link></li>
                                     </ul>
                                 </nav>
                             </Drawer.Body>

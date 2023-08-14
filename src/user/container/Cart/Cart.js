@@ -32,6 +32,8 @@ function Cart(props) {
         dispatch(remove(id))
     }
 
+    let totalprice = cartItems.reduce((acc, v, i) => acc + v.price * v.qyt, 0)
+
     return (
         <section id="medicine" className="medicine">
             <div className="container">
@@ -42,7 +44,7 @@ function Cart(props) {
                     cartItems.map((v, i) => {
                         return (
                             <>
-                                <div className="card-body p-4">
+                                <div className="card-body p-4 mb-4 rounded-1">
                                     <div className="row d-flex justify-content-between align-items-center">
                                         <div className="col-md-3 col-lg-3 col-xl-3">
                                             <p className="lead fw-normal mb-2">{v.name}</p>
@@ -70,9 +72,9 @@ function Cart(props) {
                         )
                     })
                 }
-                <div className="d-flex justify-content-between p-2 mb-2" style={{ backgroundColor: '#FFF4F3' }}>
+                <div className="d-flex total-data justify-content-between p-2 mb-2 rounded-1">
                     <h5 className="fw-bold mb-0">Total:</h5>
-                    <h5 className="fw-bold mb-0">2261$</h5>
+                    <h5 className="fw-bold mb-0">${totalprice}</h5>
                 </div>
             </div>
         </section>

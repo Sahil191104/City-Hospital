@@ -24,7 +24,6 @@ import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 
 const Doctordetails = [
   { Tool: 'Doctor', to: '/admin/Doctor', icon: <GiDoctorFace /> },
-  { Tool: 'Contact', to: '/admin/Contact', icon: <AiFillContacts /> },
   { Tool: 'Medicine', to: '/admin/Medicine', icon: <AiFillMedicineBox /> },
   { Tool: 'Department', to: '/admin/Department', icon: <AddBusinessIcon /> },
 ]

@@ -3,15 +3,12 @@ import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import Button from '@mui/material/Button';
 import CustButton from '../container/UI/Button/CustButton';
 import Input from './UI/Input/Input';
 import Htag from './UI/H1toH6/Htag';
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { Box, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import { forgotRequest, loginRequest, signupRequest } from '../../redux/action/auth.action';
 import { ThemeContext } from './Context/ThemeContext';
-import { auth, googleProvider } from '../../firebase';
 
 function Auth(props) {
     const [authType, setAuthType] = useState('login');
@@ -92,14 +89,6 @@ function Auth(props) {
         },
     });
 
-    const signInWithGoogle = async () => {
-        try {
-            await signInWithPopup(auth, googleProvider);
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
     return (
         <div>
             <section id="appointment" className={`appointment ${color9}`}>
@@ -165,7 +154,6 @@ function Auth(props) {
                                             authType === 'login' ?
                                                 <>
                                                     <CustButton type="primary" onClick={handleLogin}>Login</CustButton>
-                                                    <CustButton type="primary" onClick={signInWithGoogle}>Signin with google</CustButton>
                                                 </>
                                                 :
                                                 authType === 'forgot' ?

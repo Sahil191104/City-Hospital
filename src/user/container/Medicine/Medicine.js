@@ -36,6 +36,24 @@ function Medicine(props) {
         console.log("Handle Cart", id);
     }
 
+    let loacalarr = [];
+    const handleicon = (id) => {
+        let checkdetails = loacalarr.find((v) => v.pid === id)
+        if (checkdetails) {
+            loacalarr.push({
+                pid: id,
+                qyt: 1
+            });
+        } else {
+            loacalarr.push({
+                pid: id,
+                qyt: 1
+            });
+            localStorage.setItem("CartDetails", JSON.stringify(loacalarr));
+        }
+        console.log(loacalarr);
+    }
+
     return (
         <section id="medicine" className="medicine">
             <div className="container">
@@ -44,22 +62,20 @@ function Medicine(props) {
                     <Titel>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                         blandit quam volutpat sollicitudin. Aenean ac turpis ante. Mauris velit sapien, aliquet aliquet rhoncus quis,
                         luctus at neque. Mauris sit amet massa sed orci vehicula facilisis.</Titel>
+                    <TextField
+                        margin="dense"
+                        id="search"
+                        label="Search"
+                        name='search'
+                        type="search"
+                        fullWidth
+                        variant="standard"
+                        sx={{ color: 'gray', borderColor: 'white' }}
+                        onChange={(e) => handleSearch(e.target.value)}
+                    />
                 </div>
-            </div>
-            <div className="container">
-                <TextField
-                    margin="dense"
-                    id="search"
-                    label="Search"
-                    name='search'
-                    type="search"
-                    fullWidth
-                    variant="standard"
-                    sx={{ color: 'gray', borderColor: 'white' }}
-                    onChange={(e) => handleSearch(e.target.value)}
-                />
-                <div className="row mt-5 justify-content-between">
-                    <ListMedicine Mdata={search.length > 0 ? search : medicines.medicine} Hadleclick={handleclick} />
+                <div className='card-data'>
+                    <ListMedicine Mdata={search.length > 0 ? search : medicines.medicine} Hadleclick={handleclick} Handleicon={handleicon} />
                 </div>
             </div>
         </section>

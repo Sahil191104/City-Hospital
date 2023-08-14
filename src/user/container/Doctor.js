@@ -36,7 +36,6 @@ function Doctor(props) {
 
     const { id } = useParams();
 
-
     const doctorsdata = information.filter((value) => value.id === parseInt(id))
     console.log(doctorsdata);
 
