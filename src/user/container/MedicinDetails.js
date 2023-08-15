@@ -67,7 +67,6 @@ function MedicinDetails() {
                                                     {
                                                         v.name
                                                     }
-                                                    <FavoriteBorderIcon />
                                                 </CardTitle>
                                                 <CardSubtitle
                                                     className="mb-2 text-muted"

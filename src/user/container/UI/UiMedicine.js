@@ -54,13 +54,13 @@ function UiMedicine({ Udata, OnClick, Onicon }) {
                                     <h2 className="name">{v.name}</h2>
                                     <span className="price">${v.price}.00</span>
                                     <a className="popup-btn">Quick View</a>
-                                    {/* <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fmedicine&psig=AOvVaw04IfeMmb8rzsiMJG_epTPe&ust=1692109551046000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIChrpOv3IADFQAAAAAdAAAAABAE" className="product-img" alt /> */}
+                                    {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" className="product-img" alt /> */}
                                 </div>
                                 <div className="popup-view">
                                     <div className="popup-card">
                                         <a><i className="fas fa-times close-btn" /></a>
                                         <div className="product-img">
-                                            {/* <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fmedicine&psig=AOvVaw04IfeMmb8rzsiMJG_epTPe&ust=1692109551046000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIChrpOv3IADFQAAAAAdAAAAABAE" alt /> */}
+                                            {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" alt /> */}
                                         </div>
                                         <div className="info">
                                             <h2>{v.name}
