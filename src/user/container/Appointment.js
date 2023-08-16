@@ -2,9 +2,23 @@ import React from 'react';
 import CustButton from './UI/Button/CustButton';
 import { Formik, useFormik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addAppointment } from '../../redux/slice/appointmentSlice';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import PhoneIcon from '@mui/icons-material/Phone';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+import PersonPinIcon from '@mui/icons-material/PersonPin';
 
 function Appointment(props) {
+    const [value, setValue] = React.useState(0);
 
+    const handleChanges = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    const dispatch = useDispatch()
     let d = new Date();
     let nd = new Date(d.setDate(d.getDate() - 1))
 
@@ -41,6 +55,7 @@ function Appointment(props) {
         onSubmit: (values, action) => {
             action.resetForm()
             console.log(values);
+            dispatch(addAppointment(values))
             // onGetdata(values)
             // handleClose();
             // handleSubmitData(values)
@@ -57,8 +72,13 @@ function Appointment(props) {
                     <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                         blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
                         Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
+                    <Tabs className='m-0' value={value} onChange={handleChanges} aria-label="icon label tabs example">
+                        <Tab icon={<PhoneIcon />} value="1" label="RECENTS" />
+                        <Tab icon={<FavoriteIcon />} value="2" label="FAVORITES" />
+                    </Tabs>
                 </div>
-                <form action method="post" role="form" onSubmit={handleSubmit} className="php-email-form" >
+
+                <form action method="post" value="1" role="form" onSubmit={handleSubmit} className="php-email-form" >
                     <div className="row">
                         <div className="col-md-4 form-group">
                             <input type="text" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -99,8 +119,11 @@ function Appointment(props) {
                     </div> */}
                     <div className="text-center"><CustButton type="submit">Make an Appointment</CustButton></div>
                 </form>
+                <div value="2">
+
+                </div>
             </div>
-        </section>
+        </section >
     );
 }
 

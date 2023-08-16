@@ -1,8 +1,30 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase";
+
 const initialState = {
     apt: [],
     loading: false,
     error: null
 }
+
+export const addAppointment = createAsyncThunk(
+    'appointment/add',
+    async (data) => {
+        try {
+            const docRef = await addDoc(collection(db, "appointment"), {
+                data
+            });
+            return {
+                id: docRef.id,
+                ...data
+            }
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+)
 
 const loadingDepartment = (state, action) => {
     state.loading = true;
@@ -20,8 +42,8 @@ export const appointmentSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(apt.pending, (loadingDepartment))
-            .addCase(apt.fulfilled, (state, action) => {
+            .addCase(addAppointment.pending, (loadingDepartment))
+            .addCase(addAppointment.fulfilled, (state, action) => {
                 state.loading = false
                 console.log(action.payload);
                 state.department = action.payload
