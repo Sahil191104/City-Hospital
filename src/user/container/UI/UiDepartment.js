@@ -1,7 +1,4 @@
 import React from 'react';
-import { Card, CardBody, CardSubtitle, CardTitle, CardText, Button } from 'reactstrap';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Titel from './Title/Titel';
 import Htag from './H1toH6/Htag';
 
