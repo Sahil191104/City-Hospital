@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const initialState = {
@@ -12,9 +12,7 @@ export const addAppointment = createAsyncThunk(
     'appointment/add',
     async (data) => {
         try {
-            const docRef = await addDoc(collection(db, "appointment"), {
-                data
-            });
+            const docRef = await addDoc(collection(db, "appointment"), data);
             return {
                 id: docRef.id,
                 ...data
@@ -26,12 +24,69 @@ export const addAppointment = createAsyncThunk(
     }
 )
 
-const loadingDepartment = (state, action) => {
+export const getAppointment = createAsyncThunk(
+    'appointment/get',
+    async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "appointment"));
+
+            let data = []
+            querySnapshot.forEach((doc) => {
+
+                data.push({
+                    id: doc.id,
+                    ...doc.data()
+                })
+                console.log(data);
+            });
+            return data
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+)
+
+export const deleteAppointment = createAsyncThunk(
+    'appointment/delete',
+    async (id) => {
+        try {
+            await deleteDoc(doc(db, "appointment", id));
+
+            return id
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+)
+
+export const updateAppointment = createAsyncThunk(
+    'appointment/get',
+    async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "appointment"));
+
+            let data = []
+            querySnapshot.forEach((doc) => {
+
+                data.push({
+                    id: doc.id,
+                    ...doc.data()
+                })
+                console.log(data);
+            });
+            return data
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+)
+
+const loadingAppointment = (state, action) => {
     state.loading = true;
     state.error = null;
 }
 
-const errorDepartment = (state, action) => {
+const errorAppointment = (state, action) => {
     state.loading = false;
     state.error = action.error.message;
 }
@@ -42,12 +97,41 @@ export const appointmentSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(addAppointment.pending, (loadingDepartment))
+            .addCase(addAppointment.pending, (loadingAppointment))
             .addCase(addAppointment.fulfilled, (state, action) => {
                 state.loading = false
                 console.log(action.payload);
-                state.department = action.payload
+                state.apt = state.apt.concat(action.payload)
             })
+            .addCase(addAppointment.rejected, (errorAppointment))
+            .addCase(getAppointment.pending, (loadingAppointment))
+            .addCase(getAppointment.fulfilled, (state, action) => {
+                state.loading = false
+                console.log(action.payload);
+                state.apt = action.payload
+            })
+            .addCase(getAppointment.rejected, (errorAppointment))
+            .addCase(deleteAppointment.pending, (loadingAppointment))
+            .addCase(deleteAppointment.fulfilled, (state, action) => {
+                state.loading = false
+                console.log(action.payload);
+                state.apt = state.apt.filter((v) => v.id != action.payload)
+            })
+            .addCase(deleteAppointment.rejected, (errorAppointment))
+            .addCase(updateAppointment.pending, (loadingAppointment))
+            .addCase(updateAppointment.fulfilled, (state, action) => {
+                state.loading = false
+                console.log(action.payload);
+                let udata = state.department.map((v) => {
+                    if (v.id === action.payload.id) {
+                        return action.payload;
+                    } else {
+                        return v;
+                    }
+                })
+                state.apt = udata;
+            })
+            .addCase(updateAppointment.rejected, (errorAppointment))
     },
 })
 
