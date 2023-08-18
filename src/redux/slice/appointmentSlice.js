@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db, storage } from "../../firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const initialState = {
     apt: [],
@@ -17,7 +17,7 @@ export const addAppointment = createAsyncThunk(
         try {
             const storageRef = ref(storage, 'file/' + data.file.name);
             let iData = { ...data }
-            await uploadBytes(storageRef, data.file).then(async(snapshot) => {
+            await uploadBytes(storageRef, data.file).then(async (snapshot) => {
                 console.log('Uploaded a blob or file!');
                 await getDownloadURL(snapshot.ref)
                     .then(async (url) => {
@@ -32,8 +32,6 @@ export const addAppointment = createAsyncThunk(
                         }
                     })
             });
-
-
 
             // const docRef = await addDoc(collection(db, "appointment"), data);
             // return {
@@ -73,8 +71,18 @@ export const deleteAppointment = createAsyncThunk(
     'appointment/delete',
     async (id) => {
         try {
-            await deleteDoc(doc(db, "appointment", id));
-            return id
+            const desertRef = ref(storage, 'file/' + id);
+            console.log(desertRef);
+            await deleteObject(desertRef, id).then(async () => {
+                console.log("File deleted successfully");
+                // await deleteDoc(doc(db, "appointment", id));
+                // return id
+            }).catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+
+            // await deleteDoc(doc(db, "appointment", id));
+            // return id
         } catch (e) {
             console.error("Error adding document: ", e);
         }

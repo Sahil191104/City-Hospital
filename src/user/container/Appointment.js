@@ -28,16 +28,6 @@ function Appointment(props) {
         setValue(newValue);
     };
 
-    // const [image, setImage] = useState('');
-
-    // const upload = () => {
-    //     if (image == null)
-    //         return;
-    //     storage.ref(`/images/${image.name}`).put(image)
-    //         .on("state_changed", alert("success"), alert);
-    //     console.log(image);
-    // }
-
     let d = new Date();
     let nd = new Date(d.setDate(d.getDate() - 1))
 
@@ -212,6 +202,7 @@ function Appointment(props) {
 
                             <div style={{ height: 400, width: '100%' }}>
                                 <DataGrid
+                                    getRowHeight={() => 'auto'}
                                     rows={apt.apt}
                                     columns={columns}
                                     initialState={{
