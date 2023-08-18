@@ -28,15 +28,15 @@ function Appointment(props) {
         setValue(newValue);
     };
 
-    const [image, setImage] = useState('');
+    // const [image, setImage] = useState('');
 
-    const upload = () => {
-        if (image == null)
-            return;
-        storage.ref(`/images/${image.name}`).put(image)
-            .on("state_changed", alert("success"), alert);
-            console.log(image);
-    }
+    // const upload = () => {
+    //     if (image == null)
+    //         return;
+    //     storage.ref(`/images/${image.name}`).put(image)
+    //         .on("state_changed", alert("success"), alert);
+    //     console.log(image);
+    // }
 
     let d = new Date();
     let nd = new Date(d.setDate(d.getDate() - 1))
@@ -57,7 +57,8 @@ function Appointment(props) {
                     } else {
                         return true
                     }
-                })
+                }),
+        file: yup.mixed().required("Please Upload to File")
     });
 
     const formik = useFormik({
@@ -69,7 +70,8 @@ function Appointment(props) {
             phone: '',
             expiry: '',
             select: '',
-            desc: ''
+            desc: '',
+            file: ''
         },
         onSubmit: (values, action) => {
             console.log(values);
@@ -107,6 +109,17 @@ function Appointment(props) {
         { field: 'select', headerName: 'Department', width: 130 },
         { field: 'desc', headerName: 'Description', width: 130 },
         {
+            field: 'file', headerName: 'Image', width: 200, height: 80,
+            renderCell: (params) => {
+                console.log(params.row);
+                return (
+                    <div>
+                        <img src={params.row.file} alt='' class="img-thumbnail" />
+                    </div>
+                )
+            }
+        },
+        {
             field: 'action',
             headerName: 'Action',
             width: 130,
@@ -124,7 +137,7 @@ function Appointment(props) {
         }
     ]
 
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit, setValues } = formik;
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit, setValues, setFieldValue } = formik;
 
     return (
         <section id="appointment" className="appointment">
@@ -177,14 +190,15 @@ function Appointment(props) {
                                     <span style={{ color: 'red' }}>{errors.select && touched.select ? errors.select : null} </span>
                                 </div>
                                 <div className="col-md-4 form-group mt-3">
-                                    <input type="file" name="file" className="form-control datepicker" onChange={(e) => { setImage(e.target.files[0]) }} id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <input type="file" name="file" className="form-control datepicker" onChange={(e) => setFieldValue('file', e.target.files[0])} id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <span style={{ color: 'red' }}>{errors.file && touched.file ? errors.file : null} </span>
                                 </div>
                             </div>
                             <div className="form-group mt-3">
                                 <textarea className="form-control" name="desc" value={values.desc} onChange={handleChange} onBlur={handleBlur} rows={5} placeholder="Message (Optional)" defaultValue={""} />
                                 <span style={{ color: 'red' }}>{errors.desc && touched.desc ? errors.desc : null} </span>
                             </div>
-                            <div className="text-center"><CustButton onClick={upload} type="submit">Make an Appointment</CustButton></div>
+                            <div className="text-center"><CustButton type="submit">Make an Appointment</CustButton></div>
                         </form>
                     </div>
                 }
