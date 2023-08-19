@@ -86,8 +86,8 @@ function Appointment(props) {
         setValues(data)
     }
 
-    const handleDelete = (id) => {
-        dispatch(deleteAppointment(id))
+    const handleDelete = (data) => {
+        dispatch(deleteAppointment(data))
     }
 
     const columns = [
@@ -119,7 +119,7 @@ function Appointment(props) {
                         <EditIcon />
                     </IconButton>
 
-                    <IconButton aria-label="delete" onClick={() => handleDelete(params.row.id)}>
+                    <IconButton aria-label="delete" onClick={() => handleDelete(params.row)}>
                         <DeleteIcon />
                     </IconButton>
                 </>
@@ -180,7 +180,8 @@ function Appointment(props) {
                                     <span style={{ color: 'red' }}>{errors.select && touched.select ? errors.select : null} </span>
                                 </div>
                                 <div className="col-md-4 form-group mt-3">
-                                    <input type="file" name="file" className="form-control datepicker" onChange={(e) => setFieldValue('file', e.target.files[0])} id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <input type="file" name="file" className="form-control datepicker mb-4" onChange={(e) => setFieldValue('file', e.target.files[0])} id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <img src={typeof values.file === 'string' ? values.file: URL.createObjectURL(values.file) } className="img-fluid"  alt="" />
                                     <span style={{ color: 'red' }}>{errors.file && touched.file ? errors.file : null} </span>
                                 </div>
                             </div>

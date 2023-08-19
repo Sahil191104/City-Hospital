@@ -15,23 +15,27 @@ export const addAppointment = createAsyncThunk(
         console.log(data.file.name);
 
         try {
-            const storageRef = ref(storage, 'file/' + data.file.name);
+            const rNo = Math.floor(Math.random() * 100000000);
+            const storageRef = ref(storage, 'file/' + rNo + '_' + data.file.name);
             let iData = { ...data }
             await uploadBytes(storageRef, data.file).then(async (snapshot) => {
                 console.log('Uploaded a blob or file!');
                 await getDownloadURL(snapshot.ref)
                     .then(async (url) => {
                         console.log(url);
-                        iData = { ...data, file: url }
+                        iData = { ...data, file: url, "File_Name": rNo + '_' + data.file.name }
                         const docRef = await addDoc(collection(db, "appointment"), iData);
 
                         iData = {
                             id: docRef.id,
                             ...data,
-                            file: data.file
+                            file: data.file,
+                            "File_Name": rNo + '_' + data.file.name
                         }
                     })
             });
+
+            return iData;
 
             // const docRef = await addDoc(collection(db, "appointment"), data);
             // return {
@@ -69,14 +73,15 @@ export const getAppointment = createAsyncThunk(
 
 export const deleteAppointment = createAsyncThunk(
     'appointment/delete',
-    async (id) => {
+    async (data) => {
+        console.log(data);
         try {
-            const desertRef = ref(storage, 'file/' + id);
+            const desertRef = ref(storage, 'file/' + data.File_Name);
             console.log(desertRef);
-            await deleteObject(desertRef, id).then(async () => {
+            await deleteObject(desertRef).then(async () => {
                 console.log("File deleted successfully");
-                // await deleteDoc(doc(db, "appointment", id));
-                // return id
+                await deleteDoc(doc(db, "appointment", data.id));
+                return data.id
             }).catch((error) => {
                 console.error("Error adding document: ", error);
             });
@@ -93,11 +98,53 @@ export const updateAppointment = createAsyncThunk(
     'appointment/update',
     async (data) => {
         try {
-            const appointmentRef = doc(db, "appointment", data.id);
+            if (typeof data.file === 'string') {
+                const appointmentRef = doc(db, "appointment", data.id);
 
-            await updateDoc(appointmentRef, data);
+                await updateDoc(appointmentRef, data);
 
-            return data
+                return data
+            } else {
+                const desertRef = ref(storage, 'file/' + data.File_Name);
+                console.log(desertRef);
+                let iData = { ...data }
+
+                await deleteObject(desertRef).then(async () => {
+                    const rNo = Math.floor(Math.random() * 100000000);
+                    const storageRef = ref(storage, 'file/' + rNo + '_' + data.file.name);
+                    console.log("Delete Old File");
+
+                    await uploadBytes(storageRef, data.file).then(async (snapshot) => {
+                        console.log('New Upload File Uploaded a blob or file!');
+
+                        await getDownloadURL(snapshot.ref)
+                            .then(async (url) => {
+                                console.log(url);
+                                iData = { ...data, file: url, "File_Name": rNo + '_' + data.file.name }
+
+                                const appointmentRef = doc(db, "appointment", data.id);
+                                await updateDoc(appointmentRef, iData);
+
+                                iData = {
+                                    ...data,
+                                    file: data.file,
+                                    "File_Name": rNo + '_' + data.file.name
+                                }
+                            })
+                    });
+
+                    console.log('New Upload File Uploaded');
+
+                    // console.log("File deleted successfully");
+                    // await deleteDoc(doc(db, "appointment", data.id));
+                    // return data.id
+                }).catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
+                console.log(iData);
+                return iData;
+
+            }
         } catch (e) {
             console.error("Error adding document: ", e);
         }
