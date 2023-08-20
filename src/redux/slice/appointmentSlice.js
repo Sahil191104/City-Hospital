@@ -132,7 +132,7 @@ export const updateAppointment = createAsyncThunk(
                                 }
                             })
                     });
-
+                    
                     console.log('New Upload File Uploaded');
 
                     // console.log("File deleted successfully");
