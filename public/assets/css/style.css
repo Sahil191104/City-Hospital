@@ -1946,6 +1946,14 @@ section {
   background-color: #18122B !important;
 } */
 
+.dark .appointment .css-aym9vq-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #FF6337;
+}
+
+.dark .appointment .css-1aquho2-MuiTabs-indicator {
+  background-color: #FF6337;
+}
+
 .medicine .card-body {
   box-shadow: 0px 2px 12px rgb(44 73 100 / 8%);
 }
@@ -2008,7 +2016,12 @@ section {
 .dark .medicine input,
 .dark .card-body .btn i,
 .dark .product .product-card .name,
-.dark .product .product-card .price {
+.dark .product .product-card .price,
+.dark .appointment .css-aym9vq-MuiButtonBase-root-MuiTab-root,
+.dark .appointment .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root,
+.dark .appointment .css-1lymaxv-MuiDataGrid-root,
+.dark .appointment .css-78trlr-MuiButtonBase-root-MuiIconButton-root,
+.dark .appointment .css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root {
   color: #fff;
 }
 
@@ -2372,7 +2385,7 @@ nav ul {
   line-height: 20px;
   margin: 10px;
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .product .popup-card .info h2 span {
