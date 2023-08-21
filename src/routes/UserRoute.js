@@ -16,6 +16,7 @@ import Cart from '../user/container/Cart/Cart';
 import MedicinDetails from '../user/container/MedicinDetails';
 import Department from '../user/container/Department/Department';
 import { ThemeContext } from '../user/container/Context/ThemeContext';
+import Counter from '../user/container/Counter';
 
 function UserRoute(props) {
     let theme = useContext(ThemeContext);
@@ -51,6 +52,7 @@ function UserRoute(props) {
                     <Route path='*' element={<Error />} />
                     <Route path='/Auth' element={<Auth />} />
                     <Route path='/Cart' element={<Cart />} />
+                    <Route path='/Counter' element={<Counter />} />
                     {/* <Route path='/Auth' element={<Auth />} /> */}
                 </Routes>
 
