@@ -19,6 +19,7 @@ import { ThemeContext } from '../user/container/Context/ThemeContext';
 import Counter from '../user/container/Counter';
 import Other from '../user/container/Other';
 import ListData from '../user/container/ListData';
+import UseRefExample from '../user/container/UseRefExample';
 
 function UserRoute(props) {
     let theme = useContext(ThemeContext);
@@ -54,10 +55,14 @@ function UserRoute(props) {
                     <Route path='*' element={<Error />} />
                     <Route path='/Auth' element={<Auth />} />
                     <Route path='/Cart' element={<Cart />} />
+                    {/* <Route path='/Auth' element={<Auth />} /> */}
+
+
+                    {/* Example Nakami */}
                     <Route path='/Counter' element={<Counter />} />
                     <Route path='/Other' element={<Other />} />
                     <Route path='/List' element={<ListData />} />
-                    {/* <Route path='/Auth' element={<Auth />} /> */}
+                    <Route path='/UseRefExample' element={<UseRefExample />} />
                 </Routes>
 
                 <Footer />
