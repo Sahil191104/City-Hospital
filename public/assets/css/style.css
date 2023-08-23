@@ -254,9 +254,9 @@ h6 {
   margin-left: 5px;
 }
 
-.navbar a:hover,
-.navbar .active,
-.navbar li:hover>a {
+.navbar ul li a:hover,
+.navbar ul li .active,
+.navbar ul li:hover>a {
   color: #FF6337;
   border-color: #FF6337;
 }
@@ -347,9 +347,24 @@ h6 {
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
+    padding: 5px 0 5px 5px;
   }
 
   .navbar ul {
+    display: none;
+  }
+
+  .display-just {
+    justify-content: space-between;
+  }
+
+  .data-display li a {
+    padding: 20px 0px;
+  }
+
+  .btnLogout,
+  .nono-Proprti,
+  .btnLoginSignup {
     display: none;
   }
 }
@@ -490,6 +505,16 @@ h6 {
   background: #FFA68B;
 }
 
+.top-styled {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-style {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
@@ -498,8 +523,8 @@ h6 {
 
 @media (max-width: 992px) {
   #hero {
-    margin-bottom: 0;
-    height: 100vh;
+    background-size: 100% 75vh;
+    margin-bottom: -245px;
   }
 
   #hero .container {
@@ -518,9 +543,46 @@ h6 {
   }
 }
 
-@media (max-height: 600px) {
+@media (max-width: 600px) {
+  #topbar {
+    height: 60px;
+  }
+
+  #header .logo {
+    font-size: 25px;
+  }
+
+  .logo-tiny-text {
+    font-size: 17px;
+  }
+
+  #header {
+    top: 60px;
+  }
+
   #hero {
-    height: 110vh;
+    background-size: 100% 48vh;
+    margin-bottom: -440px;
+  }
+
+  #hero .container {
+    padding-bottom: 22em;
+  }
+
+  .top-styled {
+    padding-top: 6px;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 364px) {
+  #hero {
+    background-size: 100% 44vh;
+    margin-bottom: -474px;
+  }
+
+  #hero .container {
+    padding-bottom: 28em;
   }
 }
 

@@ -16,10 +16,7 @@ import Cart from '../user/container/Cart/Cart';
 import MedicinDetails from '../user/container/MedicinDetails';
 import Department from '../user/container/Department/Department';
 import { ThemeContext } from '../user/container/Context/ThemeContext';
-import Counter from '../user/container/Counter';
-import Other from '../user/container/Other';
-import ListData from '../user/container/ListData';
-import UseRefExample from '../user/container/UseRefExample';
+import PrivateRoute from './PrivateRoute';
 
 function UserRoute(props) {
     let theme = useContext(ThemeContext);
@@ -30,42 +27,35 @@ function UserRoute(props) {
     return (
         <div className={`${theme.theme}`}>
 
-                <Header count={cartCount} />
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/appointment' element={<Appointment />} />
-                    <Route path='/contact' element={<Contact />} />
+            <Header count={cartCount} />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/appointment' element={<Appointment />} />
+                <Route path='/contact' element={<Contact />} />
 
-                    {/* <Route element={<PrivateRoute />}> */}
+                <Route element={<PrivateRoute />}>
                     {/* <Route exact path='medicine' element={<Medicine1 />} onUpdate={setCartCount} /> */}
                     <Route exact path='medicine' element={<Medicine />} />
                     <Route exact path='department' element={<Department />} />
-                    {/* </Route> */}
+                </Route>
 
-                    {/* <Route path='/contact' element={<Contact1 />} /> */}
-                    <Route path='/form' element={<FormValidation />} />
-                    <Route path='/doctors' element={<Doctors />} />
-                    <Route path='/doctor/:id' element={<Doctor />} />
-                    <Route path='/medicindetails' element={<MedicinDetails />} />
+                {/* <Route path='/contact' element={<Contact1 />} /> */}
+                <Route path='/form' element={<FormValidation />} />
+                <Route path='/doctors' element={<Doctors />} />
+                <Route path='/doctor/:id' element={<Doctor />} />
+                <Route path='/medicindetails' element={<MedicinDetails />} />
 
-                    <Route path='/doctor/'>
-                        <Route path=':id' element={<Doctor />} />
-                    </Route>
-                    <Route path='*' element={<Error />} />
-                    <Route path='/Auth' element={<Auth />} />
-                    <Route path='/Cart' element={<Cart />} />
-                    {/* <Route path='/Auth' element={<Auth />} /> */}
+                <Route path='/doctor/'>
+                    <Route path=':id' element={<Doctor />} />
+                </Route>
+                <Route path='*' element={<Error />} />
+                <Route path='/Auth' element={<Auth />} />
+                <Route path='/Cart' element={<Cart />} />
+                {/* <Route path='/Auth' element={<Auth />} /> */}
+            </Routes>
 
-
-                    {/* Example Nakami */}
-                    <Route path='/Counter' element={<Counter />} />
-                    <Route path='/Other' element={<Other />} />
-                    <Route path='/List' element={<ListData />} />
-                    <Route path='/UseRefExample' element={<UseRefExample />} />
-                </Routes>
-
-                <Footer />
+            <Footer />
         </div>
     );
 }

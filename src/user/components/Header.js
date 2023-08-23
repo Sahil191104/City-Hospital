@@ -67,12 +67,12 @@ function Header(props) {
             </div> */}
             <div className="main-header header">
                 <div id="topbar" className="d-flex align-items-center fixed-top">
-                    <div className="container d-flex justify-content-between">
-                        <div className="contact-info d-flex align-items-center">
-                            <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
-                            <i className="bi bi-phone" /> +91 9988776655
+                    <div className="container top-styled">
+                        <div className="contact-info d-flex p-1 justify-content-between">
+                            <a href="mailto:contact@example.com"><i className="bi bi-envelope" />cityhospital@example.com</a>
+                            <a href=''><i className="bi bi-phone" />+91 9988776655</a>
                         </div>
-                        <div className="d-flex social-links align-items-center">
+                        <div className="d-flex social-links align-items-center justify-content-end">
                             <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
                             <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
                             <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
@@ -88,7 +88,7 @@ function Header(props) {
                 </div>
 
                 <header id="header" className="fixed-top">
-                    <div className="container d-flex align-items-center">
+                    <div className="container d-flex align-items-center display-just">
                         <div className="logo">
                             <a href="index.html">
                                 <h1 className="logo me-auto">City</h1><br />
@@ -104,51 +104,62 @@ function Header(props) {
                                 <li><Link to="/contact" className="nav-link scrollto">Contact</Link></li>
                                 <li><Link to="/medicine" className="nav-link scrollto">Medicine</Link></li>
                             </ul>
-                            <i onClick={() => setOpen(true)} className="bi bi-list mobile-nav-toggle" />
+                            <div className='icon-style'>
+                                <Link to="/Cart">
+                                    <IconButton aria-label="cart">
+                                        <StyledBadge badgeContent={cartCounter} sx={{ color: '#FF6337' }}>
+                                            <ShoppingCartIcon />
+                                        </StyledBadge>
+                                    </IconButton>
+                                </Link>
+                                <Link state={{ border: "none" }} to="/medicindetails">
+                                    <IconButton aria-label="heart">
+                                        <StyledBadge badgeContent={heartCounter} sx={{ color: '#FF6337' }}>
+                                            <FavoriteIcon />
+                                        </StyledBadge>
+                                    </IconButton>
+                                </Link>
+                                <i onClick={() => setOpen(true)} className="bi bi-list mobile-nav-toggle" />
+                            </div>
                         </nav>
-                        <Link to="/appointment" className="appointment-btn scrollto"><CustButton className="d-none d-md-inline">Make an Appointment</CustButton>
+                        <Link to="/appointment" className="appointment-btn nono-Proprti scrollto"><CustButton className="d-none d-md-inline">Make an Appointment</CustButton>
                         </Link>
                         {/* <Link to="/appointment" className="nav-link scrollto">Appointment</Link> */}
                         {
                             auth.user ?
-                                <Link to="/Auth" onClick={handleLogout}><CustButton>Logout</CustButton></Link>
-                                : <Link to="/Auth" ><CustButton>Login/Signup</CustButton></Link>
+                                <Link to="/Auth" className="btnLogout" onClick={handleLogout}><CustButton >Logout</CustButton></Link>
+                                : <Link to="/Auth" className="btnLoginSignup" ><CustButton >Login/Signup</CustButton></Link>
                         }
-                        <Link to="/Cart">
-                            <IconButton aria-label="cart">
-                                <StyledBadge badgeContent={cartCounter} sx={{ color: '#FF6337' }}>
-                                    <ShoppingCartIcon />
-                                </StyledBadge>
-                            </IconButton>
-                        </Link>
-                        <Link to="/medicindetails">
-                            <IconButton aria-label="heart">
-                                <StyledBadge badgeContent={heartCounter} sx={{ color: '#FF6337' }}>
-                                    <FavoriteIcon />
-                                </StyledBadge>
-                            </IconButton>
-                        </Link>
+                        <div className='drawer'>
+                            <Drawer className='drawerstyle' style={{ width: "384px" }} backdrop={"static"} open={open} onClose={() => setOpen(false)}>
+                                <Drawer.Header>
+                                    <Drawer.Title>Navbar List</Drawer.Title>
+                                </Drawer.Header>
+                                <Drawer.Body style={{ padding: "30px 15px" }}>
+                                    <nav>
+                                        <ul>
+                                            <li><Link to="/">Home</Link></li>
+                                            <li><Link to="/department">Departments</Link></li>
+                                            <li><Link to="/doctors">Doctors</Link></li>
+                                            <li><Link to="/about">About</Link></li>
+                                            <li><Link to="/contact">Contact</Link></li>
+                                            <li><Link to="/medicine">Medicine</Link></li>
+                                            <div className='data-display'>
+                                                <Link to="/appointment" className="appointment-btn scrollto"><CustButton className="d-none d-md-inline">Make an Appointment</CustButton></Link>
+                                                {/* <Link to="/appointment" className="nav-link scrollto">Appointment</Link> */}
+                                                {
+                                                    auth.user ?
+                                                        <li><Link to="/Auth" onClick={handleLogout}><CustButton className="" >Logout</CustButton></Link></li>
+                                                        : <li><Link to="/Auth" ><CustButton >Login/Signup</CustButton></Link></li>
+                                                }
+                                            </div>
+                                        </ul>
+                                    </nav>
+                                </Drawer.Body>
+                            </Drawer>
+                        </div>
+                    </div>
 
-                    </div>
-                    <div className='drawer'>
-                        <Drawer backdrop={"static"} open={open} onClose={() => setOpen(false)}>
-                            <Drawer.Header>
-                                <Drawer.Title>Navbar List</Drawer.Title>
-                            </Drawer.Header>
-                            <Drawer.Body>
-                                <nav>
-                                    <ul>
-                                        <li><Link to="/">Home</Link></li>
-                                        <li><Link to="/department">Departments</Link></li>
-                                        <li><Link to="/doctors">Doctors</Link></li>
-                                        <li><Link to="/about">About</Link></li>
-                                        <li><Link to="/contact">Contact</Link></li>
-                                        <li><Link to="/medicine">Medicine</Link></li>
-                                    </ul>
-                                </nav>
-                            </Drawer.Body>
-                        </Drawer>
-                    </div>
                 </header >
 
             </div >
