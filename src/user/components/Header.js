@@ -32,6 +32,7 @@ function Header(props) {
 
     const handleLogout = () => {
         dispatch(logoutrequest())
+        setOpen(false)
     }
 
     const cartData = useSelector(state => state.cart)
@@ -68,7 +69,7 @@ function Header(props) {
             <div className="main-header header">
                 <div id="topbar" className="d-flex align-items-center fixed-top">
                     <div className="container top-styled">
-                        <div className="contact-info d-flex p-1 justify-content-between">
+                        <div className="contact-info p-1 justify-content-between">
                             <a href="mailto:contact@example.com"><i className="bi bi-envelope" />cityhospital@example.com</a>
                             <a href=''><i className="bi bi-phone" />+91 9988776655</a>
                         </div>
@@ -131,26 +132,26 @@ function Header(props) {
                                 : <Link to="/Auth" className="btnLoginSignup" ><CustButton >Login/Signup</CustButton></Link>
                         }
                         <div className='drawer'>
-                            <Drawer className='drawerstyle' style={{ width: "384px" }} backdrop={"static"} open={open} onClose={() => setOpen(false)}>
+                            <Drawer className='drawerstyle' style={{ width: "364px" }} backdrop={"static"} open={open} onClose={() => setOpen(false)}>
                                 <Drawer.Header>
                                     <Drawer.Title>Navbar List</Drawer.Title>
                                 </Drawer.Header>
                                 <Drawer.Body style={{ padding: "30px 15px" }}>
                                     <nav>
                                         <ul>
-                                            <li><Link to="/">Home</Link></li>
-                                            <li><Link to="/department">Departments</Link></li>
-                                            <li><Link to="/doctors">Doctors</Link></li>
-                                            <li><Link to="/about">About</Link></li>
-                                            <li><Link to="/contact">Contact</Link></li>
-                                            <li><Link to="/medicine">Medicine</Link></li>
+                                            <li><Link to="/" onClick={() => setOpen(false)} >Home</Link></li>
+                                            <li><Link to="/department" onClick={() => setOpen(false)}>Departments</Link></li>
+                                            <li><Link to="/doctors" onClick={() => setOpen(false)}>Doctors</Link></li>
+                                            <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
+                                            <li><Link to="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
+                                            <li><Link to="/medicine" onClick={() => setOpen(false)}>Medicine</Link></li>
                                             <div className='data-display'>
-                                                <Link to="/appointment" className="appointment-btn scrollto"><CustButton className="d-none d-md-inline">Make an Appointment</CustButton></Link>
+                                                <Link to="/appointment" onClick={() => setOpen(false)} className="appointment-btn scrollto"><CustButton className="d-none d-md-inline">Make an Appointment</CustButton></Link>
                                                 {/* <Link to="/appointment" className="nav-link scrollto">Appointment</Link> */}
                                                 {
                                                     auth.user ?
                                                         <li><Link to="/Auth" onClick={handleLogout}><CustButton className="" >Logout</CustButton></Link></li>
-                                                        : <li><Link to="/Auth" ><CustButton >Login/Signup</CustButton></Link></li>
+                                                        : <li><Link to="/Auth" onClick={() => setOpen(false)} ><CustButton >Login/Signup</CustButton></Link></li>
                                                 }
                                             </div>
                                         </ul>
