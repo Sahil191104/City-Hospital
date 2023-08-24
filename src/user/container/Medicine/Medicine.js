@@ -6,6 +6,7 @@ import Titel from '../UI/Title/Titel';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchdata } from '../../../redux/action/medicine.action';
 import { addtocart } from '../../../redux/slice/cartSlice';
+import { addfav } from '../../../redux/action/favorite.action';
 
 function Medicine(props) {
     const dispatch = useDispatch();
@@ -36,22 +37,9 @@ function Medicine(props) {
         console.log("Handle Cart", id);
     }
 
-    let loacalarr = [];
     const handleicon = (id) => {
-        let checkdetails = loacalarr.find((v) => v.pid === id)
-        if (checkdetails) {
-            loacalarr.push({
-                pid: id,
-                qyt: 1
-            });
-        } else {
-            loacalarr.push({
-                pid: id,
-                qyt: 1
-            });
-            localStorage.setItem("CartDetails", JSON.stringify(loacalarr));
-        }
-        console.log(loacalarr);
+        console.log(id);
+        dispatch(addfav(id))
     }
 
     return (

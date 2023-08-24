@@ -1,46 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardBody, CardSubtitle, CardTitle, CardText, Button } from 'reactstrap';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Htag from './UI/H1toH6/Htag';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeToFav } from '../../redux/action/favorite.action';
 
 function MedicinDetails() {
+    const dispatch = useDispatch();
+    let medData = useSelector(state => state.medicine);
+    const myfavouritedata = useSelector(state => state.fav)
+    console.log(myfavouritedata, medData);
+    console.log(myfavouritedata);
 
-    const [cartData, setCartData] = useState([]);
-    const [medicenData, setMedicenData] = useState([]);
 
-    console.log(cartData, medicenData);
+    let cartitems = myfavouritedata.fav.map((v) => {
+        let medicinceData = medData.medicine.find((m) => m.id === v.fid);
 
-    let cartItems = cartData.map((v) => {
+        let fData = { ...medicinceData, ...v };
 
-        let medicineItems = medicenData.find((m) => m.id === v.pid);
-
-        let fdata = { ...medicineItems, ...v }
-
-        return fdata
+        return fData
     })
 
-    useEffect(() => {
-        let cartData = JSON.parse(localStorage.getItem("CartDetails"));
-        setCartData(cartData);
-
-        try {
-            fetch("http://localhost:3004/medicines")
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error('Something went wrong');
-                })
-                .then((data) =>
-                    setMedicenData(data)
-                )
-                .catch((error) =>
-                    console.log(error)
-                )
-        } catch (error) {
-            console.log(error);
-        }
-    }, []);
+    const handleRemoveicon = (id) => {
+        dispatch(removeToFav(id))
+    }
 
     return (
         <>
@@ -53,7 +36,7 @@ function MedicinDetails() {
                 <div className="container">
                     <div className="row justify-content-between">
                         {
-                            cartItems.map((v) => {
+                            cartitems.map((v) => {
                                 return (
                                     <div className='col-md-3'>
                                         <Card
@@ -67,6 +50,7 @@ function MedicinDetails() {
                                                     {
                                                         v.name
                                                     }
+                                                    <FavoriteIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={handleRemoveicon} />
                                                 </CardTitle>
                                                 <CardSubtitle
                                                     className="mb-2 text-muted"

@@ -28,3 +28,6 @@ export const LOGG_OUT = "LOGG_OUT";
 export const LOGGOUt_RESPONSE = "LOGGOUt_RESPONSE";
 export const FORGOT_REQUEST = "FORGOT_REQUEST";
 export const AUTH_ERROR = "AUTH_ERROR";
+
+export const FAVORITE_ADD = "FAVORITE_ADD"
+export const FAVORITE_REMOVE = "FAVORITE_REMOVE"
