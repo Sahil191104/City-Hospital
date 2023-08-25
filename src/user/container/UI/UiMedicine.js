@@ -4,8 +4,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector } from 'react-redux';
 import { Box, CircularProgress } from '@mui/material';
 
-function UiMedicine({ Udata, OnClick, Onicon }) {
-    console.log(Udata);
+function UiMedicine({ values, OnClick, favouriteTrue, onclick2, fav, removefav }) {
     const carts = useSelector(state => state.cart);
     const favs = useSelector(state => state.fav);
     console.log(favs.fav);
@@ -35,49 +34,51 @@ function UiMedicine({ Udata, OnClick, Onicon }) {
 
     return (
         <>
-            {
-                Udata.map((v) => {
-                    return (
-                        <>
-                            {
-                                carts.loading ?
-                                    <Box className="d-flex justify-content-center" >
-                                        <CircularProgress backdrop sx={{ color: '#FF6337', margin: "300px auto", backgroundColor: "rgba(255,255,255,0.7)", zIndex: "9999" }} />
-                                    </Box> :
-                                    <div className="product">
-                                        <div className="product-card">
-                                            <h2 className="name">{v.name}</h2>
-                                            <span className="price">${v.price}.00</span>
-                                            <a className="popup-btn">Quick View</a>
-                                            {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" className="product-img" alt /> */}
-                                        </div>
-                                        <div className="popup-view">
-                                            <div className="popup-card">
-                                                <a><i className="fas fa-times close-btn" /></a>
-                                                <div className="product-img">
-                                                    {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" alt /> */}
-                                                </div>
-                                                <div className="info">
-                                                    <h2>{v.name}
-                                                        {
+            <>
+                {
+                    carts.loading ?
+                        <Box className="d-flex justify-content-center" >
+                            <CircularProgress backdrop sx={{ color: '#FF6337', margin: "300px auto", backgroundColor: "rgba(255,255,255,0.7)", zIndex: "9999" }} />
+                        </Box> :
+                        <div className="product">
+                            <div className="product-card">
+                                <h2 className="name">{values.name}</h2>
+                                <span className="price">${values.price}.00</span>
+                                <a className="popup-btn">Quick View</a>
+                                {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" className="product-img" alt /> */}
+                            </div>
+                            <div className="popup-view">
+                                <div className="popup-card">
+                                    <a><i className="fas fa-times close-btn" /></a>
+                                    <div className="product-img">
+                                        {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" alt /> */}
+                                    </div>
+                                    <div className="info">
+                                        <h2>{values.name}
+                                            {/* {
                                                             favs.fav ?
                                                                 <FavoriteIcon style={{ color: "#FF6337", cursor: 'pointer' }} />
                                                                 :
-                                                                <FavoriteBorderIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={() => Onicon(v.id)} />
-                                                        }
-                                                    </h2>
-                                                    <p>{v.desc}</p>
-                                                    <span className="price">$ {v.price}.00</span>
-                                                    <a href="#" onClick={() => OnClick(v.id)} className="add-cart-btn">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                                <FavoriteBorderIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={() => Onicon(values.id)} />
+                                                        } */}
+                                            {
+                                                favouriteTrue ?
+                                                    fav ?
+                                                        // favData 
+                                                        <FavoriteIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={() => removefav(values.id)} /> :
+                                                        <FavoriteBorderIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={() => onclick2(values.id)} /> :
+                                                    null
+                                            }
+                                        </h2>
+                                        <p>{values.desc}</p>
+                                        <span className="price">$ {values.price}.00</span>
+                                        <a href="#" onClick={() => OnClick(values.id)} className="add-cart-btn">Add to Cart</a>
                                     </div>
-                            }
-                        </>
-                    )
-                })
-            }
+                                </div>
+                            </div>
+                        </div>
+                }
+            </>
         </>
     );
 }

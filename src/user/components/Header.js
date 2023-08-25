@@ -28,8 +28,6 @@ function Header(props) {
     const auth = useSelector(state => state.auth)
     let dispatch = useDispatch()
 
-    // let localStatus = localStorage.getItem("Loginredirecting")
-
     const handleLogout = () => {
         dispatch(logoutrequest())
         setOpen(false)
@@ -42,13 +40,6 @@ function Header(props) {
         cartCounter = cartData.item.reduce((acc, v, i) => acc + v.qyt, 0);
     }
 
-    // let localdataCart = JSON.parse(localStorage.getItem("CartData"));
-    // let cartCounter = 0;
-
-    // if (localdataCart) {
-    //     cartCounter = localdataCart.reduce((acc, v, i) => acc + v.qyt, 0);
-    // }
-
     let localdataheart = JSON.parse(localStorage.getItem("CartDetails"));
     console.log(localdataheart);
     let heartCounter = 0;
@@ -59,20 +50,12 @@ function Header(props) {
     }
 
     const favs = useSelector(state => state.fav);
-    let favCounter = 0;
+    console.log(favs.fav.length);
 
-    if (favs.fav) {
-        favCounter = favs.fav.reduce((acc, v, i) => acc + v.qyt, 0);
-    }
-
-    // const [backdrop, setBackdrop] = useState('static');
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            {/* <div class="top">
-                <KeyboardDoubleArrowDownIcon />
-            </div> */}
             <div className="main-header header">
                 <div id="topbar" className="d-flex align-items-center fixed-top">
                     <div className="container top-styled">
@@ -122,7 +105,7 @@ function Header(props) {
                                 </Link>
                                 <Link state={{ border: "none" }} to="/medicindetails">
                                     <IconButton aria-label="heart">
-                                        <StyledBadge badgeContent={favCounter} sx={{ color: '#FF6337' }}>
+                                        <StyledBadge badgeContent={favs.fav.length} sx={{ color: '#FF6337' }}>
                                             <FavoriteIcon />
                                         </StyledBadge>
                                     </IconButton>

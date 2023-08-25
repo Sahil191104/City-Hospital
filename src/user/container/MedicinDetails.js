@@ -50,7 +50,7 @@ function MedicinDetails() {
                                                     {
                                                         v.name
                                                     }
-                                                    <FavoriteIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={handleRemoveicon} />
+                                                    <FavoriteIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={() => handleRemoveicon(v.id)} />
                                                 </CardTitle>
                                                 <CardSubtitle
                                                     className="mb-2 text-muted"

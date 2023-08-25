@@ -28,9 +28,8 @@ export const favoriteReducer = (state = initState, action) => {
 
         case ActionTypes.FAVORITE_REMOVE:
             return {
-                fav: state.fav.filter((v) => v.fid !== action.payload),
-                error: null,
-                loading: false
+                ...state,
+                fav: state.fav.filter((v) => v.fid !== action.payload)
             }
         default:
             return state;
