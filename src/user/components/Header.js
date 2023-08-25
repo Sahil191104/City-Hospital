@@ -58,6 +58,13 @@ function Header(props) {
         console.log(heartCounter);
     }
 
+    const favs = useSelector(state => state.fav);
+    let favCounter = 0;
+
+    if (favs.fav) {
+        favCounter = favs.fav.reduce((acc, v, i) => acc + v.qyt, 0);
+    }
+
     // const [backdrop, setBackdrop] = useState('static');
     const [open, setOpen] = useState(false);
 
@@ -115,7 +122,7 @@ function Header(props) {
                                 </Link>
                                 <Link state={{ border: "none" }} to="/medicindetails">
                                     <IconButton aria-label="heart">
-                                        <StyledBadge badgeContent={heartCounter} sx={{ color: '#FF6337' }}>
+                                        <StyledBadge badgeContent={favCounter} sx={{ color: '#FF6337' }}>
                                             <FavoriteIcon />
                                         </StyledBadge>
                                     </IconButton>

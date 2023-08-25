@@ -6,22 +6,9 @@ import { Box, CircularProgress } from '@mui/material';
 
 function UiMedicine({ Udata, OnClick, Onicon }) {
     console.log(Udata);
-    const carts = useSelector(state => state.cart)
-
-    const handleRemoveicon = () => {
-        localStorage.removeItem("CartDetails")
-    }
-
-    let localdataheart = JSON.parse(localStorage.getItem("CartDetails"));
-    console.log(localdataheart);
-    let heartCounter = 0;
-
-    if (localdataheart) {
-        heartCounter = localdataheart.reduce((acc, v, i) => acc + v.qyt, 0);
-        console.log(heartCounter);
-    }
-
-    let localDataIcon = JSON.parse(localStorage.getItem("CartDetails"))
+    const carts = useSelector(state => state.cart);
+    const favs = useSelector(state => state.fav);
+    console.log(favs.fav);
 
     let popupViews = document.querySelectorAll('.popup-view');
     let popupBtns = document.querySelectorAll('.popup-btn');
@@ -73,8 +60,8 @@ function UiMedicine({ Udata, OnClick, Onicon }) {
                                                 <div className="info">
                                                     <h2>{v.name}
                                                         {
-                                                            v.id === localDataIcon ?
-                                                                <FavoriteIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={handleRemoveicon} />
+                                                            favs.fav ?
+                                                                <FavoriteIcon style={{ color: "#FF6337", cursor: 'pointer' }} />
                                                                 :
                                                                 <FavoriteBorderIcon style={{ color: "#FF6337", cursor: 'pointer' }} onClick={() => Onicon(v.id)} />
                                                         }
