@@ -17,6 +17,7 @@ function UiMedicine({ values, OnClick, favouriteTrue, onclick2, fav, removefav }
     let popup = function (popupClick) {
         popupViews[popupClick].classList.add('active');
     }
+    
     popupBtns.forEach((popupBtn, i) => {
         popupBtn.addEventListener("click", () => {
             popup(i);

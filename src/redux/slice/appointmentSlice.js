@@ -9,6 +9,28 @@ const initialState = {
     error: null
 }
 
+export const getAppointment = createAsyncThunk(
+    'appointment/get',
+    async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "appointment"));
+
+            let data = []
+            querySnapshot.forEach((doc) => {
+
+                data.push({
+                    id: doc.id,
+                    ...doc.data()
+                })
+                console.log(data);
+            });
+            return data
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+)
+
 export const addAppointment = createAsyncThunk(
     'appointment/add',
     async (data) => {
@@ -43,28 +65,6 @@ export const addAppointment = createAsyncThunk(
             //     ...data
             // }
             // console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    }
-)
-
-export const getAppointment = createAsyncThunk(
-    'appointment/get',
-    async () => {
-        try {
-            const querySnapshot = await getDocs(collection(db, "appointment"));
-
-            let data = []
-            querySnapshot.forEach((doc) => {
-
-                data.push({
-                    id: doc.id,
-                    ...doc.data()
-                })
-                console.log(data);
-            });
-            return data
         } catch (e) {
             console.error("Error adding document: ", e);
         }
