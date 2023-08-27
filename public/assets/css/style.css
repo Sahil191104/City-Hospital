@@ -2569,3 +2569,11 @@ nav ul {
 .img-thumbnail {
   background-color: transparent;
 }
+
+.css-heg063-MuiTabs-flexContainer {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.css-aym9vq-MuiButtonBase-root-MuiTab-root {
+}

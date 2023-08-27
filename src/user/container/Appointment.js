@@ -137,12 +137,10 @@ function Appointment(props) {
                     <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
                         blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
                         Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
-                    <div className='justify-content-center'>
-                        <Tabs className='m-0' value={value} onChange={handleChanges} aria-label="icon label tabs example">
-                            <Tab icon={<PhoneIcon />} label="Book Appointment" />
-                            <Tab icon={<FavoriteIcon />} label="List Appointment" />
-                        </Tabs>
-                    </div>
+                    <Tabs className='m-0' value={value} onChange={handleChanges} aria-label="icon label tabs example">
+                        <Tab icon={<PhoneIcon />} label="Book Appointment" />
+                        <Tab icon={<FavoriteIcon />} label="List Appointment" />
+                    </Tabs>
                 </div>
                 {
                     value === 0 &&
@@ -181,7 +179,7 @@ function Appointment(props) {
                                 </div>
                                 <div className="col-md-4 form-group mt-3">
                                     <input type="file" name="file" className="form-control datepicker mb-4" onChange={(e) => setFieldValue('file', e.target.files[0])} id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                    <img src={typeof values.file === 'string' ? values.file: URL.createObjectURL(values.file) } className="img-fluid"  alt="" />
+                                    <img src={typeof values.file === 'string' ? values.file : URL.createObjectURL(values.file)} className="img-fluid" alt="" />
                                     <span style={{ color: 'red' }}>{errors.file && touched.file ? errors.file : null} </span>
                                 </div>
                             </div>

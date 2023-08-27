@@ -1,7 +1,7 @@
 import React from 'react';
 import Htag from '../UI/H1toH6/Htag';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement, remove} from '../../../redux/slice/cartSlice'
+import { increment, decrement, remove } from '../../../redux/slice/cartSlice'
 
 function Cart(props) {
     const dispatch = useDispatch();
@@ -48,7 +48,12 @@ function Cart(props) {
                                     <div className="row d-flex justify-content-between align-items-center">
                                         <div className="col-md-3 col-lg-3 col-xl-3">
                                             <p className="lead fw-normal mb-2">{v.name}</p>
-                                            <p><span class="text-muted">{v.desc}</span></p>
+                                            <p>
+                                                <span class="text-muted">
+                                                    {v.desc.substring(0, 100)}
+                                                    {v.desc.length > 50 ? '...' : ''}
+                                                </span>
+                                            </p>
                                         </div>
                                         <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
                                             <button disabled={v.qyt === 0 ? true : false} className="btn btn-link px-2" onClick={() => handleDec(v.pid)}>
