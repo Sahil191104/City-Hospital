@@ -201,11 +201,29 @@ export default function Department() {
 
                         <h1>Department</h1>
 
-                        <div style={{ height: 400, width: '60%' }}>
+                        <div style={{ height: 400, width: '100%' }}>
                             <DataGrid
                                 getRowHeight={() => 'auto'}
                                 rows={departmentsdata.department}
-                                columns={columns}
+                                columns={
+                                    columns[
+                                        {
+                                            field: 'id',
+                                            flex: 1,
+                                            minWidth: 150,
+                                          },
+                                          {
+                                            field: 'id',
+                                            flex: 1,
+                                            minWidth: 150,
+                                          },
+                                          {
+                                            field: 'id',
+                                            flex: 1,
+                                            minWidth: 150,
+                                          }
+                                    ]
+                                }
                                 initialState={{
                                     pagination: {
                                         paginationModel: { page: 0, pageSize: 5 },

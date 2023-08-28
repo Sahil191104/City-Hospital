@@ -76,7 +76,7 @@ export default function Doctor() {
 
                                 <DoctorForm onGetdata={handleSubmitData} onUpdate={update} />
 
-                                <div style={{ height: 400, width: '60%' }}>
+                                <div style={{ height: 400, width: '100%' }}>
                                     <DataGrid
                                         rows={doctors.doctor}
                                         columns={columns}

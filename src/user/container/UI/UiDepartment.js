@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Titel from './Title/Titel';
 import Htag from './H1toH6/Htag';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDepartment } from '../../../redux/slice/departmentSlice';
 
 function UiDepartment({ Udata }) {
     console.log(Udata);
 
+    const dispatch = useDispatch();
     const departmentsdata = useSelector(state => state.department);
+    console.log(departmentsdata.department);
+
+    useEffect(() => {
+        console.log("oooijoij");
+        dispatch(fetchDepartment())
+    }, [])
 
     return (
         <>
             <section id="departments" className="departments">
                 <div className="container">
                     <div className="section-title">
-                        <Htag name="h2tag1" >Departments</Htag>
+                        <Htag name="h2tag1">Departments</Htag>
                     </div>
                     <div className="row">
                         <div className="col-lg-3">
