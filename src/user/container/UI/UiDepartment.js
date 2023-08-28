@@ -1,9 +1,12 @@
 import React from 'react';
 import Titel from './Title/Titel';
 import Htag from './H1toH6/Htag';
+import { useSelector } from 'react-redux';
 
 function UiDepartment({ Udata }) {
     console.log(Udata);
+
+    const departmentsdata = useSelector(state => state.department);
 
     return (
         <>
@@ -16,7 +19,7 @@ function UiDepartment({ Udata }) {
                         <div className="col-lg-3">
                             <ul className="nav nav-tabs flex-column">
                                 {
-                                    Udata.map((v) => {
+                                    departmentsdata.department.map((v) => {
                                         return (
                                             <li className="nav-item">
                                                 {
@@ -34,7 +37,7 @@ function UiDepartment({ Udata }) {
                         <div className="col-lg-9 mt-4 mt-lg-0">
                             <div className="tab-content">
                                 {
-                                    Udata.map((v) => {
+                                    departmentsdata.department.map((v) => {
                                         return (
                                             v.id === 1 ?
                                                 <div className="tab-pane active show" id={`tab-${v.id}`} key={v.id}>
@@ -44,7 +47,7 @@ function UiDepartment({ Udata }) {
                                                             <Titel className="fst-italic">{v.desc}</Titel>
                                                         </div>
                                                         <div className="col-lg-4 text-center order-1 order-lg-2">
-                                                            <img src={v.image} alt className="img-fluid" />
+                                                            <img src={v.file} alt className="img-fluid" />
                                                         </div>
                                                         {/* <div className="col-lg-4 text-center order-1 order-lg-2">
                                                         <img src="../assets/img/departments-1.jpg" alt className="img-fluid" />
@@ -59,7 +62,7 @@ function UiDepartment({ Udata }) {
                                                             <Titel className="fst-italic">{v.desc}</Titel>
                                                         </div>
                                                         <div className="col-lg-4 text-center order-1 order-lg-2">
-                                                            <img src={v.image} alt className="img-fluid" />
+                                                            <img src={v.file} alt className="img-fluid" />
                                                         </div>
                                                         {/* <div className="col-lg-4 text-center order-1 order-lg-2">
                                                         <img src="../assets/img/departments-1.jpg" alt className="img-fluid" />
