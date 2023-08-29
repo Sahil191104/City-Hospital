@@ -90,8 +90,8 @@ export default function Department() {
     }
 
     const columns = [
-        { field: 'name', headerName: 'Name', width: 130 },
-        { field: 'desc', headerName: 'Description', width: 130 },
+        { field: 'name', headerName: 'Name', flex: 0.3, minWidth: 100 },
+        { field: 'desc', headerName: 'Description', flex: 1, minWidth: 100 },
         {
             field: 'file', headerName: 'Image', width: 200, height: 80,
             renderCell: (params) => {
@@ -106,7 +106,8 @@ export default function Department() {
         {
             field: 'action',
             headerName: 'Action',
-            width: 130,
+            flex: 0.3,
+            minWidth: 10,
             renderCell: (params) => (
                 <>
                     <IconButton aria-label="edit" onClick={() => handleUpdate(params.row)}>
@@ -200,40 +201,23 @@ export default function Department() {
                         </Dialog>
 
                         <h1>Department</h1>
-
-                        <div style={{ height: 400, width: '100%' }}>
-                            <DataGrid
-                                getRowHeight={() => 'auto'}
-                                rows={departmentsdata.department}
-                                columns={
-                                    columns[
-                                        {
-                                            field: 'id',
-                                            flex: 1,
-                                            minWidth: 150,
-                                          },
-                                          {
-                                            field: 'id',
-                                            flex: 1,
-                                            minWidth: 150,
-                                          },
-                                          {
-                                            field: 'id',
-                                            flex: 1,
-                                            minWidth: 150,
-                                          }
-                                    ]
-                                }
-                                initialState={{
-                                    pagination: {
-                                        paginationModel: { page: 0, pageSize: 5 },
-                                    },
-                                }}
-                                pageSizeOptions={[5, 10]}
-                                checkboxSelection
-                            />
-                        </div>
                     </center>
+
+
+                    <div style={{ height: '100%', width: '100%' }}>
+                        <DataGrid
+                            getRowHeight={() => 'auto'}
+                            rows={departmentsdata.department}
+                            columns={columns}
+                            initialState={{
+                                pagination: {
+                                    paginationModel: { page: 0, pageSize: 5 },
+                                },
+                            }}
+                            pageSizeOptions={[5, 10]}
+                            checkboxSelection
+                        />
+                    </div>
                 </>
             }
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import Htag from './UI/H1toH6/Htag';
 import Titel from './UI/Title/Titel';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 function Home(props) {
     return (
@@ -109,7 +109,18 @@ function Home(props) {
                         <div className="section-title"><Htag name="h2tag1">Reviews</Htag></div>
 
                         <div className="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay={100}>
-                            <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                            <Swiper
+                                spaceBetween={30}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                className="mySwiper"
+                                modules={[Autoplay, Pagination]}
+                            >
                                 <SwiperSlide>
                                     <div className="swiper-slide">
                                         <div className="testimonial-wrap">
@@ -203,8 +214,6 @@ function Home(props) {
                                     </div>
                                 </SwiperSlide>
                             </Swiper>
-                            <div className="swiper-wrapper">
-                            </div>
                         </div>
                     </div>
                 </section>

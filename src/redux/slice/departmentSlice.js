@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { addDepartmentData, deleteDepartmentData, errorDepartmentData, getDepartmentData, loadingDepartmentData, putDepartmentData } from '../../common/apis/department.api';
 import { db, storage } from '../../firebase';
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes, deleteObject } from 'firebase/storage';
@@ -15,6 +14,8 @@ export const fetchDepartment = createAsyncThunk(
     async () => {
         try {
             const querySnapshot = await getDocs(collection(db, "department"));
+
+            console.log(querySnapshot);
 
             let data = []
             querySnapshot.forEach((doc) => {

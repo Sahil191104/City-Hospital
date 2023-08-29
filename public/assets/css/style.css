@@ -2034,6 +2034,15 @@ section {
   background-color: transparent !important;
 }
 
+.dark .testimonials .swiper-pagination .swiper-pagination-bullet {
+  background-color: #18122B;
+  border: 1px solid #fff;
+}
+
+.dark .testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #fff;
+}
+
 .dark a,
 .light a {
   border: none;
@@ -2576,4 +2585,8 @@ nav ul {
 }
 
 .css-aym9vq-MuiButtonBase-root-MuiTab-root {
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  margin: 5px;
 }
