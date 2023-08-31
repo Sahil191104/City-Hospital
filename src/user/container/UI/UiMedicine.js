@@ -17,7 +17,7 @@ function UiMedicine({ values, OnClick, favouriteTrue, onclick2, fav, removefav }
     let popup = function (popupClick) {
         popupViews[popupClick].classList.add('active');
     }
-    
+
     popupBtns.forEach((popupBtn, i) => {
         popupBtn.addEventListener("click", () => {
             popup(i);
@@ -45,15 +45,12 @@ function UiMedicine({ values, OnClick, favouriteTrue, onclick2, fav, removefav }
                             <div className="product-card">
                                 <h2 className="name">{values.name}</h2>
                                 <span className="price">${values.price}.00</span>
-                                <a className="popup-btn">Quick View</a>
+                                <a className="popup-btn">see more</a>
                                 {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" className="product-img" alt /> */}
                             </div>
                             <div className="popup-view">
                                 <div className="popup-card">
                                     <a><i className="fas fa-times close-btn" /></a>
-                                    <div className="product-img">
-                                        {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueydgLsFumxg1LVnm0-zKEUgnbvHNSO8TGQ&usqp=CAU" alt /> */}
-                                    </div>
                                     <div className="info">
                                         <h2>{values.name}
                                             {/* {

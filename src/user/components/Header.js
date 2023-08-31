@@ -69,7 +69,7 @@ function Header(props) {
                             <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
                             <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
                             <div className="cl-toggle-switch">
-                                <label className="cl-switch" >
+                                <label className="cl-switch" style={{cursor: 'pointer'}} >
                                     <input type="checkbox" onClick={() => theme.togletheme(theme.theme)} />
                                     <span />
                                 </label>

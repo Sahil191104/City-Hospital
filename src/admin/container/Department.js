@@ -39,7 +39,7 @@ export default function Department() {
 
     let d = new Date();
     let nd = new Date(d.setDate(d.getDate() - 1))
-// 
+
     let medicineschema = yup.object({
         name: yup.string().required("Please entre a Name"),
         desc: yup.string().required("Please entre a Description")
